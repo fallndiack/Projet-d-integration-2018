@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CNGLUTTEDBModelStoreContainer" CdmEntityContainer="CNGLUTTEDBEntities">
+    <FunctionImportMapping FunctionImportName="Affichage_Complet_Lutteur" FunctionName="CNGLUTTEDBModel.Store.Affichage_Complet_Lutteur">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNGLUTTEDBModel.Affichage_Complet_Lutteur_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Poids" ColumnName="Poids" />
+          <ScalarProperty Name="Date_de_naissance" ColumnName="Date de naissance" />
+          <ScalarProperty Name="Addresse" ColumnName="Addresse" />
+          <ScalarProperty Name="Telephonne" ColumnName="Telephonne" />
+          <ScalarProperty Name="Ecurie" ColumnName="Ecurie" />
+          <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CNGLUTTEDBModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CNGLUTTEDBModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CNGLUTTEDBModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CNGLUTTEDBModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNGLUTTEDBModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CNGLUTTEDBModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNGLUTTEDBModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CNGLUTTEDBModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CNGLUTTEDBModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Affiches">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Affiche">
+        <MappingFragment StoreEntitySet="Affiche">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="Vaincqueur" ColumnName="Vaincqueur" />
+          <ScalarProperty Name="AfficheDate" ColumnName="AfficheDate" />
+          <ScalarProperty Name="Lutteru_B" ColumnName="Lutteru_B" />
+          <ScalarProperty Name="Lutteur_A" ColumnName="Lutteur_A" />
+          <ScalarProperty Name="CombatID" ColumnName="CombatID" />
+          <ScalarProperty Name="AfficheNom" ColumnName="AfficheNom" />
+          <ScalarProperty Name="AfficheID" ColumnName="AfficheID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Arbitres">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Arbitre">
+        <MappingFragment StoreEntitySet="Arbitre">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="ArbitreDateNaissance" ColumnName="ArbitreDateNaissance" />
+          <ScalarProperty Name="ArbitreEmail" ColumnName="ArbitreEmail" />
+          <ScalarProperty Name="ArbitreName" ColumnName="ArbitreName" />
+          <ScalarProperty Name="ArbitreID" ColumnName="ArbitreID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AvisAffiches">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.AvisAffiche">
+        <MappingFragment StoreEntitySet="AvisAffiche">
+          <ScalarProperty Name="AfficheID" ColumnName="AfficheID" />
+          <ScalarProperty Name="DateAvis" ColumnName="DateAvis" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Auteur" ColumnName="Auteur" />
+          <ScalarProperty Name="AvisAfficheID" ColumnName="AvisAfficheID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Categorie">
+        <MappingFragment StoreEntitySet="Categorie">
+          <ScalarProperty Name="Categorie_Max" ColumnName="Categorie_Max" />
+          <ScalarProperty Name="Categorie_Min" ColumnName="Categorie_Min" />
+          <ScalarProperty Name="Categorie_Libele" ColumnName="Categorie_Libele" />
+          <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clubs">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Club">
+        <MappingFragment StoreEntitySet="Club">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="ClubEmail" ColumnName="ClubEmail" />
+          <ScalarProperty Name="ClubAdresse" ColumnName="ClubAdresse" />
+          <ScalarProperty Name="ClubDateCreation" ColumnName="ClubDateCreation" />
+          <ScalarProperty Name="ClubName" ColumnName="ClubName" />
+          <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Combats">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Combat">
+        <MappingFragment StoreEntitySet="Combat">
+          <ScalarProperty Name="Combat_Etat" ColumnName="Combat_Etat" />
+          <ScalarProperty Name="StadeID" ColumnName="StadeID" />
+          <ScalarProperty Name="CategorieID" ColumnName="CategorieID" />
+          <ScalarProperty Name="TypeLutteID" ColumnName="TypeLutteID" />
+          <ScalarProperty Name="Combat_Description" ColumnName="Combat_Description" />
+          <ScalarProperty Name="CombatID" ColumnName="CombatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Licences">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Licence">
+        <MappingFragment StoreEntitySet="Licence">
+          <ScalarProperty Name="LicenceDate_Fin" ColumnName="LicenceDate_Fin" />
+          <ScalarProperty Name="LicenceDate_Debut" ColumnName="LicenceDate_Debut" />
+          <ScalarProperty Name="TypeLutteID" ColumnName="TypeLutteID" />
+          <ScalarProperty Name="LutteurID" ColumnName="LutteurID" />
+          <ScalarProperty Name="LicenceID" ColumnName="LicenceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lutteurs">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Lutteur">
+        <MappingFragment StoreEntitySet="Lutteur">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="LutteurTelephone" ColumnName="LutteurTelephone" />
+          <ScalarProperty Name="LutteurDescription" ColumnName="LutteurDescription" />
+          <ScalarProperty Name="LutteurAddresse" ColumnName="LutteurAddresse" />
+          <ScalarProperty Name="LutteurDateNaissance" ColumnName="LutteurDateNaissance" />
+          <ScalarProperty Name="LutteurPoids" ColumnName="LutteurPoids" />
+          <ScalarProperty Name="LutteurEmail" ColumnName="LutteurEmail" />
+          <ScalarProperty Name="LutteurName" ColumnName="LutteurName" />
+          <ScalarProperty Name="LutteurClubID" ColumnName="LutteurClubID" />
+          <ScalarProperty Name="LutteurID" ColumnName="LutteurID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stades">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Stade">
+        <MappingFragment StoreEntitySet="Stade">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="StadeAdresse" ColumnName="StadeAdresse" />
+          <ScalarProperty Name="StadeName" ColumnName="StadeName" />
+          <ScalarProperty Name="StadeID" ColumnName="StadeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeLuttes">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.TypeLutte">
+        <MappingFragment StoreEntitySet="TypeLutte">
+          <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+          <ScalarProperty Name="TypeLutte_Libele" ColumnName="TypeLutte_Libele" />
+          <ScalarProperty Name="TypeLutteID" ColumnName="TypeLutteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Arbitre_Combat" TypeName="CNGLUTTEDBModel.Arbitre_Combat" StoreEntitySet="Arbitre_Combat">
+      <EndProperty Name="Combat">
+        <ScalarProperty Name="CombatID" ColumnName="CombatID" />
+      </EndProperty>
+      <EndProperty Name="Arbitre">
+        <ScalarProperty Name="ArbitreID" ColumnName="ArbitreID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

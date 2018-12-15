@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="35579d3b585f4461a92668c9ecccf9e7" Name="Diagram1">
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Affiche" Width="1.5" PointX="8.25" PointY="2.75" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Arbitre" Width="1.5" PointX="3.75" PointY="12.5" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.AvisAffiche" Width="1.5" PointX="10.5" PointY="3.25" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Categorie" Width="1.5" PointX="3.75" PointY="7.125" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Club" Width="1.5" PointX="3.75" PointY="16.125" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Combat" Width="1.5" PointX="6" PointY="2.75" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Image" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Licence" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Lutteur" Width="1.5" PointX="6" PointY="15.5" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Stade" Width="1.5" PointX="3.75" PointY="9.875" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.TypeLutte" Width="1.5" PointX="0.75" PointY="3.375" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_Combat" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_LutteurA" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_LutteurB" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Combat_Categorie" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Lutteur_Club" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Combat_Stade" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Combat_TyeLutte" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Licence_Lutteur" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_Licence_TypeLutteur" />
+        <AssociationConnector Association="CNGLUTTEDBModel.Arbitre_Combat" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,28 @@
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.pdb
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csproj.CoreCompileInputs.cache
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.pdb
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_ViewModel.dll
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_ViewModel.pdb
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csprojResolveAssemblyReference.cache
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.dll.config
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.dll
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.xml
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\NDIACK\Documents\projet d'intégration\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.dll.config
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.pdb
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.xml
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csproj.CoreCompileInputs.cache
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.pdb
+C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csprojResolveAssemblyReference.cache
