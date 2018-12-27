@@ -81,55 +81,56 @@ namespace Lamb_Ji_UI.Controllers
         {
             var result = false;
             if (ModelState.IsValid) { 
-                try
-            {
+                    try
+                {
           
-                    if (model.LutteurID > 0)
-                {
-                    Lutteur Lut = db.Lutteurs.Include(c => c.Club).SingleOrDefault(x => x.LutteurID == model.LutteurID);
-                    Lut.LutteurName = model.LutteurName;
-                    Lut.LutteurEmail = model.LutteurEmail;
-                    Lut.LutteurDateNaissance = model.LutteurDateNaissance;
-                    Lut.LutteurDescription = model.LutteurDescription;
-                    Lut.LutteurPoids = model.LutteurPoids;
-                    Lut.LutteurTelephone = model.LutteurTelephone;
-                    Lut.LutteurAddresse = model.LutteurAddresse;
-                    Lut.imageUrl = model.imageUrl;
-                    Lut.LutteurClubID = model.LutteurClubID;
-                    db.SaveChanges();
-                    result = true;
-                }
-                else
-                {
-                        if (model.ImageUpload != null)
-                        {
-                            string fileName = Path.GetFileNameWithoutExtension(model.ImageUpload.FileName);
-                            string extension = Path.GetExtension(model.ImageUpload.FileName);
-                            fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
-                            model.imageUrl = fileName;
-                            model.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Lutteur"), fileName));
-                        }
+                                if (model.LutteurID > 0)
+                            {
+                                Lutteur Lut = db.Lutteurs.Include(c => c.Club).SingleOrDefault(x => x.LutteurID == model.LutteurID);
+                                Lut.LutteurName = model.LutteurName;
+                                Lut.LutteurEmail = model.LutteurEmail;
+                                Lut.LutteurDateNaissance = model.LutteurDateNaissance;
+                                Lut.LutteurDescription = model.LutteurDescription;
+                                Lut.LutteurPoids = model.LutteurPoids;
+                                Lut.LutteurTelephone = model.LutteurTelephone;
+                                Lut.LutteurAddresse = model.LutteurAddresse;
+                                Lut.imageUrl = model.imageUrl;
+                                Lut.LutteurClubID = model.LutteurClubID;
 
-                        Lutteur Lut = new Lutteur();
-                    Lut.LutteurName = model.LutteurName;
-                    Lut.LutteurEmail = model.LutteurEmail;
-                    Lut.LutteurDateNaissance = model.LutteurDateNaissance;
-                    Lut.LutteurDescription = model.LutteurDescription;
-                    Lut.LutteurPoids = model.LutteurPoids;
-                    Lut.LutteurTelephone = model.LutteurTelephone;
-                    Lut.LutteurAddresse = model.LutteurAddresse;
-                    Lut.imageUrl = model.imageUrl;
-                    Lut.LutteurClubID = model.LutteurClubID;
-                    db.Lutteurs.Add(Lut);
-                    db.SaveChanges();
-                    result = true;
-                }
-            }
-            catch (Exception ex)
-            {
+                                db.SaveChanges();
+                                result = true;
+                            }
+                            else
+                            {
+                                    if (model.ImageUpload != null)
+                                    {
+                                        string fileName = Path.GetFileNameWithoutExtension(model.ImageUpload.FileName);
+                                        string extension = Path.GetExtension(model.ImageUpload.FileName);
+                                        fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                                        model.imageUrl = fileName;
+                                        model.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Lutteur"), fileName));
+                                    }
 
-                throw ex;
-            }
+                                    Lutteur Lut = new Lutteur();
+                                Lut.LutteurName = model.LutteurName;
+                                Lut.LutteurEmail = model.LutteurEmail;
+                                Lut.LutteurDateNaissance = model.LutteurDateNaissance;
+                                Lut.LutteurDescription = model.LutteurDescription;
+                                Lut.LutteurPoids = model.LutteurPoids;
+                                Lut.LutteurTelephone = model.LutteurTelephone;
+                                Lut.LutteurAddresse = model.LutteurAddresse;
+                                Lut.imageUrl = model.imageUrl;
+                                Lut.LutteurClubID = model.LutteurClubID;
+                                db.Lutteurs.Add(Lut);
+                                db.SaveChanges();
+                                result = true;
+                            }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
             }
             return Json(result, JsonRequestBehavior.AllowGet);
 
@@ -161,6 +162,11 @@ namespace Lamb_Ji_UI.Controllers
         }
 
 
+        public ActionResult DisplayLuteurForUser()
+        {
+            List<Lutteur> LuttList = db.Lutteurs.ToList();
+            return View(LuttList);
+        }
       
     }
 }

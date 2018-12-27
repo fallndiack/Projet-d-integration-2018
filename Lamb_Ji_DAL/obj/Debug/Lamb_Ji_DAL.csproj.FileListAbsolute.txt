@@ -26,3 +26,16 @@ C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csproj
 C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.dll
 C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.pdb
 C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csprojResolveAssemblyReference.cache
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.dll.config
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\Lamb_Ji_DAL.pdb
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\EntityFramework.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\EntityFramework.xml
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\fr\EntityFramework.SqlServer.resources.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csprojResolveAssemblyReference.cache
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csproj.CoreCompileInputs.cache
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.pdb

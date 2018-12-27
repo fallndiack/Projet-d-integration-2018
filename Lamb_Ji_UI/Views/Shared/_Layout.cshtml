@@ -60,7 +60,7 @@
                             <li>@Html.ActionLink("Clubs", "Index", "Club")</li>
                             <li>@Html.ActionLink("Slider", "AddImage", "Slider")</li>
                             <li>@Html.ActionLink("Stades", "Index", "Stade")</li>
-                            <li>@Html.ActionLink("Gerer_Lutteurs", "Index", "Lutteur")</li>
+                            <li>@Html.ActionLink("Lutteurs", "Index", "Lutteur")</li>
                             <li>@Html.ActionLink("Arbitres", "Index", "Arbitre")</li>
                             <li>@Html.ActionLink("Affiche", "Index", "Affiche")</li>
 
@@ -74,13 +74,14 @@
 
             <div class="container body-content">
                 @RenderBody()
-                <hr />
-                <footer>
-                    @Html.Partial("_footer")
-                </footer>
+                @*<hr />*@
+
             </div>
         </div>
+        
     </div>
-   
+    <footer>
+        @Html.Partial("_footer")
+    </footer>
 </body>
 </html>

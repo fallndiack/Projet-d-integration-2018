@@ -48,6 +48,7 @@
     <Compile Include="ImageDto.cs" />
     <Compile Include="LutteurViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StadeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lamb_Ji_DAL\Lamb_Ji_DAL.csproj">

@@ -199,12 +199,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArbitreController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LutteurController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuAccueilController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
+    <Compile Include="Controllers\StadeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -576,17 +578,20 @@
     <Content Include="Views\Shared\MenuDynam.cshtml" />
     <Content Include="Views\Slider\AddImage.cshtml" />
     <Content Include="Views\Slider\SliderAccueil.cshtml" />
-    <Content Include="Views\Club\AddNewClub.cshtml" />
-    <Content Include="Views\Club\Index.cshtml" />
     <Content Include="Views\Lutteur\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
     <Content Include="Views\Lutteur\ViewAll.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Arbitre\Index.cshtml" />
+    <Content Include="Views\Stade\Index.cshtml" />
+    <Content Include="Views\Club\Index.cshtml" />
+    <Content Include="Views\Lutteur\DisplayLuteurForUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Image-Arbitre\" />
     <Folder Include="Images\Image-Club\" />
+    <Folder Include="Images\Image-Stade\" />
     <Folder Include="Views\MenuAccueil\" />
   </ItemGroup>
   <ItemGroup>

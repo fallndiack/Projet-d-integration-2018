@@ -40,12 +40,12 @@
                 <th>Adrresse</th>
                 <th>Poids</th>
                 <th>Date de Naissance</th>
-                
-                
+
+
             </tr>
         </tfoot>
     </table>
-
+</div>
     @*Creation du modal pour ajout et edit d'un lutteur*@
 
 
@@ -140,11 +140,12 @@
                             </div>
 
                         </div>
+                        <div style="text-align:center" id="chargement">
+                            <img src="~/Images/tenor.gif" style="height:200px" />
+                        </div>
                     </form>
 
-                    @*<div style="text-align:center" id="chargement">
-                            <img src="~/Images/tenor.gif" />
-                        </div>*@
+                  
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
@@ -179,7 +180,7 @@
         </div>
     </div>
 
-</div>
+
 
 
 
@@ -190,7 +191,8 @@
         $(document).ready(function () {
 
 
-            $('#LutteurTable').DataTable({
+            // DataTable
+            var table =  $('#LutteurTable').DataTable({
 
                 ajax: {
                     "type": "GET",
@@ -202,28 +204,44 @@
 
                 columns: [
                     { "data": "LutteurName" },
-                    { "data": "LutteurEmail" },
+                    {
+                        "data": "LutteurEmail",
+                        'sortable': false,},
                     { "data": "LutteurAddresse" },
                     { "data": "LutteurPoids" },
                     {
                         "data": "LutteurDateNaissance",
+                        'sortable': false,
                         'render': function (jsonDate) {
                             var date = new Date(parseInt(jsonDate.substr(6)));
                             var month = date.getMonth() + 1;
                             return date.getDate() + "/" + month + "/" + date.getFullYear();
                         }
                     },
-                    { "data": "LutteurTelephone" },
-                    { "data": "LutteurDescription" },
-                    { "data": "ClubName" },
                     {
-                        "data": "LutteurID", "render": function (data) {
+                        "data": "LutteurTelephone",
+                        'sortable': false
+                    },
+                    {
+                        "data": "LutteurDescription",
+                        'sortable': false
+                    },
+                    {
+                        "data": "ClubName",
+                        'sortable': false
+                    },
+                    {
+                        "data": "LutteurID",
+                        'sortable': false,
+                        "render": function (data) {
                             return '<a class="btn btn-primary btn-sm" onclick="EditLutteurRecord(' + data + ')"><i class="fa fa-pencil fa-lg"></i></a>';
                         }
                     },
 
                     {
-                        "data": "LutteurID", "render": function (data) {
+                        "data": "LutteurID",
+                        'sortable': false,
+                        "render": function (data) {
                             return '<a class="btn btn-danger btn-sm" onclick="DeleteLutteurRecord(' + data + ')"><i class="fa fa-trash fa-lg"></i></a >';
                         }
                     }
@@ -233,34 +251,36 @@
 
             OpenModal();
 
+          
 
+           
 
             // Setup - add a text input to each footer cell
-            $('#LutteurTable tfoot th').each(function () {
-                var title = $(this).text();
-                $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-            });
+            //$('#LutteurTable tfoot th').each(function () {
+            //    var title = $(this).text();
+            //    $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+            //});
 
-            // DataTable
-            var table = $('#LutteurTable').DataTable();
+           
 
             // Apply the search
-            table.columns().every(function () {
-                var that = this;
+            //table.columns().every(function () {
+            //    var that = this;
 
-                $('input', this.footer()).on('keyup change', function () {
-                    if (that.search() !== this.value) {
-                        that
-                            .search(this.value)
-                            .draw();
-                    }
-                });
-            });
+            //    $('input', this.footer()).on('keyup change', function () {
+            //        if (that.search() !== this.value) {
+            //            that
+            //                .search(this.value)
+            //                .draw();
+            //        }
+            //    });
+            //});
+           
 
         });
 
 
-        //reste modal
+        //reset modal
 
         function OpenModal() {
             $("#btnCreer").click(function () {
@@ -271,6 +291,7 @@
                 $('#LutDateNaissance').val(null);
                 $('#LutTelephone').val("");
                 $('#LutDesc').val("");
+                $('#chargement').hide();
                 $("#ModalTitle").html("Ajouter un Nouveau Lutteur");
 
             })
@@ -279,6 +300,7 @@
         function AddOrEdit() {
             $.validator.unobtrusive.parse($('#SubmitForm'));
             if ($('#SubmitForm').valid()) {
+                $('#chargement').show();
 
                 var LutObj = {
                     LutteurID: $('#LutID').val(),
@@ -300,7 +322,7 @@
                     dataType: "json",
                     success: function (result) {
                         $('#LutteurTable').DataTable().ajax.reload();
-
+                        $('#chargement').hide();
                         toastr.info("Lutteru ajouté avec succés!!!....");
                         $('#myModal').modal('hide');
                     }
@@ -315,7 +337,8 @@
         function EditLutteurRecord(LutteurID) {
         
             var url = "/Lutteur/GetLutteurById?LutteurID=" + LutteurID;
-                $("#ModalTitle").html("Modifier un Lutteur");
+            $("#ModalTitle").html("Modifier un Lutteur");
+            $('#chargement').hide();
                 $("#myModal").modal();
                 $.ajax({
                     type: "GET",
@@ -354,6 +377,7 @@
                         $('#LutteurTable').DataTable().ajax.reload();
 
                         toastr.info(" Lutteur Supprimé Avec Succés!.....");
+                        $('#chargement').hide();
                         $("#DeleteConfirmation").modal("hide");
 
                     }
