@@ -16,7 +16,7 @@ namespace Lamb_Ji_ViewModel
         public LutteurViewModel()
         {
 
-            //imageUrl = "~/Images/Image-Lutteur/default.png";
+           imageUrl = "~/Images/Image-Lutteur/default.png";
         }
 
         public int? LutteurID { get; set; }
@@ -53,7 +53,8 @@ namespace Lamb_Ji_ViewModel
 
         [DisplayName("Club")]
         public string ClubName { get; set; }
-        [NotMapped]
+        //[NotMapped]
+        [DataType(DataType.Upload)]
         public HttpPostedFileBase ImageUpload { get; set; }
 
 

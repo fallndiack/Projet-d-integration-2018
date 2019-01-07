@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<Lamb_Ji_DAL.MenuDynamique>
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>Menu</h2>
-    </div>
-    <div class="panel-body">
-        <ul class="list-group">
 
-            @if (Model != null)
+     
+        <div class="panel panel-default">
+           
+            <div class="panel-heading">
+                <h2>Menu</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+
+                    @if (Model != null)
             {
 
                 foreach (var item in Model)
@@ -15,27 +18,28 @@
 
                     <li class="list-group-item"><a href="@item.Lien" class="btn btn-primary btn-block">@item.NomLien</a></li>
 
-                }
-            }
+        }
+    }
 
-            <li class="list-group-item"><a href="http://google.com" class="btn btn-success btn-block" target="_blank">Google</a></li>
-            <li class="list-group-item"><a href="http://ephec.be" class="btn btn-warning btn-block" target="_blank">Mon Ecole</a></li>
+                    <li class="list-group-item"><a href="http://google.com" class="btn btn-success btn-block" target="_blank">Google</a></li>
+                    <li class="list-group-item"><a href="http://ephec.be" class="btn btn-warning btn-block" target="_blank">Mon Ecole</a></li>
 
-        </ul>
-    </div>
-</div>
-
-<div class="thumbnail">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">INFOS</h3>
+                </ul>
+            </div>
         </div>
-    </div>
-    <img src="~/Pictures/3363065-4830807.jpg" />
-    <div class="caption">
-        <h3>Docteur Alioune Sarr</h3>
-        <p>&para; Projet de gestion de la lutte senegalaise pour le cour de projet d'intégration blablabla blablabla. &para;</p>
-        <p><a href="#" class="btn btn-primary" role="button">Voir plus...</a> </p>
-    </div>
-</div>
 
+        <div class="thumbnail">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">INFOS</h3>
+                </div>
+            </div>
+            <img src="~/Pictures/3363065-4830807.jpg" />
+            <div class="caption">
+                <h3>Docteur Alioune Sarr</h3>
+                <p>&para; Projet de gestion de la lutte senegalaise pour le cour de projet d'intégration blablabla blablabla. &para;</p>
+                <p><a href="#" class="btn btn-primary" role="button">Voir plus...</a> </p>
+            </div>
+        </div>
+  
+<

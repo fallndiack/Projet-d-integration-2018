@@ -76,7 +76,7 @@ namespace Lamb_Ji_UI.Controllers
             return Json(value, JsonRequestBehavior.AllowGet);
         }
 
-       
+        [HttpPost]
         public JsonResult SaveDataInDatabase(LutteurViewModel model)
         {
             var result = false;

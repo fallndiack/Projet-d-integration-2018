@@ -24,7 +24,7 @@ namespace Lamb_Ji_DAL
             this.Affiches = new HashSet<Affiche>();
             this.Affiches1 = new HashSet<Affiche>();
             this.Licences = new HashSet<Licence>();
-            imageUrl = "~/Images/Image-Lutteur/def.png";
+           // imageUrl = "~/Images/Image-Lutteur/def.png";
         }
     
         public int LutteurID { get; set; }
@@ -38,7 +38,7 @@ namespace Lamb_Ji_DAL
         public string LutteurDescription { get; set; }
         public string LutteurTelephone { get; set; }
         public string imageUrl { get; set; }
-        [NotMapped]
+    
         public HttpPostedFileBase ImageUpload { get; set; }
 
         

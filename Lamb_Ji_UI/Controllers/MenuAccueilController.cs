@@ -24,7 +24,7 @@ namespace Lamb_Ji_UI.Controllers
             list.Add(new MenuDynamique { Lien = "/Lutteur/DisplayLuteurForUser", NomLien = "LUTTEURS" });
             list.Add(new MenuDynamique { Lien = "#", NomLien = "COMBATS A VENIR" });
             list.Add(new MenuDynamique { Lien = "#", NomLien = "ACTUALITES" });
-            list.Add(new MenuDynamique { Lien = "#",/*/Club/AddNewClub*/ NomLien = "STADES" });
+            list.Add(new MenuDynamique { Lien = "/TypeLutte/Index", NomLien = "Les Types de Lutte" });
 
 
 

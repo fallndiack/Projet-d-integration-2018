@@ -11,7 +11,9 @@ namespace Lamb_Ji_DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Combat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,10 +24,16 @@ namespace Lamb_Ji_DAL
         }
     
         public int CombatID { get; set; }
+        [Required(ErrorMessage = "Une description est requise!")]
+        [DisplayName("Description")]
         public string Combat_Description { get; set; }
+        [DisplayName("Type de Lutte")]
         public int TypeLutteID { get; set; }
+        [DisplayName("Catégorie")]
         public int CategorieID { get; set; }
+        [DisplayName("Lieu du combat")]
         public int StadeID { get; set; }
+        [DisplayName("Etat du combat")]
         public string Combat_Etat { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

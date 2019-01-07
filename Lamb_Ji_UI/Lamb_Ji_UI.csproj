@@ -201,12 +201,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArbitreController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\CombatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LutteurController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuAccueilController.cs" />
     <Compile Include="Controllers\SliderController.cs" />
     <Compile Include="Controllers\StadeController.cs" />
+    <Compile Include="Controllers\TypeLutteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -586,12 +588,22 @@
     <Content Include="Views\Stade\Index.cshtml" />
     <Content Include="Views\Club\Index.cshtml" />
     <Content Include="Views\Lutteur\DisplayLuteurForUser.cshtml" />
+    <Content Include="Views\TypeLutte\Index.cshtml" />
+    <Content Include="Views\TypeLutte\LutteTraditionnelleSimple.cshtml" />
+    <Content Include="Views\TypeLutte\LutteTraditionnelleAvecFrappe.cshtml" />
+    <Content Include="Views\TypeLutte\LutteGrecoRomaine.cshtml" />
+    <Content Include="Views\Combat\Create.cshtml" />
+    <Content Include="Views\Combat\Delete.cshtml" />
+    <Content Include="Views\Combat\Details.cshtml" />
+    <Content Include="Views\Combat\Edit.cshtml" />
+    <Content Include="Views\Combat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Image-Arbitre\" />
     <Folder Include="Images\Image-Club\" />
     <Folder Include="Images\Image-Stade\" />
+    <Folder Include="Videos\" />
     <Folder Include="Views\MenuAccueil\" />
   </ItemGroup>
   <ItemGroup>

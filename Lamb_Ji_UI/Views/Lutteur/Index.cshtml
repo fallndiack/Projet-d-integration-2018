@@ -59,103 +59,113 @@
                 </div>
 
                 <div class="modal-body" style=" text-align:center">
+                    @using (Html.BeginForm("SaveDataInDatabase", "Lutteur", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);" }))
+                    {
+                @Html.AntiForgeryToken()
 
-                    <form id="SubmitForm" method="post" enctype="multipart/form-data" onsubmit="return AjaxPost(this)">
-                        @Html.HiddenFor(model => model.LutteurID, new { @id = "LutID" })
-                        @*@Html.HiddenFor(model => model.LutteurClubID, new { @id = "LutClubID" })*@
+                @*onsubmit="return ajaxPost(this)"*@
+                    @Html.HiddenFor(model => model.LutteurID, new { @id = "LutID" })
+                    @*@Html.HiddenFor(model => model.LutteurClubID, new { @id = "LutClubID" })*@
 
-                        <div class="form-horizontal">
+                    <div class="form-horizontal">
 
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurName, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrez le Nom.", @id = "LutName" } })
-                                </div>
-                                @Html.ValidationMessageFor(model => model.LutteurName, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurName, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrez le Nom.", @id = "LutName" } })
                             </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurEmail, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrer l'e-mail.", @id = "LutEmail" } })
-                                </div>
-                                @Html.ValidationMessageFor(model => model.LutteurEmail, "", new { @class = "text-danger" })
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurAddresse, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurAddresse, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entez l'addresse.", @id = "LutAddresse" } })
-                                    @Html.ValidationMessageFor(model => model.LutteurAddresse, "", new { @class = "text-danger", @style = "margin-left: -145px" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurPoids, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurPoids, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrez le poids.", @id = "LutPoids" } })
-                                    @Html.ValidationMessageFor(model => model.LutteurPoids, "", new { @class = "text-danger", @style = "margin-left: -145px" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurDateNaissance, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurDateNaissance, new { htmlAttributes = new { @class = "form-control", @id = "LutDateNaissance" } })
-                                    @Html.ValidationMessageFor(model => model.LutteurDateNaissance, "", new { @class = "text-danger", @style = "margin-left: -145px" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurTelephone, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurTelephone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Numéro de telephone.", @id = "LutTelephone" } })
-                                    @Html.ValidationMessageFor(model => model.LutteurTelephone, "", new { @class = "text-danger", @style = "margin-left: -145px" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurDescription, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.EditorFor(model => model.LutteurDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Description du lutteur.", @id = "LutDesc" } })
-                                    @Html.ValidationMessageFor(model => model.LutteurDescription, "", new { @class = "text-danger", @style = "margin-left: -145px" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.LutteurClubID, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    @Html.DropDownListFor(model => model.LutteurClubID, ViewBag.ListOfLutteur as SelectList, "--Select Club--", new { @class = "form-control", @id = "Club" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-4" })
-                                <div class="col-md-8">
-                                    <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" />
-
-                                </div>
-                            </div>
-
+                            @Html.ValidationMessageFor(model => model.LutteurName, "", new { @class = "text-danger" })
                         </div>
-                        <div style="text-align:center" id="chargement">
-                            <img src="~/Images/tenor.gif" style="height:200px" />
-                        </div>
-                    </form>
 
-                  
-                </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurEmail, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrer l'e-mail.", @id = "LutEmail" } })
+                            </div>
+                            @Html.ValidationMessageFor(model => model.LutteurEmail, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurAddresse, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurAddresse, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entez l'addresse.", @id = "LutAddresse" } })
+                                @Html.ValidationMessageFor(model => model.LutteurAddresse, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurPoids, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurPoids, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrez le poids.", @id = "LutPoids" } })
+                                @Html.ValidationMessageFor(model => model.LutteurPoids, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurDateNaissance, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurDateNaissance, new { htmlAttributes = new { @class = "form-control", @id = "LutDateNaissance" } })
+                                @Html.ValidationMessageFor(model => model.LutteurDateNaissance, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurTelephone, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurTelephone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Numéro de telephone.", @id = "LutTelephone" } })
+                                @Html.ValidationMessageFor(model => model.LutteurTelephone, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurDescription, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.LutteurDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Description du lutteur.", @id = "LutDesc" } })
+                                @Html.ValidationMessageFor(model => model.LutteurDescription, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.LutteurClubID, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.LutteurClubID, ViewBag.ListOfLutteur as SelectList, "--Select Club--", new { @class = "form-control", @id = "Club" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="text-align:center" id="chargement">
+                        <img src="~/Images/tenor.gif" style="height:200px" />
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ImageUpload, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" />
+                            @*@Html.TextBoxFor(model => model.ImageUpload, new { type = "file", @name = "ImageUpload", @id = "ImageUpload" })*@
+                        </div>
+                    </div>
+
+
+           
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
-                    <button type="button" class="btn btn-primary" data-style="expand-left" id="SaveRecord" onclick="AddOrEdit()">Enregistrer</button>
-                    
+                    <input type="submit" value="Create" class="btn btn-primary" data-style="expand-left" />
                 </div>
+                    }
+                </div>
+
 
             </div>
         </div>
     </div>
+  
+
+
+
+
+
 
     @*Create a popup for deleteConfirmation*@
 
@@ -291,47 +301,90 @@
                 $('#LutDateNaissance').val(null);
                 $('#LutTelephone').val("");
                 $('#LutDesc').val("");
+                $('#ImageUpload').val(null);
                 $('#chargement').hide();
                 $("#ModalTitle").html("Ajouter un Nouveau Lutteur");
 
             })
         }
 
-        function AddOrEdit() {
+
+        function jQueryAjaxPost(form) {
             $.validator.unobtrusive.parse($('#SubmitForm'));
             if ($('#SubmitForm').valid()) {
                 $('#chargement').show();
-
-                var LutObj = {
-                    LutteurID: $('#LutID').val(),
-                    LutteurName: $('#LutName').val(),
-                    LutteurEmail: $('#LutEmail').val(),
-                    LutteurAddresse: $('#LutAddresse').val(),
-                    LutteurPoids: $('#LutPoids').val(),
-                    LutteurDateNaissance: $('#LutDateNaissance').val(),
-                    LutteurTelephone: $('#LutTelephone').val(),
-                    LutteurDescription: $('#LutDesc').val(),
-                    LutteurClubID: $('#Club').val(),
-                    imageUrl: $('#ImageUpload').val()
-                };
-                $.ajax({
-                    url: "/Lutteur/SaveDataInDatabase",
-                    data: JSON.stringify(LutObj),
-                    type: "POST",
-                    contentType: "application/json;charset=utf-8",
-                    dataType: "json",
+                var ajaxConfig = {
+                    type: 'POST',
+                    url: form.action,
+                    data: new FormData(form),
                     success: function (result) {
+                        
                         $('#LutteurTable').DataTable().ajax.reload();
                         $('#chargement').hide();
+                        window.location.href = "Lutteur/Index";
                         toastr.info("Lutteru ajouté avec succés!!!....");
                         $('#myModal').modal('hide');
+                       
                     }
-
-                });
+                }
+                if ($(form).attr('enctype') == "multipart/form-data") {
+                    ajaxConfig["contentType"] = false;
+                    ajaxConfig["processData"] = false;
+                }
+                $.ajax(ajaxConfig);
 
             }
+            return false;
         }
 
+
+
+        //function AddOrEdit() {
+        //    $.validator.unobtrusive.parse($('#SubmitForm'));
+        //    if ($('#SubmitForm').valid()) {
+        //        $('#chargement').show();
+
+        //        var file = $("#ImageUpload").get(0).files;
+        //        //var data = new FormData;
+        //        //data.append("ImageUpload", file[0]);
+               
+
+        //        var LutObj = {
+        //            LutteurID: $('#LutID').val(),
+        //            LutteurName: $('#LutName').val(),
+        //            LutteurEmail: $('#LutEmail').val(),
+        //            LutteurAddresse: $('#LutAddresse').val(),
+        //            LutteurPoids: $('#LutPoids').val(),
+        //            LutteurDateNaissance: $('#LutDateNaissance').val(),
+        //            LutteurTelephone: $('#LutTelephone').val(),
+        //            LutteurDescription: $('#LutDesc').val(),
+        //            LutteurClubID: $('#Club').val(),
+        //            //imageUrl: $('#ImageUpload').val(),
+        //            ImageUpload: file[0]
+                    
+        //        };
+        //        $.ajax({
+        //            url: "/Lutteur/SaveDataInDatabase",
+        //            data: JSON.stringify(LutObj),
+        //            type: "POST",
+        //            contentType: "application/json;charset=utf-8",
+        //            //contentType: false,
+        //            dataType: "json",
+        //            processData: false,
+        //            success: function (result) {
+        //                $('#LutteurTable').DataTable().ajax.reload();
+        //                $('#chargement').hide();
+        //                toastr.info("Lutteru ajouté avec succés!!!....");
+        //                $('#myModal').modal('hide');
+        //            }
+
+        //        });
+
+        //    }
+        //}
+
+
+        
        
         //Show the popup modal for edit lutteur
         function EditLutteurRecord(LutteurID) {
@@ -392,6 +445,29 @@
             });
         }
 
+
+        //function ajaxPost(formData) {
+        //    var ajaxConfig = {
+        //        type: "POST",
+        //        url: "/Lutteur/SaveDataInDatabase",
+        //        data: new FormData(formData),
+        //            success : function (result) {
+        //                $('#LutteurTable').DataTable().ajax.reload();
+        //                $('#chargement').hide();
+        //                toastr.info("Lutteru ajouté avec succés!!!....");
+        //                $('#myModal').modal('hide');
+        //                window.location.href="/Lutteur/Index"
+        //            }               
+        //    }
+
+        //    if ($(formData).attr('enctype') == "multipart/form-data") {
+        //        ajaxConfig['contentType'] = false;
+        //        ajaxConfig['processData'] = false;
+
+        //    }
+        //    $.ajax(ajaxConfig);
+        //    return false;
+        //}
 
     </script>
 

@@ -1,0 +1,65 @@
+﻿@model Lamb_Ji_DAL.Combat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Supprimer un combat</h2>
+
+<div>
+    <h2>Etes-vous sur de vouloir supprimer ce Combat?</h2>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Combat_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Combat_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Combat_Etat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Combat_Etat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie.Categorie_Libele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorie.Categorie_Libele)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stade.StadeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stade.StadeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeLutte.TypeLutte_Libele)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeLutte.TypeLutte_Libele)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Retour à la Liste", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Choisissez votre type de lutte pour voir des infos</h2>
+<br /><br />
+      <div class="text-center">
+          <h3>
+              @Html.ActionLink("Lutte traditionnelle simple sans frappe", "LutteTraditionnelleSimple", "TypeLutte")
+          </h3>
+      </div>
+<br /><br /><br />
+    <div class="text-center">
+        <h3>
+            @Html.ActionLink("Lutte traditionnelle Avec frappe", "LutteTraditionnelleAvecFrappe", "TypeLutte")
+        </h3>
+    </div>
+<br /><br /><br />
+        <div class="text-center">
+            <h3>
+                @Html.ActionLink("Lutte gréco-romaine", "LutteGrecoRomaine", "TypeLutte")
+            </h3>
+        </div>
+
