@@ -77,10 +77,11 @@ namespace Lamb_Ji_UI.Controllers
         }
 
         [HttpPost]
-        public JsonResult SaveDataInDatabase(LutteurViewModel model)
+        public ActionResult SaveDataInDatabase(LutteurViewModel model)
         {
-            var result = false;
+           
             if (ModelState.IsValid) { 
+
                     try
                 {
           
@@ -98,7 +99,7 @@ namespace Lamb_Ji_UI.Controllers
                                 Lut.LutteurClubID = model.LutteurClubID;
 
                                 db.SaveChanges();
-                                result = true;
+                               
                             }
                             else
                             {
@@ -123,7 +124,7 @@ namespace Lamb_Ji_UI.Controllers
                                 Lut.LutteurClubID = model.LutteurClubID;
                                 db.Lutteurs.Add(Lut);
                                 db.SaveChanges();
-                                result = true;
+                               
                             }
                 }
                 catch (Exception ex)
@@ -132,7 +133,7 @@ namespace Lamb_Ji_UI.Controllers
                     throw ex;
                 }
             }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index");
 
         }
 

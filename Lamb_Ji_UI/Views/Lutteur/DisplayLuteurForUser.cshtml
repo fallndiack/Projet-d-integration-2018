@@ -3,25 +3,81 @@
 @{
     ViewBag.Title = "DisplayLuteurForUser";
 }
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style>
+    .searchbar {
+        margin-bottom: auto;
+        margin-top: auto;
+        height: 60px;
+        background-color: #353b48;
+        border-radius: 30px;
+        padding: 10px;
+    }
+
+    .search_input {
+        color: white;
+        font-size: 25px;
+        border: 0;
+        outline: 0;
+        background: none;
+        width: 0;
+        caret-color: transparent;
+        line-height: 40px;
+        transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_input {
+        padding: 0 10px;
+        width: 450px;
+        caret-color: red;
+        transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon {
+        background: white;
+        color: #e74c3c;
+    }
+
+    .search_icon {
+        height: 40px;
+        width: 40px;
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: white;
+    }
+</style>
 
 <br /><br />
 
- <div class="container">
-          <h2 class="text-center">Liste des Lutteurs affiliés</h2>
+<div class="container">
+    <h2 class="text-center">Liste des Lutteurs affiliés</h2><br /><br />
 
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="searchbar">
+                <input class="search_input" type="text" name="" placeholder="Search...">
+                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </div><br />
     @foreach (var item in Model)
     {
-      <div class="col-md-3" style="margin-bottom:25px">
-          <div class="thumbnail">
-              <div class="image" style="margin-bottom:20px">
-                  <img class="img-responsive" src="~/Images/Image-Lutteur/@item.imageUrl" height="350" width="240" />
-              </div>
-              <div class="caption" style="border-top:3px solid #808080">
-                  <h3><a href="#">@item.LutteurName</a></h3>
-                  <h4>@item.LutteurDescription</h4>
-              </div>
-          </div>
-      </div>
-     }
+        <div class="col-md-3" style="margin-bottom:25px">
+            <div class="thumbnail">
+                <div class="image" style="margin-bottom:10px">
+                    <img class="img-responsive" src="~/Images/Image-Lutteur/@item.imageUrl" height="500" width="400" />
+                </div>
+                <div class="caption" style="border-top:3px solid #808080">
+                    <h3><a href="#">@item.LutteurName</a></h3>
+                    <h4>@item.LutteurDescription</h4>
+                </div>
+            </div>
+        </div>
+    }
 
 </div>
