@@ -1,63 +1,113 @@
-﻿@model IEnumerable<Lamb_Ji_DAL.Combat>
+﻿@model Lamb_Ji_ViewModel.CombatIndexData
 
 @{
-    ViewBag.Title = "Index";
-}
+    ViewBag.Title = "Combat";
 
+}
+<style>
+    .custab {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5% 0;
+        box-shadow: 3px 3px 2px #ccc;
+        transition: 0.5s;
+    }
+
+        .custab:hover {
+            box-shadow: 3px 3px 0px transparent;
+            transition: 0.5s;
+        }
+
+</style>
 <h2>Gestion des Combats</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nouveau Combat", "Create")
 </p>
-<table class="table">
+
+
+<table class="table table-condensed">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TypeLutte.TypeLutte_Libele)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categorie.Categorie_Libele)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Stade.StadeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Combat_Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Combat_Etat)
-        </th>
-
-
-        <th></th>
+        <th>Selectionner </th>
+        <th>Type Lutte </th>
+        <th>Catégorie</th>
+        <th>Stade</th>
+        <th>Description</th>
+        <th>Etat du Combat</th>
+        <th>Actions</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeLutte.TypeLutte_Libele)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categorie.Categorie_Libele)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stade.StadeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Combat_Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Combat_Etat)
-        </td>
+    @foreach (var item in Model.combats)
+    {
+        string selectedRow = "";
+        if (item.CombatID == ViewBag.CombatID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow" valign="top">
+            <td>
+                @Html.ActionLink("Select", "Index", new { id = item.CombatID }) |
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeLutte.TypeLutte_Libele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie.Categorie_Libele)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stade.StadeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Combat_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Combat_Etat)
+            </td>
 
 
 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CombatID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CombatID })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CombatID }, new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CombatID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@if (Model.arbitres != null)
+{
+    <h3>Les Arbitres selétionnés pour ce Combat</h3>
+
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle">
+            <table class="table table-striped custab">
+                <thead>
+                    <tr>
+
+                        <th>Prenom et Nom</th>
+                        <th>Addresse Email</th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.arbitres)
+                {
+
+                    <tr>
+                        <td>
+                            @item.ArbitreName
+                        </td>
+                        <td>
+                            @item.ArbitreEmail
+                        </td>
+                    </tr>
+                }
+     
+            </table>
+        </div>
+    </div>
+
+}
+

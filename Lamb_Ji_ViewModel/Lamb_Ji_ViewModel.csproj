@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ArbitreViewModel.cs" />
     <Compile Include="ClubViewModel.cs" />
+    <Compile Include="CombatIndexData.cs" />
     <Compile Include="CombatViewModel.cs" />
     <Compile Include="ImageDto.cs" />
     <Compile Include="LutteurViewModel.cs" />

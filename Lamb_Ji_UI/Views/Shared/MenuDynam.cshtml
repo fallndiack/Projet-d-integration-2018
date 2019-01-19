@@ -9,21 +9,15 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group">
-
                     @if (Model != null)
-            {
+              {
 
                 foreach (var item in Model)
                 {
 
-                    <li class="list-group-item"><a href="@item.Lien" class="btn btn-primary ribbon btn-block">@item.NomLien</a></li>
-
-        }
-    }
-
-                    <li class="list-group-item"><a href="http://google.com" class="btn btn-success btn-block" target="_blank">Google</a></li>
-                    <li class="list-group-item"><a href="http://ephec.be" class="btn btn-warning btn-block" target="_blank">Mon Ecole</a></li>
-
+                <li class="list-group-item"><a href="@item.Lien" class="btn btn-primary btn-block">@item.NomLien</a></li>
+                }
+                }
                 </ul>
             </div>
         </div>

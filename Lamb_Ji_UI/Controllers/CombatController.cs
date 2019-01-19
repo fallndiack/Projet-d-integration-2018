@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Lamb_Ji_DAL;
+using Lamb_Ji_ViewModel;
 
 namespace Lamb_Ji_UI.Controllers
 {
@@ -15,10 +16,26 @@ namespace Lamb_Ji_UI.Controllers
         private CNGLUTTEDBEntities db = new CNGLUTTEDBEntities();
 
         // GET: Combat
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var combats = db.Combats.Include(c => c.Categorie).Include(c => c.Stade).Include(c => c.TypeLutte);
-            return View(combats.ToList());
+            var viewModel = new CombatIndexData();
+            viewModel.combats = db.Combats
+                .Include(c => c.Categorie)
+                .Include(c => c.Stade)
+                .Include(c => c.TypeLutte)
+                .Include(c => c.Arbitres);
+            if (id != null)
+            {
+                ViewBag.CombatID = id.Value;
+                viewModel.arbitres = viewModel.combats.Where(
+                    i => i.CombatID == id.Value).Single().Arbitres;
+            }
+            
+
+            //var combats = db.Combats.Include(c => c.Categorie).Include(c => c.Stade).Include(c => c.TypeLutte);
+            //return View(combats.ToList());
+
+            return View(viewModel);
         }
 
         // GET: Combat/Details/5

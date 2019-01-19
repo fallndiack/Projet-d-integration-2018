@@ -163,10 +163,10 @@ namespace Lamb_Ji_UI.Controllers
         }
 
 
-        public ActionResult DisplayLuteurForUser()
+        public ActionResult DisplayLuteurForUser(string searching)
         {
-            List<Lutteur> LuttList = db.Lutteurs.ToList();
-            return View(LuttList);
+            ;
+            return View( db.Lutteurs.Where(x => x.LutteurName.Contains(searching) || searching == null).ToList());
         }
       
     }
