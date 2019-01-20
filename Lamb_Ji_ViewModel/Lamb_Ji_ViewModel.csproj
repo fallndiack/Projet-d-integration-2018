@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArbitreViewModel.cs" />
+    <Compile Include="AssignerArbitreAuCombat.cs" />
     <Compile Include="ClubViewModel.cs" />
     <Compile Include="CombatIndexData.cs" />
     <Compile Include="CombatViewModel.cs" />
