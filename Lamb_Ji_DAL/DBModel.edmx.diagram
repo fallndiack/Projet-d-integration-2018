@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="35579d3b585f4461a92668c9ecccf9e7" Name="Diagram1">
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Affiche" Width="1.5" PointX="8.25" PointY="2.75" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Arbitre" Width="1.5" PointX="3.75" PointY="12.5" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.AvisAffiche" Width="1.5" PointX="10.5" PointY="3.25" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Categorie" Width="1.5" PointX="3.75" PointY="7.125" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Club" Width="1.5" PointX="3.75" PointY="16.125" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Combat" Width="1.5" PointX="6" PointY="2.75" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Image" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Licence" Width="1.5" PointX="3" PointY="3.125" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Lutteur" Width="1.5" PointX="6" PointY="15.5" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.Stade" Width="1.5" PointX="3.75" PointY="9.875" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.TypeLutte" Width="1.5" PointX="0.75" PointY="3.375" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_Combat" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_LutteurA" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_LutteurB" />
+      <Diagram DiagramId="35579d3b585f4461a92668c9ecccf9e7" Name="Diagram1" ZoomLevel="92">
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Actualite" Width="1.5" PointX="8.75" PointY="3" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Affiche" Width="1.5" PointX="5.75" PointY="9.25" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Arbitre" Width="1.5" PointX="3.75" PointY="9.375" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.AvisAffiche" Width="1.5" PointX="8" PointY="9.5" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Categorie" Width="1.5" PointX="3.75" PointY="12.25" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Club" Width="1.5" PointX="1.5" PointY="8.5" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Combat" Width="1.5" PointX="6" PointY="5" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Gallerie" Width="1.5" PointX="8.75" PointY="6" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Image" Width="1.5" PointX="2.75" PointY="3" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Licence" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Lutteur" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.Stade" Width="1.5" PointX="3.75" PointY="15" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.TypeLutte" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.VideoFile" Width="1.5" PointX="10.75" PointY="3" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Combat_Categorie" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Lutteur_Club" />

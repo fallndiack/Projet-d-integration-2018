@@ -11,13 +11,10 @@ namespace Lamb_Ji_DAL
 {
     using System;
     using System.Collections.Generic;
-    using System.Web;
-
+    
     public partial class Image
     {
         public int ID { get; set; }
         public string ImagePath { get; set; }
-        public HttpPostedFileBase ImageFile { get; set; }
-
     }
 }

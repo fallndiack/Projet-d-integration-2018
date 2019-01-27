@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'C:\Users\NDIACK\Lamb-ji\Lamb_Ji_Gestion\Lamb_Ji_DAL\DBModel.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\DBModel.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.

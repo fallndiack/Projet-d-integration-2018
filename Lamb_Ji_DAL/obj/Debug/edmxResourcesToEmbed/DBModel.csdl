@@ -32,30 +32,24 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="AfficherLesArbitrresDuCombat" ReturnType="Collection(CNGLUTTEDBModel.AfficherLesArbitrresDuCombat_Result)">
+      <Parameter Name="combaID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Actualites" EntityType="CNGLUTTEDBModel.Actualite" />
     <EntitySet Name="Affiches" EntityType="CNGLUTTEDBModel.Affiche" />
     <EntitySet Name="Arbitres" EntityType="CNGLUTTEDBModel.Arbitre" />
     <EntitySet Name="AvisAffiches" EntityType="CNGLUTTEDBModel.AvisAffiche" />
     <EntitySet Name="Categories" EntityType="CNGLUTTEDBModel.Categorie" />
     <EntitySet Name="Clubs" EntityType="CNGLUTTEDBModel.Club" />
     <EntitySet Name="Combats" EntityType="CNGLUTTEDBModel.Combat" />
+    <EntitySet Name="Galleries" EntityType="CNGLUTTEDBModel.Gallerie" />
     <EntitySet Name="Images" EntityType="CNGLUTTEDBModel.Image" />
     <EntitySet Name="Licences" EntityType="CNGLUTTEDBModel.Licence" />
     <EntitySet Name="Lutteurs" EntityType="CNGLUTTEDBModel.Lutteur" />
     <EntitySet Name="Stades" EntityType="CNGLUTTEDBModel.Stade" />
     <EntitySet Name="sysdiagrams" EntityType="CNGLUTTEDBModel.sysdiagram" />
     <EntitySet Name="TypeLuttes" EntityType="CNGLUTTEDBModel.TypeLutte" />
-    <AssociationSet Name="FK_Affiche_Combat" Association="CNGLUTTEDBModel.FK_Affiche_Combat">
-      <End Role="Combat" EntitySet="Combats" />
-      <End Role="Affiche" EntitySet="Affiches" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Affiche_LutteurA" Association="CNGLUTTEDBModel.FK_Affiche_LutteurA">
-      <End Role="Lutteur" EntitySet="Lutteurs" />
-      <End Role="Affiche" EntitySet="Affiches" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Affiche_LutteurB" Association="CNGLUTTEDBModel.FK_Affiche_LutteurB">
-      <End Role="Lutteur" EntitySet="Lutteurs" />
-      <End Role="Affiche" EntitySet="Affiches" />
-    </AssociationSet>
+    <EntitySet Name="VideoFiles" EntityType="CNGLUTTEDBModel.VideoFile" />
     <AssociationSet Name="FK_AvisAffiche_Affiche" Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche">
       <End Role="Affiche" EntitySet="Affiches" />
       <End Role="AvisAffiche" EntitySet="AvisAffiches" />
@@ -111,21 +105,31 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <ComplexType Name="AfficherLesArbitrresDuCombat_Result">
+    <Property Type="String" Name="ArbitreName" Nullable="false" />
+    <Property Type="String" Name="ArbitreEmail" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Actualite">
+    <Key>
+      <PropertyRef Name="actuID" />
+    </Key>
+    <Property Name="actuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="actuTitre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="actuTexte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="actuImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="Affiche">
     <Key>
       <PropertyRef Name="AfficheID" />
     </Key>
     <Property Name="AfficheID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AfficheNom" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AfficheNom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="CombatID" Type="Int32" Nullable="false" />
     <Property Name="Lutteur_A" Type="Int32" Nullable="false" />
     <Property Name="Lutteru_B" Type="Int32" Nullable="false" />
-    <Property Name="AfficheDate" Type="Int32" Nullable="false" />
+    <Property Name="DateCombat" Type="DateTime" Precision="3" />
     <Property Name="Vaincqueur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="imageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Combat" Relationship="CNGLUTTEDBModel.FK_Affiche_Combat" FromRole="Affiche" ToRole="Combat" />
-    <NavigationProperty Name="Lutteur" Relationship="CNGLUTTEDBModel.FK_Affiche_LutteurA" FromRole="Affiche" ToRole="Lutteur" />
-    <NavigationProperty Name="Lutteur1" Relationship="CNGLUTTEDBModel.FK_Affiche_LutteurB" FromRole="Affiche" ToRole="Lutteur" />
     <NavigationProperty Name="AvisAffiche" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="Affiche" ToRole="AvisAffiche" />
   </EntityType>
   <EntityType Name="Arbitre">
@@ -182,11 +186,18 @@
     <Property Name="CategorieID" Type="Int32" Nullable="false" />
     <Property Name="StadeID" Type="Int32" Nullable="false" />
     <Property Name="Combat_Etat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Affiches" Relationship="CNGLUTTEDBModel.FK_Affiche_Combat" FromRole="Combat" ToRole="Affiche" />
     <NavigationProperty Name="Categorie" Relationship="CNGLUTTEDBModel.FK_Combat_Categorie" FromRole="Combat" ToRole="Categorie" />
     <NavigationProperty Name="Stade" Relationship="CNGLUTTEDBModel.FK_Combat_Stade" FromRole="Combat" ToRole="Stade" />
     <NavigationProperty Name="TypeLutte" Relationship="CNGLUTTEDBModel.FK_Combat_TyeLutte" FromRole="Combat" ToRole="TypeLutte" />
     <NavigationProperty Name="Arbitres" Relationship="CNGLUTTEDBModel.Arbitre_Combat" FromRole="Combat" ToRole="Arbitre" />
+  </EntityType>
+  <EntityType Name="Gallerie">
+    <Key>
+      <PropertyRef Name="imageId" />
+    </Key>
+    <Property Name="imageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="imageTitre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="imagePth" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Image">
     <Key>
@@ -221,8 +232,6 @@
     <Property Name="LutteurDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="LutteurTelephone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="imageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Affiches" Relationship="CNGLUTTEDBModel.FK_Affiche_LutteurA" FromRole="Lutteur" ToRole="Affiche" />
-    <NavigationProperty Name="Affiches1" Relationship="CNGLUTTEDBModel.FK_Affiche_LutteurB" FromRole="Lutteur" ToRole="Affiche" />
     <NavigationProperty Name="Club" Relationship="CNGLUTTEDBModel.FK_Lutteur_Club" FromRole="Lutteur" ToRole="Club" />
     <NavigationProperty Name="Licences" Relationship="CNGLUTTEDBModel.FK_Licence_Lutteur" FromRole="Lutteur" ToRole="Licence" />
   </EntityType>
@@ -256,42 +265,14 @@
     <NavigationProperty Name="Combats" Relationship="CNGLUTTEDBModel.FK_Combat_TyeLutte" FromRole="TypeLutte" ToRole="Combat" />
     <NavigationProperty Name="Licences" Relationship="CNGLUTTEDBModel.FK_Licence_TypeLutteur" FromRole="TypeLutte" ToRole="Licence" />
   </EntityType>
-  <Association Name="FK_Affiche_Combat">
-    <End Type="CNGLUTTEDBModel.Combat" Role="Combat" Multiplicity="1" />
-    <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Combat">
-        <PropertyRef Name="CombatID" />
-      </Principal>
-      <Dependent Role="Affiche">
-        <PropertyRef Name="CombatID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Affiche_LutteurA">
-    <End Type="CNGLUTTEDBModel.Lutteur" Role="Lutteur" Multiplicity="1" />
-    <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Lutteur">
-        <PropertyRef Name="LutteurID" />
-      </Principal>
-      <Dependent Role="Affiche">
-        <PropertyRef Name="Lutteur_A" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Affiche_LutteurB">
-    <End Type="CNGLUTTEDBModel.Lutteur" Role="Lutteur" Multiplicity="1" />
-    <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Lutteur">
-        <PropertyRef Name="LutteurID" />
-      </Principal>
-      <Dependent Role="Affiche">
-        <PropertyRef Name="Lutteru_B" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="VideoFile">
+    <Key>
+      <PropertyRef Name="videoID" />
+    </Key>
+    <Property Name="videoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="videoName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="videoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
   <Association Name="FK_AvisAffiche_Affiche">
     <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="1" />
     <End Type="CNGLUTTEDBModel.AvisAffiche" Role="AvisAffiche" Multiplicity="0..1" />

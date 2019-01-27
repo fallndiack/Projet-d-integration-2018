@@ -19,13 +19,10 @@ namespace Lamb_Ji_DAL
         public int CombatID { get; set; }
         public int Lutteur_A { get; set; }
         public int Lutteru_B { get; set; }
-        public int AfficheDate { get; set; }
+        public Nullable<System.DateTime> DateCombat { get; set; }
         public string Vaincqueur { get; set; }
         public string imageUrl { get; set; }
     
-        public virtual Combat Combat { get; set; }
-        public virtual Lutteur Lutteur { get; set; }
-        public virtual Lutteur Lutteur1 { get; set; }
         public virtual AvisAffiche AvisAffiche { get; set; }
     }
 }

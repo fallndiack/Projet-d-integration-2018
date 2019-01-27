@@ -25,7 +25,7 @@ namespace Lamb_Ji_UI
                       "~/Scripts/respond.js",
                       "~/Scripts/toastr.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/css").Include(                     
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                         "~/Content/DataTables/css/dataTables.bootstrap.css",

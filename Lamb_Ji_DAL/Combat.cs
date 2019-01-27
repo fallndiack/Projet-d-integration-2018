@@ -11,33 +11,22 @@ namespace Lamb_Ji_DAL
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Combat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Combat()
         {
-            this.Affiches = new HashSet<Affiche>();
             this.Arbitres = new HashSet<Arbitre>();
         }
     
         public int CombatID { get; set; }
-        [Required(ErrorMessage = "Une description est requise!")]
-        [DisplayName("Description")]
         public string Combat_Description { get; set; }
-        [DisplayName("Type de Lutte")]
         public int TypeLutteID { get; set; }
-        [DisplayName("Catégorie")]
         public int CategorieID { get; set; }
-        [DisplayName("Lieu du combat")]
         public int StadeID { get; set; }
-        [DisplayName("Etat du combat")]
         public string Combat_Etat { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Affiche> Affiches { get; set; }
         public virtual Categorie Categorie { get; set; }
         public virtual Stade Stade { get; set; }
         public virtual TypeLutte TypeLutte { get; set; }

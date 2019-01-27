@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+   
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,5 +23,11 @@ select,
 textarea {
     max-width: 280px;
 }
+@import "susy";
+
+h1 {
+    padding-top: 50px;
+}
+
 
 

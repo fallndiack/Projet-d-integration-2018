@@ -20,13 +20,6 @@ namespace Lamb_Ji_UI
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-              Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Lutteur, LutteurViewModel>();
-                cfg.CreateMap<LutteurViewModel, Lutteur>();
-
-
-            });
         }
     }
 }

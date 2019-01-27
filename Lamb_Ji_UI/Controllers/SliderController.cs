@@ -1,4 +1,5 @@
 ﻿using Lamb_Ji_DAL;
+using Lamb_Ji_ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +26,7 @@ namespace Lamb_Ji_UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddImage(Image dto)
+        public ActionResult AddImage(ImageDto dto)
         {
             string fileName = Path.GetFileNameWithoutExtension(dto.ImageFile.FileName);
             string fileExtension = Path.GetExtension(dto.ImageFile.FileName);
@@ -35,7 +36,9 @@ namespace Lamb_Ji_UI.Controllers
             dto.ImageFile.SaveAs(fullName);
             using (CNGLUTTEDBEntities db = new CNGLUTTEDBEntities())
             {
-                db.Images.Add(dto);
+                Image img = new Image();
+                img.ImagePath = dto.ImagePath;
+                db.Images.Add(img);
                 db.SaveChanges();
                 ViewBag.Message = "Uploaded successfully.";
             }

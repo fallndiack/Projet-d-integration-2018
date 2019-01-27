@@ -40,12 +40,30 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CNGLUTTEDBModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CNGLUTTEDBModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="AfficherLesArbitrresDuCombat" FunctionName="CNGLUTTEDBModel.Store.AfficherLesArbitrresDuCombat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNGLUTTEDBModel.AfficherLesArbitrresDuCombat_Result">
+          <ScalarProperty Name="ArbitreName" ColumnName="ArbitreName" />
+          <ScalarProperty Name="ArbitreEmail" ColumnName="ArbitreEmail" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Actualites">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Actualite">
+        <MappingFragment StoreEntitySet="Actualite">
+          <ScalarProperty Name="actuImgUrl" ColumnName="actuImgUrl" />
+          <ScalarProperty Name="actuTexte" ColumnName="actuTexte" />
+          <ScalarProperty Name="actuTitre" ColumnName="actuTitre" />
+          <ScalarProperty Name="actuID" ColumnName="actuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Affiches">
       <EntityTypeMapping TypeName="CNGLUTTEDBModel.Affiche">
         <MappingFragment StoreEntitySet="Affiche">
           <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
           <ScalarProperty Name="Vaincqueur" ColumnName="Vaincqueur" />
-          <ScalarProperty Name="AfficheDate" ColumnName="AfficheDate" />
+          <ScalarProperty Name="DateCombat" ColumnName="DateCombat" />
           <ScalarProperty Name="Lutteru_B" ColumnName="Lutteru_B" />
           <ScalarProperty Name="Lutteur_A" ColumnName="Lutteur_A" />
           <ScalarProperty Name="CombatID" ColumnName="CombatID" />
@@ -107,6 +125,15 @@
           <ScalarProperty Name="TypeLutteID" ColumnName="TypeLutteID" />
           <ScalarProperty Name="Combat_Description" ColumnName="Combat_Description" />
           <ScalarProperty Name="CombatID" ColumnName="CombatID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Galleries">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.Gallerie">
+        <MappingFragment StoreEntitySet="Gallerie">
+          <ScalarProperty Name="imagePth" ColumnName="imagePth" />
+          <ScalarProperty Name="imageTitre" ColumnName="imageTitre" />
+          <ScalarProperty Name="imageId" ColumnName="imageId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -172,6 +199,15 @@
           <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
           <ScalarProperty Name="TypeLutte_Libele" ColumnName="TypeLutte_Libele" />
           <ScalarProperty Name="TypeLutteID" ColumnName="TypeLutteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VideoFiles">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.VideoFile">
+        <MappingFragment StoreEntitySet="VideoFiles">
+          <ScalarProperty Name="videoPath" ColumnName="videoPath" />
+          <ScalarProperty Name="videoName" ColumnName="videoName" />
+          <ScalarProperty Name="videoID" ColumnName="videoID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

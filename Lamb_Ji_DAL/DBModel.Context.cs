@@ -27,18 +27,21 @@ namespace Lamb_Ji_DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Actualite> Actualites { get; set; }
         public virtual DbSet<Affiche> Affiches { get; set; }
         public virtual DbSet<Arbitre> Arbitres { get; set; }
         public virtual DbSet<AvisAffiche> AvisAffiches { get; set; }
         public virtual DbSet<Categorie> Categories { get; set; }
         public virtual DbSet<Club> Clubs { get; set; }
         public virtual DbSet<Combat> Combats { get; set; }
+        public virtual DbSet<Gallerie> Galleries { get; set; }
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Licence> Licences { get; set; }
         public virtual DbSet<Lutteur> Lutteurs { get; set; }
         public virtual DbSet<Stade> Stades { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TypeLutte> TypeLuttes { get; set; }
+        public virtual DbSet<VideoFile> VideoFiles { get; set; }
     
         public virtual ObjectResult<Affichage_Complet_Lutteur_Result> Affichage_Complet_Lutteur()
         {
@@ -146,6 +149,15 @@ namespace Lamb_Ji_DAL
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<AfficherLesArbitrresDuCombat_Result> AfficherLesArbitrresDuCombat(Nullable<int> combaID)
+        {
+            var combaIDParameter = combaID.HasValue ?
+                new ObjectParameter("combaID", combaID) :
+                new ObjectParameter("combaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AfficherLesArbitrresDuCombat_Result>("AfficherLesArbitrresDuCombat", combaIDParameter);
         }
     }
 }
