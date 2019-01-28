@@ -2,24 +2,207 @@
 @{
     ViewBag.Title = "Index";
 }
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" />
+
+
+<style>
+    .nav-tabs {
+        border-bottom: 2px solid #DDD;
+    }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+            border-width: 0;
+        }
+
+        .nav-tabs > li > a {
+            border: none;
+            color: #ffffff;
+            background: #5a4080;
+        }
+
+            .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+                border: none;
+                color: #5a4080 !important;
+                background: #fff;
+            }
+
+            .nav-tabs > li > a::after {
+                content: "";
+                background: #5a4080;
+                height: 2px;
+                position: absolute;
+                width: 100%;
+                left: 0px;
+                bottom: -1px;
+                transition: all 250ms ease 0s;
+                transform: scale(0);
+            }
+
+        .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+            transform: scale(1);
+        }
+
+    .tab-nav > li > a::after {
+        background: ##5a4080 none repeat scroll 0% 0%;
+        color: #fff;
+    }
+
+    .tab-pane {
+        padding: 15px 0;
+    }
+
+    .tab-content {
+        padding: 20px
+    }
+
+    .nav-tabs > li {
+        width: 20%;
+        text-align: center;
+    }
+
+    .card {
+        background: #FFF none repeat scroll 0% 0%;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+        margin-bottom: 30px;
+    }
+
+    body {
+        background: #EDECEC;
+        padding: 50px
+    }
+</style>
 
 <h2 class="text-center">Choisissez votre type de lutte pour voir des infos</h2>
 <br /><br />
-      <div class="text-center">
-          <h3>
-              @Html.ActionLink("Lutte traditionnelle simple sans frappe", "LutteTraditionnelleSimple", "TypeLutte")
-          </h3>
-      </div>
-<br /><br /><br />
-    <div class="text-center">
-        <h3>
-            @Html.ActionLink("Lutte traditionnelle Avec frappe", "LutteTraditionnelleAvecFrappe", "TypeLutte")
-        </h3>
-    </div>
-<br /><br /><br />
-        <div class="text-center">
-            <h3>
-                @Html.ActionLink("Lutte gréco-romaine", "LutteGrecoRomaine", "TypeLutte")
-            </h3>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <div class="card">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                        <i class="fa fa-home"></i>  
+                        <span>Lutte Senegalaise</span></a></li>
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+                        @*<i class="fa fa-user"></i>*@  
+                        <span>Lutte Avec Frappe</span></a></li>
+                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+                        @*<i class="fa fa-boxing"></i>*@  
+                        <span>Lutte Sans Frappe</span></a></li>
+                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                        @*<i class="fa fa-cog"></i>*@ 
+                        <span>Lutte Gréco-Romaine</span></a></li>
+                    <li role="presentation"><a href="#extra" aria-controls="settings" role="tab" data-toggle="tab">
+    <i class="fa  fa-list"></i>
+    <span>Liens Utiles</span>
+</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                       
+                        <h2>La lutte Sénégalaise</h2>
+                       
+                        <p><img src="https://www.au-senegal.com/IMG/jpg/dsc_0004-3.jpg" alt="lutte senegalaise" style="width:400px;height:250px;margin-left:15px;">
+                            Combats dans un village de Gambie en 2003.
+
+                            Mame Balla contre Pape Mor Lô à Paris-Bercy en 2013.
+                            Traditionnellement, les premiers combats de lutte se déroulaient après la saison des pluies et opposaient les lutteurs de villages environnant dans des championnats appelés mbaapat. C'est le cas notamment dans les régions du nord, du Sine-Saloum et de la Casamance. Le vainqueur du tournoi pouvait remporter avec lui du bétail, des céréales et autres biens en jeu.
+
+                            Au fil du temps et du succès, les combats deviennent de plus en plus importants, les cachets des lutteurs aussi.
+
+                            De grands noms marquent l'histoire de la lutte sénégalaise : Falaye Baldé, Double Less, Mbaye Gueye (Tigre de Fass), son petit frère Moustapha Guèye, Manga 2 (Roi des Arènes) entre autres.
+
+                            Mais c'est avec l'avènement de Mouhamed Ndao (Tyson) que la lutte a pris son envol pour devenir un sport professionnel avec des cachets de millions de francs et un grand nombre de spectateurs. Aujourd'hui les combats sont de grands événements sportifs mobilisant les médias et l'attention des résidents et de la diaspora.
+
+                            Depuis mai 2010, Fabrice Allouche (ex-champion du monde de kickboxing) est le premier blanc à intégrer une école de lutte sénégalaise comme coach de boxe, préparateur physique et mental .
+
+                            Depuis un autre blanc, l'espagnol Juan Espino surnommé le « Lion Blanc », lutte dans l'arène et ses victoires ont commencé à éveiller la curiosité.
+                        </p>
+                          
+                        </div>
+                    <div role="tabpanel" class="tab-pane" id="profile">
+                        <h2>La lutte Sénégalaise traditionnelle avec frappe</h2>
+                        <div class="jumbotron">
+                            <p>
+                                <img src="https://senego.com/wp-content/uploads/2018/01/Modou-L%C3%B4-bat-Lac-de-Guiers-2-18-1.jpg" alt="lutte senegalaise" style="width:400px;height:250px;margin-left:15px;">
+                                La lutte actuelle avec frappe est totalement étrangère à notre culture sportive et ne nous concerne nullement,
+                                loin s’en faut. Cette barbarie est une création d’affairistes à la recherche effrénée de pognon par des voies
+                                détournées sous le prétexte de notre culture ou sport national. Cette lutte n’a ni de près ni de loin,
+                                des sources ou liens crédibles et vérifiables, qui la rattachent à nos différentes  cultures de l’ensemble
+                                de nos ethnies, celles-là qui la pratiquaient pendant les fêtes populaires. Cette lutte, fondamentalement
+                                et sociologiquement, n’est pas un sport de chez-nous. Plutôt, ce sont les gladiateurs romains que cette
+                                lutte nous rappelle, peut être avec la différence, qu’ici, le vaincu n’est pas exécuté par le vainqueur,
+                                sinon, la ressemblance par la violence gratuite est tout comme. En vérité, cette forme de lutte avec frappe
+                                qui ne dénote que la barbarie et sauvagerie humaine, n’a rien à voir avec du sport,  sinon, pas en tout cas,
+                                avec la lutte traditionnelle sénégalaise, car cette lutte avec frappe, nous le répétons à souhait, démontre
+                                rarement des gestes de technicité sportive ou de l’habileté  des athlètes. Plutôt, les lutteurs se ruent de
+                                coups aveuglément sans même sauvegarder l’intégrité physique du combattant. Comme à l’image de la boxe avec
+                                des règles strictes, ce qui n’est pas, il faut le déplorer, le cas ici. Dans les normes, il devait à la rigueur
+                                tout au moins, y avoir des règles strictes et formelles, interdisant absolument la frappe à certains  endroits
+                                du corps et autres coups dangereux pouvant handicaper à vie l’adversaire. Par ailleurs, les frappes à mains nues
+                                constituent des risques évidents susceptibles d’occasionner de graves accidents handicapant sur les deux lutteurs.
+                                Mais pourquoi donc, tout ceci n’attire pas jusque-là l’attention des autorités étatiques et de ceux qui ont en
+                                charge l’organisation de la lutte ou plutôt la bagarre, puisque c’est bien de cela qu’il s’agit
+                                et non de la lutte sénégalaise véritable? Même dans la lutte gréco-romaine, il n’y a pas de frappe,
+                                et la violence y est exclue.
+                            </p>
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="messages">
+                        <h2>La lutte Sénégalaise traditionnelle sans frappe</h2>
+                        <div class="jumbotron">
+                            <p>
+                                <img src="https://senego.com/wp-content/uploads/2018/01/Ndakaru1.png"  alt="lutte senegalaise" style="width:400px;height:250px;margin-left:15px;">
+                                La lutte sénégalaise (làmb en wolof1, njom en sérère) est un sport traditionnel très populaire au Sénégal,
+                                tout particulièrement dans les régions du Sine-Saloum et de la Casamance. On le pratique aussi en Gambie.
+
+                                Sport de contact, la lutte sénégalaise intègre en plus la boxe d'où l'appellation de « lutte avec frappe ».
+                                Le lutteur peut à la fois donner des coups et recourir au corps à corps pour terrasser son adversaire2.
+
+                                En sus de sa dimension sportive elle intègre une dimension culturelle et folklorique (bakk) qui met en œuvre
+                                au travers d'animations la tradition culturelle sénégalaise.
+
+                                Au départ sport amateur, la lutte sénégalaise est devenue un sport professionnel qui attire de plus en plus
+                                de jeunes sportifs et de spectateurs3. Les cachets de lutteurs s'élèvent à des dizaines de millions de FCFA.
+                                Les lutteurs sont regroupés en écuries et adhérent à la fédération (Comité national de gestion de la lutte
+                                communément appelé CNG) qui est l'organe de gestion de ce sport.
+                            </p>
+                        </div>
+
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <h2>La lutte Gréco-Romaine au Sénégalaise</h2>
+                        <div class="jumbotron">
+                            <p>
+                                <img src="https://www.francetvinfo.fr/image/75ecf2sr4-5a72/1200/825/16274531.jpg" alt="lutte senegalaise" style="width:400px;height:250px;margin-left:15px;">
+                                La lutte olympique pourrait être définie comme un sport de
+                                combat opposant à mains nues deux adversaires de même poids. Le but du jeu
+                                pour chacun des protagonistes est de plaquer les épaules de l'autre au
+                                tapis (="tombé") au moyen de prises cotées ou à défaut, d'obtenir plus de
+                                pointsque l'adversaire à l'issue du temps réglementaire (5 minutes), et ce,
+                                en parfaite conformité avec l'esprit des règles universelles qui régissent
+                                ce sport; ces règles sont consignées dans un code international dont l'opportunité
+                                des dispositions est vérifiée annuellement par la Fédération Internationale de Lutte Amateur.
+                            </p>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="extra">
+                        <h2>Liens utiles sur la lutte Sénégalaise</h2>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+
 
