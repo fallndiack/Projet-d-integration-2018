@@ -18,6 +18,8 @@ namespace Lamb_Ji_DAL
         public Lutteur()
         {
             this.Licences = new HashSet<Licence>();
+            this.Affiches = new HashSet<Affiche>();
+            this.Affiches1 = new HashSet<Affiche>();
         }
     
         public int LutteurID { get; set; }
@@ -34,5 +36,9 @@ namespace Lamb_Ji_DAL
         public virtual Club Club { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Licence> Licences { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Affiche> Affiches { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Affiche> Affiches1 { get; set; }
     }
 }

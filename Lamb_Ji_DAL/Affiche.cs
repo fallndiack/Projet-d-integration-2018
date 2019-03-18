@@ -24,5 +24,8 @@ namespace Lamb_Ji_DAL
         public string imageUrl { get; set; }
     
         public virtual AvisAffiche AvisAffiche { get; set; }
+        public virtual Lutteur Lutteur { get; set; }
+        public virtual Lutteur Lutteur1 { get; set; }
+        public virtual Combat Combat { get; set; }
     }
 }

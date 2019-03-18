@@ -32,10 +32,6 @@ namespace Lamb_Ji_UI.Controllers
                     i => i.CombatID == id.Value).Single().Arbitres;
             }
             
-
-            //var combats = db.Combats.Include(c => c.Categorie).Include(c => c.Stade).Include(c => c.TypeLutte);
-            //return View(combats.ToList());
-
             return View(viewModel);
         }
 

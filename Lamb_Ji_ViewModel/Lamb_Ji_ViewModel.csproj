@@ -47,6 +47,7 @@
     <Compile Include="ClubViewModel.cs" />
     <Compile Include="CombatIndexData.cs" />
     <Compile Include="CombatViewModel.cs" />
+    <Compile Include="ContactViewModel.cs" />
     <Compile Include="ImageDto.cs" />
     <Compile Include="LutteurViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

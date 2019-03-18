@@ -19,6 +19,7 @@ namespace Lamb_Ji_DAL
         public string Message { get; set; }
         public System.DateTime DateAvis { get; set; }
         public int AfficheID { get; set; }
+        public Nullable<double> note { get; set; }
     
         public virtual Affiche Affiche { get; set; }
     }

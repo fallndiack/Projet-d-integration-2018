@@ -18,6 +18,7 @@ namespace Lamb_Ji_DAL
         public Combat()
         {
             this.Arbitres = new HashSet<Arbitre>();
+            this.Affiches = new HashSet<Affiche>();
         }
     
         public int CombatID { get; set; }
@@ -32,5 +33,7 @@ namespace Lamb_Ji_DAL
         public virtual TypeLutte TypeLutte { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Arbitre> Arbitres { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Affiche> Affiches { get; set; }
     }
 }

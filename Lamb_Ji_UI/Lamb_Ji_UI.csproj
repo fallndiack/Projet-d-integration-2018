@@ -201,9 +201,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AfficheController.cs" />
     <Compile Include="Controllers\ArbitreController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\CombatController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\GallerieController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LutteurController.cs" />
@@ -611,7 +613,6 @@
     <Content Include="Views\Slider\SliderAccueil.cshtml" />
     <Content Include="Views\Lutteur\Index.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
-    <Content Include="Views\Lutteur\ViewAll.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Arbitre\Index.cshtml" />
     <Content Include="Views\Stade\Index.cshtml" />
@@ -636,6 +637,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Affiche\Create.cshtml" />
+    <Content Include="Views\Affiche\Delete.cshtml" />
+    <Content Include="Views\Affiche\Details.cshtml" />
+    <Content Include="Views\Affiche\Edit.cshtml" />
+    <Content Include="Views\Affiche\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -646,6 +652,7 @@
     <Folder Include="Images\Image-Gallerie\" />
     <Folder Include="Images\Image-Stade\" />
     <Folder Include="Videos\" />
+    <Folder Include="Views\Contact\" />
     <Folder Include="Views\MenuAccueil\" />
   </ItemGroup>
   <ItemGroup>

@@ -23,24 +23,7 @@ namespace Lamb_Ji_UI.Controllers
             return View();
         }
 
-        public ActionResult ViewAll()
-        {
-            List<Club> LutList = db.Clubs.ToList();
-            ViewBag.ListOfLutteur = new SelectList(LutList, "ClubID", "ClubName");
-
-            List<Lutteur> LutteursDb = db.Lutteurs.ToList();
-            List<LutteurViewModel> LutteursVM = new List<LutteurViewModel>();
-            foreach (var item in LutteursDb)
-            {
-                LutteurViewModel Lvm = AutoMapper.Mapper.Map<LutteurViewModel>(item);
-
-                Lvm.Club = db.Clubs.Where(a => a.ClubID == item.LutteurClubID).FirstOrDefault();
-
-                LutteursVM.Add(Lvm);
-            }
-
-            return View(LutteursVM);
-        }
+       
         public JsonResult GetLutteurList()
         {
             List<Lutteur> LutteursDb = db.Lutteurs.ToList();

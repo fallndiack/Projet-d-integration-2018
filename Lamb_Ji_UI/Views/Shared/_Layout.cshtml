@@ -54,27 +54,26 @@
 
     <div class="panel panel-body" style="min-height:256px">
        
-        <div class="navbar navbar-expand-sm  navbar-fixed-top" >
-            <div class="container" id="RedMenu">
+        <div class="navbar navbar-inverse  navbar-fixed-top" id="RedMenu" >
+            <div class="container" >
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:#000">
                         <span class="icon-bar" style="background-color:#ffffff"></span>
                         <span class="icon-bar" style="background-color:#ffffff"></span>
                         <span class="icon-bar" style="background-color:#ffffff"></span>
                     </button>
-                    @Html.ActionLink("LAMB_JI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink(" LAMB_JI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand glyphicon glyphicon-home"  })
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         <li>@Html.ActionLink("Clubs", "Index", "Club")</li>
                         <li>@Html.ActionLink("Slider", "AddImage", "Slider")</li>
                         <li>@Html.ActionLink("Stades", "Index", "Stade")</li>
                         <li>@Html.ActionLink("Lutteurs", "Index", "Lutteur")</li>
                         <li>@Html.ActionLink("Arbitres", "Index", "Arbitre")</li>
-                        <li>@Html.ActionLink("Affiches", "Index", "Affiche")</li>
+                        <li>@Html.ActionLink(" Affiches", "Index", "Affiche")</li>
                         <li>@Html.ActionLink("Combats", "Index", "Combat")</li>
+                        <li>@Html.ActionLink(" Nous Contacter", "Contact", "Home", new { @class = "glyphicon glyphicon-envelope" })</li>
 
                     </ul>
                     @Html.Partial("_LoginPartial")
