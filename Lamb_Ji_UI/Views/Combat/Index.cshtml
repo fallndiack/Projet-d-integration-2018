@@ -44,34 +44,35 @@
         {
             selectedRow = "success";
         }
-        <tr class="@selectedRow" valign="top">
-            <td>
-                @Html.ActionLink("arbitres", "Index", new { id = item.CombatID }) |
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeLutte.TypeLutte_Libele)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Categorie.Categorie_Libele)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stade.StadeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Combat_Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Combat_Etat)
-            </td>
+    <tr class="@selectedRow" valign="top">
+        <td>
+            @Html.ActionLink("arbitres", "Index", new { id = item.CombatID }) |
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeLutte.TypeLutte_Libele)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie.Categorie_Libele)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stade.StadeName)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Combat_Description).ToString().Substring(0, 10)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Combat_Etat)
+    </td>
 
 
 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CombatID }, new { @class = "btn btn-default" }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CombatID }, new { @class = "btn btn-danger" })
-            </td>
-        </tr>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.CombatID }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.CombatID }, new { @class = "btn btn-default" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CombatID }, new { @class = "btn btn-danger" })
+    </td>
+    </tr>
     }
 
 </table>

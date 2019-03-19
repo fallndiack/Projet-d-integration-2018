@@ -43,7 +43,7 @@
             @Html.DisplayFor(modelItem => item.AfficheNom)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Combat.Combat_Description)
+            @Html.DisplayFor(modelItem => item.Combat.Combat_Description).ToString().Substring(0, 10)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Lutteur.LutteurName)
