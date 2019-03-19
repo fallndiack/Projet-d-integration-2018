@@ -1,13 +1,20 @@
 ﻿@model IEnumerable<Lamb_Ji_DAL.MenuDynamique>
 
+<style>
 
+    #leftMenu ul li:hover {
+        border-top: 5px solid ;
+        background-color: #196276;
+    }
+
+</style>
      
         <div class="panel panel-default">
            
             <div class="panel-heading">
                 <h2>Menu</h2>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="leftMenu">
                 <ul class="list-group">
                     @if (Model != null)
               {
