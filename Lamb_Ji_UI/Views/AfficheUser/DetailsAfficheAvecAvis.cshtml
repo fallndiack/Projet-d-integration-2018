@@ -1,0 +1,29 @@
+﻿@model Lamb_Ji_ViewModel.AfficheAvecAvis
+@{
+    ViewBag.Title = "DetailsAfficheAvecAvis";
+}
+
+<h2>@Model.AfficheNom</h2>
+<br />
+<div class='section content'>
+    <div class='illustration'>
+        <img src="~/Images/Image-Affiche/@Model.imageUrl" style="max-width: 900px; height:500px" />
+    </div>
+</div>
+
+<br />
+<p>
+    @Model.Combat.Combat_Description
+</p>
+@foreach (var avis in Model.Avis)
+{
+    <div>
+        <br />
+        <div>@avis.Auteur</div>
+        <div>@avis.Message</div>
+        <div>@avis.DateAvis.ToShortDateString()</div>
+
+    </div>
+}
+    <br /><br /><br />
+@Html.ActionLink("Retourner à la Liste des Combats", "Index", null, new { @class = "btn btn-block btn-default" })

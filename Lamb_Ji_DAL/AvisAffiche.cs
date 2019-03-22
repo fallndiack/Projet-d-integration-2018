@@ -22,5 +22,6 @@ namespace Lamb_Ji_DAL
         public Nullable<double> note { get; set; }
     
         public virtual Affiche Affiche { get; set; }
+        public virtual Affiche Affiche1 { get; set; }
     }
 }

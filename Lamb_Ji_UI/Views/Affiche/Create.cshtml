@@ -8,7 +8,7 @@
 
 <h2>Creer une Nouvelle Affiche</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Affiche", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost2(this);" }))
 {
     @Html.AntiForgeryToken()
 <div class="row">
@@ -103,6 +103,34 @@
                         }
                         reader.readAsDataURL(imageUploader.files[0]);
                     }
+                }
+
+
+                function jQueryAjaxPost(form) {
+                    $.validator.unobtrusive.parse($('#SubmitForm'));
+                    if ($('#SubmitForm').valid()) {
+
+                        var ajaxConfig = {
+                            type: 'POST',
+                            url: form.action,
+                            data: new FormData(form),
+                            success: function () {
+                                //$('#chargement').show();
+                                
+                                //$('#chargement').hide();
+                               
+                                toastr.info("Lutteur ajouté avec succés!!!....");
+
+                            }
+                        }
+                        if ($(form).attr('enctype') == "multipart/form-data") {
+                            ajaxConfig["contentType"] = false;
+                            ajaxConfig["processData"] = false;
+                        }
+                        $.ajax(ajaxConfig);
+
+                    }
+                    return false;
                 }
 
 

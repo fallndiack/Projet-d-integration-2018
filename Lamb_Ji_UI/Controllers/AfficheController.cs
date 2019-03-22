@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,7 +18,7 @@ namespace Lamb_Ji_UI.Controllers
         // GET: Affiche
         public ActionResult Index()
         {
-            var affiches = db.Affiches.Include(a => a.AvisAffiche).Include(a => a.Lutteur).Include(a => a.Lutteur1).Include(a => a.Combat);
+            var affiches = db.Affiches.Include(a => a.Lutteur).Include(a => a.Lutteur1).Include(a => a.Combat);
             return View(affiches.ToList());
         }
 
@@ -51,10 +52,18 @@ namespace Lamb_Ji_UI.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AfficheID,AfficheNom,CombatID,Lutteur_A,Lutteru_B,DateCombat,Vaincqueur,imageUrl")] Affiche affiche)
+        public ActionResult Create([Bind(Include = "AfficheID,AfficheNom,CombatID,Lutteur_A,Lutteru_B,DateCombat,Vaincqueur,imageUrl")] Affiche affiche, HttpPostedFileBase ImageUpload)
         {
             if (ModelState.IsValid)
             {
+                if (ImageUpload != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
+                    string extension = Path.GetExtension(ImageUpload.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                    affiche.imageUrl = fileName;
+                    ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
+                }
                 db.Affiches.Add(affiche);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -91,10 +100,19 @@ namespace Lamb_Ji_UI.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AfficheID,AfficheNom,CombatID,Lutteur_A,Lutteru_B,DateCombat,Vaincqueur,imageUrl")] Affiche affiche)
+        public ActionResult Edit([Bind(Include = "AfficheID,AfficheNom,CombatID,Lutteur_A,Lutteru_B,DateCombat,Vaincqueur,imageUrl")] Affiche affiche, HttpPostedFileBase ImageUpload)
         {
             if (ModelState.IsValid)
             {
+
+                if (ImageUpload != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
+                    string extension = Path.GetExtension(ImageUpload.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                    affiche.imageUrl = fileName;
+                    ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
+                }
                 db.Entry(affiche).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -127,6 +145,12 @@ namespace Lamb_Ji_UI.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Affiche affiche = db.Affiches.Find(id);
+            List<AvisAffiche> laa = db.AvisAffiches.Where(v => v.AfficheID == id).ToList();
+            foreach (var item in laa)
+            {
+                db.AvisAffiches.Remove(item);
+            }
+          
             db.Affiches.Remove(affiche);
             db.SaveChanges();
             return RedirectToAction("Index");

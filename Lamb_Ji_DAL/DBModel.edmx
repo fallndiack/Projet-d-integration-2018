@@ -487,13 +487,13 @@
         </Association>
         <Association Name="FK_AvisAffiche_Affiche">
           <End Role="Affiche" Type="Self.Affiche" Multiplicity="1" />
-          <End Role="AvisAffiche" Type="Self.AvisAffiche" Multiplicity="0..1" />
+          <End Role="AvisAffiche" Type="Self.AvisAffiche" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Affiche">
               <PropertyRef Name="AfficheID" />
             </Principal>
             <Dependent Role="AvisAffiche">
-              <PropertyRef Name="AvisAfficheID" />
+              <PropertyRef Name="AfficheID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1535,6 +1535,10 @@
             <End Role="Combat" EntitySet="Combats" />
             <End Role="Affiche" EntitySet="Affiches" />
           </AssociationSet>
+          <AssociationSet Name="FK_AvisAffiche_Affiche1" Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1">
+            <End Role="Affiche" EntitySet="Affiches" />
+            <End Role="AvisAffiche" EntitySet="AvisAffiches" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="Affichage_Complet_Lutteur_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -1587,6 +1591,7 @@
           <NavigationProperty Name="Lutteur" Relationship="CNGLUTTEDBModel.FK_Affiche_luttA" FromRole="Affiche" ToRole="Lutteur" />
           <NavigationProperty Name="Lutteur1" Relationship="CNGLUTTEDBModel.FK_Affiche_Lutteur" FromRole="Affiche" ToRole="Lutteur" />
           <NavigationProperty Name="Combat" Relationship="CNGLUTTEDBModel.FK_Affiche_Combat" FromRole="Affiche" ToRole="Combat" />
+          <NavigationProperty Name="AvisAffiches" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1" FromRole="Affiche" ToRole="AvisAffiche" />
         </EntityType>
         <EntityType Name="Arbitre">
           <Key>
@@ -1610,6 +1615,7 @@
           <Property Name="AfficheID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Affiche" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="AvisAffiche" ToRole="Affiche" />
           <Property Name="note" Type="Double" />
+          <NavigationProperty Name="Affiche1" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1" FromRole="AvisAffiche" ToRole="Affiche" />
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
@@ -2158,6 +2164,18 @@
             </Principal>
             <Dependent Role="Affiche">
               <PropertyRef Name="CombatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AvisAffiche_Affiche1">
+          <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="1" />
+          <End Type="CNGLUTTEDBModel.AvisAffiche" Role="AvisAffiche" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Affiche">
+              <PropertyRef Name="AfficheID" />
+            </Principal>
+            <Dependent Role="AvisAffiche">
+              <PropertyRef Name="AfficheID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

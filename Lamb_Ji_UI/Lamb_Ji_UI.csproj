@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActualiteController.cs" />
     <Compile Include="Controllers\AfficheController.cs" />
     <Compile Include="Controllers\AfficheUserController.cs" />
     <Compile Include="Controllers\ArbitreController.cs" />
@@ -439,9 +440,13 @@
     <Content Include="Images\1.png" />
     <Content Include="Images\2.jpeg" />
     <Content Include="Images\822.gif" />
+    <Content Include="Images\Eumeu_sene-28-33-2018_10_33_30-1.jpg" />
     <Content Include="Images\Image-Lutteur\def.png" />
     <Content Include="Images\Image-Lutteur\default.png" />
     <Content Include="Images\loading_by_deiby_ybied-d48kirx.gif" />
+    <Content Include="Images\lutte1.jpg" />
+    <Content Include="Images\lutte2.jpg" />
+    <Content Include="Images\Ndakaru3.png" />
     <Content Include="Images\tenor.gif" />
     <Content Include="Pictures\3363065-4830807.jpg" />
     <Content Include="ApplicationInsights.config">
@@ -645,6 +650,8 @@
     <Content Include="Views\Affiche\Index.cshtml" />
     <Content Include="Views\AfficheUser\Details.cshtml" />
     <Content Include="Views\AfficheUser\Index.cshtml" />
+    <Content Include="Views\AfficheUser\DetailsAfficheAvecAvis.cshtml" />
+    <Content Include="Views\Actualite\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

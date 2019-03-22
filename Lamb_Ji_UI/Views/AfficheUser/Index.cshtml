@@ -20,7 +20,14 @@
             margin-left: 50%;
         }
 
- 
+    hr {
+        display: block;
+        height: 2px;
+        border: 0;
+        border-top: 1px solid #0094ff;
+        margin: 1em 0;
+        padding: 0;
+    }
 </style>
 
 
@@ -31,13 +38,16 @@
         @Html.ActionLink("Delete", "Delete", new { id=item.AfficheID })*@
 
 
-
+    <hr />
     <div class="row">
+
         <div>
-            <h2> @Html.DisplayFor(modelItem => item.AfficheNom)</h2>
+            <a href="@Url.Action("DetailsAfficheAvecAvis", "AfficheUser", new { id = item.AfficheID })"> <h2> @Html.DisplayFor(modelItem => item.AfficheNom)</h2></a>
         </div>
         <div class="col-md-4 how-img circle-img img-circle">
-            <img src="https://senego.com/wp-content/uploads/2017/08/bombardier-b52.jpg" class="img-circle img-fluid" alt="" />
+            @*<img src="https://senego.com/wp-content/uploads/2017/08/bombardier-b52.jpg" class="img-circle img-fluid" alt="" />*@
+            <img class="img-responsive img-circle img-fluid" src="~/Images/Image-Affiche/@item.imageUrl" />
+
         </div>
         <div class="col-md-8">
             <div>
@@ -58,5 +68,6 @@
     </div>
 
 }
+
 
 

@@ -51,6 +51,7 @@
         <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Pr__UserI__5A846E65" />
         <AssociationConnector Association="CNGLUTTEDBModel.aspnet_UsersInRoles" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_Combat" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -482,13 +482,13 @@
   </Association>
   <Association Name="FK_AvisAffiche_Affiche">
     <End Role="Affiche" Type="Self.Affiche" Multiplicity="1" />
-    <End Role="AvisAffiche" Type="Self.AvisAffiche" Multiplicity="0..1" />
+    <End Role="AvisAffiche" Type="Self.AvisAffiche" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Affiche">
         <PropertyRef Name="AfficheID" />
       </Principal>
       <Dependent Role="AvisAffiche">
-        <PropertyRef Name="AvisAfficheID" />
+        <PropertyRef Name="AfficheID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
