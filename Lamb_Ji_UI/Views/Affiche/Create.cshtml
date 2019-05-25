@@ -5,7 +5,11 @@
 
                 ViewBag.Title = "Create";
 }
-
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
 <h2>Creer une Nouvelle Affiche</h2>
 
 @using (Html.BeginForm("Create", "Affiche", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost2(this);" }))

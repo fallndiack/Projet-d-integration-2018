@@ -29,6 +29,7 @@ namespace Lamb_Ji_UI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Affiche affiche = db.Affiches
                 .Include(a => a.Combat)
                 .Include(a => a.Lutteur)
@@ -51,8 +52,9 @@ namespace Lamb_Ji_UI.Controllers
             vm.imageUrl = affiche.imageUrl;
             vm.Avis = listAvis;
 
-
             return View(vm);
+
+
         }
 
       

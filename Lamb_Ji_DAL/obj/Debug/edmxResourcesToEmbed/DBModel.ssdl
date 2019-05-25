@@ -178,7 +178,7 @@
     <Property Name="AvisAfficheID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Auteur" Type="varchar(max)" Nullable="false" />
     <Property Name="Message" Type="varchar(max)" Nullable="false" />
-    <Property Name="note" Type="float" />
+    <Property Name="note" Type="float" Nullable="false" />
     <Property Name="DateAvis" Type="datetime" Nullable="false" />
     <Property Name="AfficheID" Type="int" Nullable="false" />
   </EntityType>

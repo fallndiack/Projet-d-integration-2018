@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AfficheController.cs" />
     <Compile Include="Controllers\AfficheUserController.cs" />
     <Compile Include="Controllers\ArbitreController.cs" />
+    <Compile Include="Controllers\AvisController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\CombatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -652,6 +653,7 @@
     <Content Include="Views\AfficheUser\Index.cshtml" />
     <Content Include="Views\AfficheUser\DetailsAfficheAvecAvis.cshtml" />
     <Content Include="Views\Actualite\Index.cshtml" />
+    <Content Include="Views\Avis\LaisserUnAvis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

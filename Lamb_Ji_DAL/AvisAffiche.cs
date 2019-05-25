@@ -14,12 +14,12 @@ namespace Lamb_Ji_DAL
     
     public partial class AvisAffiche
     {
-        public int AvisAfficheID { get; set; }
+        public int? AvisAfficheID { get; set; }
         public string Auteur { get; set; }
         public string Message { get; set; }
         public System.DateTime DateAvis { get; set; }
         public int AfficheID { get; set; }
-        public Nullable<double> note { get; set; }
+        public double note { get; set; }
     
         public virtual Affiche Affiche { get; set; }
         public virtual Affiche Affiche1 { get; set; }

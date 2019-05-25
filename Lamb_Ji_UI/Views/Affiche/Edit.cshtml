@@ -3,7 +3,11 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
 <h2>Edit</h2>
 
 @using (Html.BeginForm("Edit", "Affiche", FormMethod.Post, new { enctype = "multipart/form-data"}))

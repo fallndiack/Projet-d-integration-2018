@@ -3,7 +3,11 @@
 @{
     ViewBag.Title = "Liste des Affiches";
 }
-
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
 <h2>Liste des Affiches</h2>
 
 <p>
@@ -30,7 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Vaincqueur)
         </th>
-       
+
 
 
 
@@ -58,7 +62,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Vaincqueur)
         </td>
-        
+
 
 
 

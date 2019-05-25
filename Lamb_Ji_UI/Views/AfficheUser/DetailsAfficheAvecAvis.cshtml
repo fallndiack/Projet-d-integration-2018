@@ -2,16 +2,30 @@
 @{
     ViewBag.Title = "DetailsAfficheAvecAvis";
 }
-
-<h2>@Model.AfficheNom</h2>
+<style>
+    #myCarousel {
+        display: none;
+    }
+    h4{
+        color:#241f9b; 
+    }
+</style>
+<h2 class="text-center">@Model.AfficheNom</h2>
 <br />
 <div class='section content'>
     <div class='illustration'>
-        <img src="~/Images/Image-Affiche/@Model.imageUrl" style="max-width: 900px; height:500px" />
+        <img src="~/Images/Image-Affiche/@Model.imageUrl" style="max-width: 1200px; height:500px" />
     </div>
 </div>
 
 <br />
+<div>
+
+        <h4> @Model.Lutteur.LutteurName</h4>
+
+    <span>VS</span>
+    <h4> @Model.Lutteur1.LutteurName</h4>
+</div>
 <p>
     @Model.Combat.Combat_Description
 </p>
@@ -25,5 +39,11 @@
 
     </div>
 }
-    <br /><br /><br />
+    <div>
+        <a href="@Url.Action("LaisserUnAvis", "Avis", new { afficheID  = Model.AfficheID })">Laisser un commentaire</a>
+    </div>
+
+
+
+<br /><br /><br />
 @Html.ActionLink("Retourner à la Liste des Combats", "Index", null, new { @class = "btn btn-block btn-default" })

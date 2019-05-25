@@ -554,7 +554,7 @@
     <Property Name="DateAvis" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="AfficheID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Affiche" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="AvisAffiche" ToRole="Affiche" />
-    <Property Name="note" Type="Double" />
+    <Property Name="note" Type="Double" Nullable="false" />
     <NavigationProperty Name="Affiche1" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1" FromRole="AvisAffiche" ToRole="Affiche" />
   </EntityType>
   <EntityType Name="Categorie">
