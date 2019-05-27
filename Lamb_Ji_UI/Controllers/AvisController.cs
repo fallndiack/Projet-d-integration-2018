@@ -28,6 +28,7 @@ namespace Lamb_Ji_UI.Controllers
 
                 return View(vm);
         }
+        [HttpPost]
         public ActionResult SaveComment(string nom, string commentaire, string note, int afficheID)
         {
             AvisAffiche nouvelAvis = new AvisAffiche();
@@ -53,7 +54,7 @@ namespace Lamb_Ji_UI.Controllers
                 context.AvisAffiches.Add(nouvelAvis);
                 context.SaveChanges();
             }
-            return View();
+            return RedirectToAction("DetailsAfficheAvecAvis", "AfficheUser", new {id = afficheID });
         }
     }
 }

@@ -654,6 +654,7 @@
     <Content Include="Views\AfficheUser\DetailsAfficheAvecAvis.cshtml" />
     <Content Include="Views\Actualite\Index.cshtml" />
     <Content Include="Views\Avis\LaisserUnAvis.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -664,7 +665,6 @@
     <Folder Include="Images\Image-Gallerie\" />
     <Folder Include="Images\Image-Stade\" />
     <Folder Include="Videos\" />
-    <Folder Include="Views\Contact\" />
     <Folder Include="Views\MenuAccueil\" />
   </ItemGroup>
   <ItemGroup>

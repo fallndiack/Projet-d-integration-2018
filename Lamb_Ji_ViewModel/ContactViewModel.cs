@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Lamb_Ji_ViewModel
 {
-   public class ContactViewModel
+    public class ContactViewModel
     {
         [Required]
-        [StringLength(50, MinimumLength = 5)]
-        public string Nom { get; set; }
+        [StringLength(20, MinimumLength = 4)]
+        public string Name { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        public string Sujet { get; set; }
+        public string Subject { get; set; }
         [Required]
         public string Message { get; set; }
     }

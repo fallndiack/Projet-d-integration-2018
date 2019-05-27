@@ -23,7 +23,7 @@ namespace Lamb_Ji_UI.Controllers
         }
 
         // GET: AfficheUser/Details/5
-        public ActionResult DetailsAfficheAvecAvis(int? id)
+        public ActionResult DetailsAfficheAvecAvis(int id)
         {
             if (id == null)
             {
@@ -50,6 +50,7 @@ namespace Lamb_Ji_UI.Controllers
             vm.DateCombat = affiche.DateCombat;
             vm.Vaincqueur = affiche.Vaincqueur;
             vm.imageUrl = affiche.imageUrl;
+           
             vm.Avis = listAvis;
 
             return View(vm);
