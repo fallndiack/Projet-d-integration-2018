@@ -18,17 +18,29 @@ namespace Lamb_Ji_UI.Controllers
         // GET: AfficheUser
         public ActionResult Index()
         {
-            var affiches = db.Affiches.Include(a => a.Lutteur).Include(a => a.Lutteur1).Include(a => a.Combat);
+            var affiches = db.Affiches.OrderBy(x=>Guid.NewGuid()).Take(4)
+                .Include(a => a.Lutteur)
+                .Include(a => a.Lutteur1)
+                .Include(a => a.Combat)
+                .Include(a => a.AvisAffiches).Where(x => x.DateCombat > DateTime.Now).OrderBy(c => c.DateCombat);
+            foreach (var aff in affiches)
+            {
+                if (aff.AvisAffiches.Count == 0)
+                {
+                    aff.AvisAffiche.note = 0;
+                }
+                else
+                    aff.AvisAffiche.note = Math.Round(aff.AvisAffiches.Average(a => a.note), 2);
+
+            }
+
             return View(affiches.ToList());
         }
 
         // GET: AfficheUser/Details/5
         public ActionResult DetailsAfficheAvecAvis(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+           
 
             Affiche affiche = db.Affiches
                 .Include(a => a.Combat)

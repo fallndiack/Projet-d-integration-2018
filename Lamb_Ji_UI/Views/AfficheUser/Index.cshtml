@@ -28,16 +28,15 @@
         margin: 1em 0;
         padding: 0;
     }
+    .blue {
+        color: blue;
+    }
 </style>
 
 
 @foreach (var item in Model)
 {
-    @*@Html.ActionLink("Edit", "Edit", new { id=item.AfficheID }) |
-        @Html.ActionLink("Details", "Details", new { id=item.AfficheID }) |
-        @Html.ActionLink("Delete", "Delete", new { id=item.AfficheID })*@
-
-
+  
     <hr />
     <div class="row">
 
@@ -45,7 +44,6 @@
             <a href="@Url.Action("DetailsAfficheAvecAvis", "AfficheUser", new { id = item.AfficheID })"> <h2> @Html.DisplayFor(modelItem => item.AfficheNom)</h2></a>
         </div>
         <div class="col-md-4 how-img circle-img img-circle">
-            @*<img src="https://senego.com/wp-content/uploads/2017/08/bombardier-b52.jpg" class="img-circle img-fluid" alt="" />*@
             <img class="img-responsive img-circle img-fluid" src="~/Images/Image-Affiche/@item.imageUrl" />
 
         </div>
@@ -63,7 +61,32 @@
                 @Html.DisplayFor(modelItem => item.DateCombat) au stade
                 @Html.DisplayFor(modelItem => item.Combat.Stade.StadeName)
             </p>
+            <div>
+                <article class="info-block">
+                 <p>
+                    <span class="glyphicon glyphicon-star blue"></span>
+                    @if (item.AvisAffiche.note > 1)
+                    {
+                        <span class="glyphicon glyphicon-star blue"></span>
+                    }
+                     @if (item.AvisAffiche.note > 2)
+                    {
+                        <span class="glyphicon glyphicon-star blue"></span>
+                    }
+                     @if (item.AvisAffiche.note > 3)
+                    {
+                        <span class="glyphicon glyphicon-star blue"></span>
+                    }
+                    @if (item.AvisAffiche.note > 4)
+                    {
+                        <span class="glyphicon glyphicon-star blue"></span>
+                    }
 
+                    @item.AvisAffiche.note / 5
+                </p>
+                </article>
+               
+            </div>
         </div>
     </div>
 
