@@ -40,32 +40,45 @@ namespace Lamb_Ji_UI.Controllers
         // GET: AfficheUser/Details/5
         public ActionResult DetailsAfficheAvecAvis(int id)
         {
-           
-
-            Affiche affiche = db.Affiches
-                .Include(a => a.Combat)
-                .Include(a => a.Lutteur)
-                .Include(a => a.Lutteur1)               
-                .Where(s => s.AfficheID == id).FirstOrDefault();
-            List<AvisAffiche> listAvis = db.AvisAffiches.Where(c => c.AfficheID == id).ToList();
-            if (affiche == null)
+            try
             {
-                return HttpNotFound();
-            }
-            
-            AfficheAvecAvis vm = new AfficheAvecAvis();
-            vm.AfficheID = affiche.AfficheID;
-            vm.AfficheNom = affiche.AfficheNom;
-            vm.Combat = affiche.Combat;
-            vm.Lutteur = affiche.Lutteur;
-            vm.Lutteur1 = affiche.Lutteur1;
-            vm.DateCombat = affiche.DateCombat;
-            vm.Vaincqueur = affiche.Vaincqueur;
-            vm.imageUrl = affiche.imageUrl;
-           
-            vm.Avis = listAvis;
+                Affiche affiche = db.Affiches
+              .Include(a => a.Combat)
+              .Include(a => a.Lutteur)
+              .Include(a => a.Lutteur1)
+              .Where(s => s.AfficheID == id).FirstOrDefault();
+                List<AvisAffiche> listAvis = db.AvisAffiches.Where(c => c.AfficheID == id).ToList();
+                if (affiche == null)
+                {
+                    return HttpNotFound();
+                }
 
-            return View(vm);
+                AfficheAvecAvis vm = new AfficheAvecAvis();
+                vm.AfficheID = affiche.AfficheID;
+                vm.AfficheNom = affiche.AfficheNom;
+                vm.Combat = affiche.Combat;
+                vm.Lutteur = affiche.Lutteur;
+                vm.Lutteur1 = affiche.Lutteur1;
+                vm.DateCombat = affiche.DateCombat;
+                vm.Vaincqueur = affiche.Vaincqueur;
+                vm.imageUrl = affiche.imageUrl;
+                if (listAvis.Count > 0)
+                {
+                    vm.Avis = listAvis;
+                }
+
+                return View(vm);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+          
+           
+
+           
 
 
         }

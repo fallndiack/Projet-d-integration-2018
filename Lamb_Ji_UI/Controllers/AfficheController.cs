@@ -18,7 +18,10 @@ namespace Lamb_Ji_UI.Controllers
         // GET: Affiche
         public ActionResult Index()
         {
-            var affiches = db.Affiches.Include(a => a.Lutteur).Include(a => a.Lutteur1).Include(a => a.Combat);
+            var affiches = db.Affiches
+                .Include(a => a.Lutteur)
+                .Include(a => a.Lutteur1)
+                .Include(a => a.Combat);
             return View(affiches.ToList());
         }
 
@@ -56,23 +59,35 @@ namespace Lamb_Ji_UI.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (ImageUpload != null)
+                try
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
-                    string extension = Path.GetExtension(ImageUpload.FileName);
-                    fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
-                    affiche.imageUrl = fileName;
-                    ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
+                    if (ImageUpload != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
+                        string extension = Path.GetExtension(ImageUpload.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                        affiche.imageUrl = fileName;
+                        ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
+                    }
+                    db.Affiches.Add(affiche);
+                    db.SaveChanges();
+
+                    ViewBag.AfficheID = new SelectList(db.AvisAffiches, "AvisAfficheID", "Auteur", affiche.AfficheID);
+                    ViewBag.Lutteur_A = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteur_A);
+                    ViewBag.Lutteru_B = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteru_B);
+                    ViewBag.CombatID = new SelectList(db.Combats, "CombatID", "Combat_Description", affiche.CombatID);
+
+
+                    return RedirectToAction("Index");
                 }
-                db.Affiches.Add(affiche);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                catch (Exception)
+                {
+
+                    throw;
+                }
+               
             }
 
-            ViewBag.AfficheID = new SelectList(db.AvisAffiches, "AvisAfficheID", "Auteur", affiche.AfficheID);
-            ViewBag.Lutteur_A = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteur_A);
-            ViewBag.Lutteru_B = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteru_B);
-            ViewBag.CombatID = new SelectList(db.Combats, "CombatID", "Combat_Description", affiche.CombatID);
             return View(affiche);
         }
 

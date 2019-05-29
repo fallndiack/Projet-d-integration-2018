@@ -1,9 +1,9 @@
 ﻿@model Lamb_Ji_DAL.Affiche
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Create";
+    ViewBag.Title = "Create";
 }
 <style>
     #myCarousel {
@@ -14,67 +14,70 @@
 
 @using (Html.BeginForm("Create", "Affiche", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost2(this);" }))
 {
+
     @Html.AntiForgeryToken()
-<div class="row">
-    <div class="form-horizontal">
 
-        <hr />
-        <div class="col-md-6">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.AfficheNom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AfficheNom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AfficheNom, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    <div class="row">
+        <div class="form-horizontal">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.CombatID, "CombatID", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("CombatID", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.CombatID, "", new { @class = "text-danger" })
+            <hr />
+            <div class="col-md-6">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AfficheNom, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AfficheNom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AfficheNom, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Lutteur_A, "Lutteur_A", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Lutteur_A", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Lutteur_A, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CombatID, "CombatID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CombatID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CombatID, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Lutteru_B, "Lutteru_B", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Lutteru_B", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Lutteru_B, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lutteur_A, "Lutteur_A", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Lutteur_A", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Lutteur_A, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.DateCombat, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateCombat, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DateCombat, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lutteru_B, "Lutteru_B", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Lutteru_B", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Lutteru_B, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Vaincqueur, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Vaincqueur, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Vaincqueur, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateCombat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateCombat, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateCombat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.Combat.Combat_Etat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Combat.Combat_Etat, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateCombat, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
+            <div class="col-md-6">
                 <div class="form-group">
                     @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -83,61 +86,61 @@
                     </div>
                 </div>
             </div>
-       
-    </div>
- </div>
-        }
 
-        <div>
-            @Html.ActionLink("Retourner à la Liste", "Index", null, new { @class = "btn btn-default btn-lg" })
         </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retourner à la Liste", "Index", null, new { @class = "btn btn-default btn-lg" })
+</div>
 
 
-        @section scripts{
-            @Scripts.Render("~/bundles/jqueryval")
-            <script>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
 
 
 
-                function ShowImagePreview(imageUploader, previewImage) {
-                    if (imageUploader.files && imageUploader.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            $(previewImage).attr('src', e.target.result);
-                        }
-                        reader.readAsDataURL(imageUploader.files[0]);
-                    }
+        function ShowImagePreview(imageUploader, previewImage) {
+            if (imageUploader.files && imageUploader.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(previewImage).attr('src', e.target.result);
                 }
-
-
-                function jQueryAjaxPost(form) {
-                    $.validator.unobtrusive.parse($('#SubmitForm'));
-                    if ($('#SubmitForm').valid()) {
-
-                        var ajaxConfig = {
-                            type: 'POST',
-                            url: form.action,
-                            data: new FormData(form),
-                            success: function () {
-                                //$('#chargement').show();
-                                
-                                //$('#chargement').hide();
-                               
-                                toastr.info("Lutteur ajouté avec succés!!!....");
-
-                            }
-                        }
-                        if ($(form).attr('enctype') == "multipart/form-data") {
-                            ajaxConfig["contentType"] = false;
-                            ajaxConfig["processData"] = false;
-                        }
-                        $.ajax(ajaxConfig);
-
-                    }
-                    return false;
-                }
-
-
-            </script>
-
+                reader.readAsDataURL(imageUploader.files[0]);
+            }
         }
+
+
+        function jQueryAjaxPost(form) {
+            $.validator.unobtrusive.parse($('#SubmitForm'));
+            if ($('#SubmitForm').valid()) {
+
+                var ajaxConfig = {
+                    type: 'POST',
+                    url: form.action,
+                    data: new FormData(form),
+                    success: function () {
+                        //$('#chargement').show();
+
+                        //$('#chargement').hide();
+
+                        toastr.info("Lutteur ajouté avec succés!!!....");
+
+                    }
+                }
+                if ($(form).attr('enctype') == "multipart/form-data") {
+                    ajaxConfig["contentType"] = false;
+                    ajaxConfig["processData"] = false;
+                }
+                $.ajax(ajaxConfig);
+
+            }
+            return false;
+        }
+
+
+    </script>
+
+}
