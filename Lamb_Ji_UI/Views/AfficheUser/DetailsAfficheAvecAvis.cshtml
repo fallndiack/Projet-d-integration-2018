@@ -6,8 +6,9 @@
     #myCarousel {
         display: none;
     }
-    h4{
-        color:#241f9b; 
+
+    h4 {
+        color: #241f9b;
     }
 </style>
 <h2 class="text-center">@Model.AfficheNom</h2>
@@ -21,7 +22,7 @@
 <br />
 <div>
 
-        <h4> @Model.Lutteur.LutteurName</h4>
+    <h4> @Model.Lutteur.LutteurName</h4>
 
     <span>VS</span>
     <h4> @Model.Lutteur1.LutteurName</h4>
@@ -29,19 +30,23 @@
 <p>
     @Model.Combat.Combat_Description
 </p>
-@foreach (var avis in Model.Avis)
+@if (Model.Avis.Count > 0)
 {
-    <div>
-        <br />
-        <div>@avis.Auteur</div>
-        <div>@avis.Message</div>
-        <div>@avis.DateAvis.ToShortDateString()</div>
+    foreach (var avis in Model.Avis)
+    {
+        <div>
+            <br />
+            <div>@avis.Auteur</div>
+            <div>@avis.Message</div>
+            <div>@avis.DateAvis.ToShortDateString()</div>
 
-    </div>
+        </div>
+    }
+
 }
-    <div>
-        <a href="@Url.Action("LaisserUnAvis", "Avis", new { afficheID  = Model.AfficheID })">Laisser un commentaire</a>
-    </div>
+<div>
+    <a href="@Url.Action("LaisserUnAvis", "Avis", new { afficheID  = Model.AfficheID })">Laisser un commentaire</a>
+</div>
 
 
 

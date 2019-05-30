@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccueilAfficheViewModel.cs" />
     <Compile Include="AfficheAvecAvis.cs" />
     <Compile Include="ArbitreViewModel.cs" />
     <Compile Include="AssignerArbitreAuCombat.cs" />

@@ -59,6 +59,7 @@
     <Compile Include="Affiche.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AfficheAvecAvisDto.cs" />
     <Compile Include="AfficherLesArbitrresDuCombat_Result.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>

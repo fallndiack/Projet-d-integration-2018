@@ -18,23 +18,38 @@ namespace Lamb_Ji_UI.Controllers
         // GET: AfficheUser
         public ActionResult Index()
         {
-            var affiches = db.Affiches.OrderBy(x=>Guid.NewGuid()).Take(4)
-                .Include(a => a.Lutteur)
-                .Include(a => a.Lutteur1)
-                .Include(a => a.Combat)
-                .Include(a => a.AvisAffiches).Where(x => x.DateCombat > DateTime.Now).OrderBy(c => c.DateCombat);
-            foreach (var aff in affiches)
+            try
             {
-                if (aff.AvisAffiches.Count == 0)
+                var affiches = db.Affiches.OrderBy(x => Guid.NewGuid()).Take(4)
+             .Include(a => a.Lutteur)
+             .Include(a => a.Lutteur1)
+             .Include(a => a.Combat)
+             .Include(a => a.AvisAffiches).Where(x => x.DateCombat > DateTime.Now).OrderBy(c => c.DateCombat);
+
+
+                foreach (var aff in affiches)
                 {
-                    aff.AvisAffiche.note = 0;
+                    List<AvisAffiche> listAvis = db.AvisAffiches.Where(c => c.AfficheID == aff.AfficheID).ToList();
+                    aff.AvisAffiches = listAvis;
+                    if (aff.AvisAffiches.Count == 0)
+                    {
+
+                        aff.Note = 0;
+                    }
+
+                    else
+                        aff.Note = Math.Round(aff.AvisAffiches.Average(a => a.note), 2);
                 }
-                else
-                    aff.AvisAffiche.note = Math.Round(aff.AvisAffiches.Average(a => a.note), 2);
-
+                return View(affiches.ToList());
             }
+            catch (Exception)
+            {
 
-            return View(affiches.ToList());
+                throw;
+            }
+         
+
+            
         }
 
         // GET: AfficheUser/Details/5
@@ -62,7 +77,7 @@ namespace Lamb_Ji_UI.Controllers
                 vm.DateCombat = affiche.DateCombat;
                 vm.Vaincqueur = affiche.Vaincqueur;
                 vm.imageUrl = affiche.imageUrl;
-                if (listAvis.Count > 0)
+                if (listAvis.Count != 0)
                 {
                     vm.Avis = listAvis;
                 }

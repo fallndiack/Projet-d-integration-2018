@@ -9,6 +9,10 @@ namespace Lamb_Ji_ViewModel
 {
     public class AfficheAvecAvis
     {
+        public AfficheAvecAvis()
+        {
+            Avis = new List<AvisAffiche>();
+        }
         public int AfficheID { get; set; }
         public string AfficheNom { get; set; }
         public int CombatID { get; set; }

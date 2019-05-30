@@ -20,6 +20,8 @@ namespace Lamb_Ji_DAL
         public Affiche()
         {
             this.AvisAffiches = new HashSet<AvisAffiche>();
+
+           
         }
     
         public int AfficheID { get; set; }
@@ -37,7 +39,8 @@ namespace Lamb_Ji_DAL
         public string Vaincqueur { get; set; }
         [DisplayName("Image de l'Affiche")]
         public string imageUrl { get; set; }
-    
+        public  double Note { get; set; }
+
         public virtual AvisAffiche AvisAffiche { get; set; }
         public virtual Lutteur Lutteur { get; set; }
         public virtual Lutteur Lutteur1 { get; set; }
