@@ -148,7 +148,7 @@ namespace Lamb_Ji_UI.Controllers
 
         public ActionResult DisplayLuteurForUser(string searching)
         {
-            ;
+            
             return View( db.Lutteurs.Where(x => x.LutteurName.Contains(searching) || searching == null).ToList());
         }
       

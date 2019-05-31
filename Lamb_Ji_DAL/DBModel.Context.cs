@@ -30,7 +30,6 @@ namespace Lamb_Ji_DAL
         public virtual DbSet<Actualite> Actualites { get; set; }
         public virtual DbSet<Affiche> Affiches { get; set; }
         public virtual DbSet<Arbitre> Arbitres { get; set; }
-        public virtual DbSet<AvisAffiche> AvisAffiches { get; set; }
         public virtual DbSet<Categorie> Categories { get; set; }
         public virtual DbSet<Club> Clubs { get; set; }
         public virtual DbSet<Combat> Combats { get; set; }
@@ -52,6 +51,7 @@ namespace Lamb_Ji_DAL
         public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
         public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
+        public virtual DbSet<AvisAffiche> AvisAffiches { get; set; }
     
         public virtual ObjectResult<Affichage_Complet_Lutteur_Result> Affichage_Complet_Lutteur()
         {

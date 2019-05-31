@@ -1,0 +1,121 @@
+﻿@model Lamb_Ji_DAL.Actualite
+
+@{
+    ViewBag.Title = "Créer une nouvelle actualité";
+}
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
+
+<h2>Création d'une nouvelle actualité</h2>
+
+@using (Html.BeginForm("Create", "ActualiteAdmin", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost2(this);" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="form-horizontal">
+            <h4>Nouvelle Actualite</h4>
+            <hr />
+            <div class="col-md-6">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.actuNom, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.actuNom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.actuNom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.actuTitre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.actuTitre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.actuTitre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.actuTexte, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.actuTexte, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.actuTexte, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.actuImgUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <img src="~/Images/Image-Lutteur/default.png" style="margin:10px" height="250" width="200" id="imagePreview" />
+                        <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retourner à la Liste", "Index", null, new { @class = "btn btn-default btn-lg" })
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+
+
+        function ShowImagePreview(imageUploader, previewImage) {
+            if (imageUploader.files && imageUploader.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(previewImage).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(imageUploader.files[0]);
+            }
+        }
+
+
+        function jQueryAjaxPost(form) {
+            $.validator.unobtrusive.parse($('#SubmitForm'));
+            if ($('#SubmitForm').valid()) {
+
+                var ajaxConfig = {
+                    type: 'POST',
+                    url: form.action,
+                    data: new FormData(form),
+                    success: function () {
+                        //$('#chargement').show();
+
+                        //$('#chargement').hide();
+
+                        toastr.info("Actuaité ajouté avec succés!!!....");
+
+                    }
+                }
+                if ($(form).attr('enctype') == "multipart/form-data") {
+                    ajaxConfig["contentType"] = false;
+                    ajaxConfig["processData"] = false;
+                }
+                $.ajax(ajaxConfig);
+
+            }
+            return false;
+        }
+
+    </script>
+
+}
+

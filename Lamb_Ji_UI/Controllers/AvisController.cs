@@ -21,7 +21,7 @@ namespace Lamb_Ji_UI.Controllers
             {
                 Affiche aff = context.Affiches.Where(a => a.AfficheID == afficheID).SingleOrDefault();
                 if (aff == null)               
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "AfficheUser");
                 vm.AfficheID = aff.AfficheID;
                 vm.NomAffiche = aff.AfficheNom;
             }
@@ -48,8 +48,11 @@ namespace Lamb_Ji_UI.Controllers
                 Affiche aff = context.Affiches.Where(a => a.AfficheID == afficheID).SingleOrDefault();
                 if (aff == null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "AfficheUser");
                 }
+                //var p = context.AvisAffiches.ToList();
+                //var maxId = p.Max(x => x.AvisAfficheID);
+                //nouvelAvis.AvisAfficheID = maxId + 1;
                 nouvelAvis.AfficheID = aff.AfficheID;
                 context.AvisAffiches.Add(nouvelAvis);
                 context.SaveChanges();

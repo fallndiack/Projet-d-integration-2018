@@ -54,6 +54,7 @@
     <Compile Include="LaisserUnAvisViewModel.cs" />
     <Compile Include="LutteurViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleActuViewModel.cs" />
     <Compile Include="StadeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

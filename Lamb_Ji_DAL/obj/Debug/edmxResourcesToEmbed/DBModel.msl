@@ -51,6 +51,8 @@
     <EntitySetMapping Name="Actualites">
       <EntityTypeMapping TypeName="CNGLUTTEDBModel.Actualite">
         <MappingFragment StoreEntitySet="Actualite">
+          <ScalarProperty Name="actuDate" ColumnName="actuDate" />
+          <ScalarProperty Name="actuNom" ColumnName="actuNom" />
           <ScalarProperty Name="actuImgUrl" ColumnName="actuImgUrl" />
           <ScalarProperty Name="actuTexte" ColumnName="actuTexte" />
           <ScalarProperty Name="actuTitre" ColumnName="actuTitre" />
@@ -80,18 +82,6 @@
           <ScalarProperty Name="ArbitreEmail" ColumnName="ArbitreEmail" />
           <ScalarProperty Name="ArbitreName" ColumnName="ArbitreName" />
           <ScalarProperty Name="ArbitreID" ColumnName="ArbitreID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AvisAffiches">
-      <EntityTypeMapping TypeName="CNGLUTTEDBModel.AvisAffiche">
-        <MappingFragment StoreEntitySet="AvisAffiche">
-          <ScalarProperty Name="note" ColumnName="note" />
-          <ScalarProperty Name="AfficheID" ColumnName="AfficheID" />
-          <ScalarProperty Name="DateAvis" ColumnName="DateAvis" />
-          <ScalarProperty Name="Message" ColumnName="Message" />
-          <ScalarProperty Name="Auteur" ColumnName="Auteur" />
-          <ScalarProperty Name="AvisAfficheID" ColumnName="AvisAfficheID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -482,5 +472,17 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="CNGLUTTEDBModel.Store.aspnet_WebEvent_LogEvent" />
+    <EntitySetMapping Name="AvisAffiches">
+      <EntityTypeMapping TypeName="CNGLUTTEDBModel.AvisAffiche">
+        <MappingFragment StoreEntitySet="AvisAffiche">
+          <ScalarProperty Name="AfficheID" ColumnName="AfficheID" />
+          <ScalarProperty Name="DateAvis" ColumnName="DateAvis" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Auteur" ColumnName="Auteur" />
+          <ScalarProperty Name="AvisAfficheID" ColumnName="AvisAfficheID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

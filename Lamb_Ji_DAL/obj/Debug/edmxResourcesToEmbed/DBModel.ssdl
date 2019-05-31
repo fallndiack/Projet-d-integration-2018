@@ -5,8 +5,10 @@
       <PropertyRef Name="actuID" />
     </Key>
     <Property Name="actuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="actuNom" Type="varchar(max)" />
     <Property Name="actuTitre" Type="varchar(max)" />
     <Property Name="actuTexte" Type="text" />
+    <Property Name="actuDate" Type="datetime" />
     <Property Name="actuImgUrl" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Affiche">

@@ -1,0 +1,43 @@
+﻿@model Lamb_Ji_DAL.Actualite
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Supprimer une Actualité</h2>
+
+<h3>Etes-vous sur de vouloir supprimer cet Actu?</h3>
+<div>
+    <h4>@Model.actuTitre</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.actuTitre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actuTitre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actuTexte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actuTexte)
+        </dd>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-danger" /> |
+            @Html.ActionLink("Retourner à la Liste", "Index", null, new { @class = "btn btn-default btn-lg" })
+        </div>
+    }
+</div>

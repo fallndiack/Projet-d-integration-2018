@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.Actualite>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Gestion des Actualités</h2>
+
+
+<p>
+    @Html.ActionLink("Nouvelle Actualité", "Create", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.actuNom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actuTitre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actuTexte)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.actuNom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actuTitre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actuTexte).ToString().Substring(0, 20)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.actuID }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.actuID }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Supp", "Delete", new { id = item.actuID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

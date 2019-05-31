@@ -10,8 +10,10 @@
             <PropertyRef Name="actuID" />
           </Key>
           <Property Name="actuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="actuNom" Type="varchar(max)" />
           <Property Name="actuTitre" Type="varchar(max)" />
           <Property Name="actuTexte" Type="text" />
+          <Property Name="actuDate" Type="datetime" />
           <Property Name="actuImgUrl" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Affiche">
@@ -1098,7 +1100,6 @@
           <EntitySet Name="Actualites" EntityType="CNGLUTTEDBModel.Actualite" />
           <EntitySet Name="Affiches" EntityType="CNGLUTTEDBModel.Affiche" />
           <EntitySet Name="Arbitres" EntityType="CNGLUTTEDBModel.Arbitre" />
-          <EntitySet Name="AvisAffiches" EntityType="CNGLUTTEDBModel.AvisAffiche" />
           <EntitySet Name="Categories" EntityType="CNGLUTTEDBModel.Categorie" />
           <EntitySet Name="Clubs" EntityType="CNGLUTTEDBModel.Club" />
           <EntitySet Name="Combats" EntityType="CNGLUTTEDBModel.Combat" />
@@ -1110,10 +1111,6 @@
           <EntitySet Name="sysdiagrams" EntityType="CNGLUTTEDBModel.sysdiagram" />
           <EntitySet Name="TypeLuttes" EntityType="CNGLUTTEDBModel.TypeLutte" />
           <EntitySet Name="VideoFiles" EntityType="CNGLUTTEDBModel.VideoFile" />
-          <AssociationSet Name="FK_AvisAffiche_Affiche" Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche">
-            <End Role="Affiche" EntitySet="Affiches" />
-            <End Role="AvisAffiche" EntitySet="AvisAffiches" />
-          </AssociationSet>
           <AssociationSet Name="FK_Combat_Categorie" Association="CNGLUTTEDBModel.FK_Combat_Categorie">
             <End Role="Categorie" EntitySet="Categories" />
             <End Role="Combat" EntitySet="Combats" />
@@ -1535,7 +1532,8 @@
             <End Role="Combat" EntitySet="Combats" />
             <End Role="Affiche" EntitySet="Affiches" />
           </AssociationSet>
-          <AssociationSet Name="FK_AvisAffiche_Affiche1" Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1">
+          <EntitySet Name="AvisAffiches" EntityType="CNGLUTTEDBModel.AvisAffiche" />
+          <AssociationSet Name="FK_AvisAffiche_Affiche" Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche">
             <End Role="Affiche" EntitySet="Affiches" />
             <End Role="AvisAffiche" EntitySet="AvisAffiches" />
           </AssociationSet>
@@ -1574,6 +1572,8 @@
           <Property Name="actuTitre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="actuTexte" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="actuImgUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="actuNom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="actuDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Affiche">
           <Key>
@@ -1587,11 +1587,10 @@
           <Property Name="DateCombat" Type="DateTime" Precision="3" />
           <Property Name="Vaincqueur" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="imageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AvisAffiche" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="Affiche" ToRole="AvisAffiche" />
           <NavigationProperty Name="Lutteur" Relationship="CNGLUTTEDBModel.FK_Affiche_luttA" FromRole="Affiche" ToRole="Lutteur" />
           <NavigationProperty Name="Lutteur1" Relationship="CNGLUTTEDBModel.FK_Affiche_Lutteur" FromRole="Affiche" ToRole="Lutteur" />
           <NavigationProperty Name="Combat" Relationship="CNGLUTTEDBModel.FK_Affiche_Combat" FromRole="Affiche" ToRole="Combat" />
-          <NavigationProperty Name="AvisAffiches" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1" FromRole="Affiche" ToRole="AvisAffiche" />
+          <NavigationProperty Name="AvisAffiches" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="Affiche" ToRole="AvisAffiche" />
         </EntityType>
         <EntityType Name="Arbitre">
           <Key>
@@ -1603,19 +1602,6 @@
           <Property Name="ArbitreDateNaissance" Type="DateTime" Precision="0" />
           <Property Name="imageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Combats" Relationship="CNGLUTTEDBModel.Arbitre_Combat" FromRole="Arbitre" ToRole="Combat" />
-        </EntityType>
-        <EntityType Name="AvisAffiche">
-          <Key>
-            <PropertyRef Name="AvisAfficheID" />
-          </Key>
-          <Property Name="AvisAfficheID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Auteur" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DateAvis" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="AfficheID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Affiche" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="AvisAffiche" ToRole="Affiche" />
-          <Property Name="note" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Affiche1" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche1" FromRole="AvisAffiche" ToRole="Affiche" />
         </EntityType>
         <EntityType Name="Categorie">
           <Key>
@@ -1739,18 +1725,6 @@
           <Property Name="videoName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="videoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK_AvisAffiche_Affiche">
-          <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="1" />
-          <End Type="CNGLUTTEDBModel.AvisAffiche" Role="AvisAffiche" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Affiche">
-              <PropertyRef Name="AfficheID" />
-            </Principal>
-            <Dependent Role="AvisAffiche">
-              <PropertyRef Name="AvisAfficheID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Combat_Categorie">
           <End Type="CNGLUTTEDBModel.Categorie" Role="Categorie" Multiplicity="1" />
           <End Type="CNGLUTTEDBModel.Combat" Role="Combat" Multiplicity="*" />
@@ -2167,7 +2141,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AvisAffiche_Affiche1">
+        <EntityType Name="AvisAffiche">
+          <Key>
+            <PropertyRef Name="AvisAfficheID" />
+          </Key>
+          <Property Name="AvisAfficheID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Auteur" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="Double" Nullable="false" />
+          <Property Name="DateAvis" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AfficheID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Affiche" Relationship="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" FromRole="AvisAffiche" ToRole="Affiche" />
+        </EntityType>
+        <Association Name="FK_AvisAffiche_Affiche">
           <End Type="CNGLUTTEDBModel.Affiche" Role="Affiche" Multiplicity="1" />
           <End Type="CNGLUTTEDBModel.AvisAffiche" Role="AvisAffiche" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2235,6 +2221,8 @@
           <EntitySetMapping Name="Actualites">
             <EntityTypeMapping TypeName="CNGLUTTEDBModel.Actualite">
               <MappingFragment StoreEntitySet="Actualite">
+                <ScalarProperty Name="actuDate" ColumnName="actuDate" />
+                <ScalarProperty Name="actuNom" ColumnName="actuNom" />
                 <ScalarProperty Name="actuImgUrl" ColumnName="actuImgUrl" />
                 <ScalarProperty Name="actuTexte" ColumnName="actuTexte" />
                 <ScalarProperty Name="actuTitre" ColumnName="actuTitre" />
@@ -2264,18 +2252,6 @@
                 <ScalarProperty Name="ArbitreEmail" ColumnName="ArbitreEmail" />
                 <ScalarProperty Name="ArbitreName" ColumnName="ArbitreName" />
                 <ScalarProperty Name="ArbitreID" ColumnName="ArbitreID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AvisAffiches">
-            <EntityTypeMapping TypeName="CNGLUTTEDBModel.AvisAffiche">
-              <MappingFragment StoreEntitySet="AvisAffiche">
-                <ScalarProperty Name="note" ColumnName="note" />
-                <ScalarProperty Name="AfficheID" ColumnName="AfficheID" />
-                <ScalarProperty Name="DateAvis" ColumnName="DateAvis" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Auteur" ColumnName="Auteur" />
-                <ScalarProperty Name="AvisAfficheID" ColumnName="AvisAfficheID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2666,6 +2642,18 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="CNGLUTTEDBModel.Store.aspnet_WebEvent_LogEvent" />
+          <EntitySetMapping Name="AvisAffiches">
+            <EntityTypeMapping TypeName="CNGLUTTEDBModel.AvisAffiche">
+              <MappingFragment StoreEntitySet="AvisAffiche">
+                <ScalarProperty Name="AfficheID" ColumnName="AfficheID" />
+                <ScalarProperty Name="DateAvis" ColumnName="DateAvis" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Auteur" ColumnName="Auteur" />
+                <ScalarProperty Name="AvisAfficheID" ColumnName="AvisAfficheID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

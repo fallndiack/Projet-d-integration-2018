@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActualiteAdminController.cs" />
     <Compile Include="Controllers\ActualiteController.cs" />
     <Compile Include="Controllers\AfficheController.cs" />
     <Compile Include="Controllers\AfficheUserController.cs" />
@@ -655,6 +656,12 @@
     <Content Include="Views\Actualite\Index.cshtml" />
     <Content Include="Views\Avis\LaisserUnAvis.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\ActualiteAdmin\Create.cshtml" />
+    <Content Include="Views\ActualiteAdmin\Delete.cshtml" />
+    <Content Include="Views\ActualiteAdmin\Details.cshtml" />
+    <Content Include="Views\ActualiteAdmin\Edit.cshtml" />
+    <Content Include="Views\ActualiteAdmin\Index.cshtml" />
+    <Content Include="Views\Actualite\SingleActuDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

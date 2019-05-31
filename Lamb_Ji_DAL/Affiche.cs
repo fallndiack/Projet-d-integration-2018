@@ -11,37 +11,25 @@ namespace Lamb_Ji_DAL
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Affiche
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Affiche()
         {
             this.AvisAffiches = new HashSet<AvisAffiche>();
-
-           
         }
     
         public int AfficheID { get; set; }
-        [Required(ErrorMessage = "Le nom est requis!")]
-        [DisplayName("Nom de l'Affiche")]
         public string AfficheNom { get; set; }
-        [DisplayName("Combat")]
         public int CombatID { get; set; }
         public int Lutteur_A { get; set; }
         public int Lutteru_B { get; set; }
-        [Required(ErrorMessage = "La date du combat est requis!")]
-        [DisplayName("Date du Combat")]
-
         public Nullable<System.DateTime> DateCombat { get; set; }
         public string Vaincqueur { get; set; }
-        [DisplayName("Image de l'Affiche")]
         public string imageUrl { get; set; }
-        public  double Note { get; set; }
+        public double Note { get; set; }
 
-        public virtual AvisAffiche AvisAffiche { get; set; }
         public virtual Lutteur Lutteur { get; set; }
         public virtual Lutteur Lutteur1 { get; set; }
         public virtual Combat Combat { get; set; }

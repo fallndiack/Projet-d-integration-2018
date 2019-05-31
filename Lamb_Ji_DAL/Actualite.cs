@@ -18,5 +18,7 @@ namespace Lamb_Ji_DAL
         public string actuTitre { get; set; }
         public string actuTexte { get; set; }
         public string actuImgUrl { get; set; }
+        public string actuNom { get; set; }
+        public Nullable<System.DateTime> actuDate { get; set; }
     }
 }
