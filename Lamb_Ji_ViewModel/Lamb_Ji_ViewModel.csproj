@@ -50,6 +50,7 @@
     <Compile Include="CombatIndexData.cs" />
     <Compile Include="CombatViewModel.cs" />
     <Compile Include="ContactViewModel.cs" />
+    <Compile Include="HistoriqueIndexData.cs" />
     <Compile Include="ImageDto.cs" />
     <Compile Include="LaisserUnAvisViewModel.cs" />
     <Compile Include="LutteurViewModel.cs" />

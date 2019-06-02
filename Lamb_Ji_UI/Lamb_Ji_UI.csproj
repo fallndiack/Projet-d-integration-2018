@@ -211,6 +211,7 @@
     <Compile Include="Controllers\CombatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\GallerieController.cs" />
+    <Compile Include="Controllers\HistoriqueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LutteurController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -662,6 +663,7 @@
     <Content Include="Views\ActualiteAdmin\Edit.cshtml" />
     <Content Include="Views\ActualiteAdmin\Index.cshtml" />
     <Content Include="Views\Actualite\SingleActuDetail.cshtml" />
+    <Content Include="Views\Historique\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
