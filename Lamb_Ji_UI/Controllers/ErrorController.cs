@@ -6,15 +6,16 @@ using System.Web.Mvc;
 
 namespace Lamb_Ji_UI.Controllers
 {
-    public class HomeController : Controller
+    public class ErrorController : Controller
     {
+        // GET: Error
         public ActionResult Index()
         {
             return View();
         }
-
-   
-
-    
+        public ActionResult NotFound()
+        {
+            return View();
+        }
     }
 }
