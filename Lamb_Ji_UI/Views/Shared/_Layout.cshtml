@@ -19,18 +19,22 @@
         #RedMenu {
             background-color: #2a405a;
             border-color: #2a405a;
-        
+            
         }
 
             #RedMenu ul li {
                 color: #ffffff;
             }
 
-                #RedMenu ul li:hover {
-                    
-                    border-top: 5px solid #f1dc4f;
-                    background-color: #196276;
-                }
+           #RedMenu ul li:hover {                    
+           border-top: 5px solid #f1dc4f;
+           background-color: #196276;
+           }
+        .custom-nav-container {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+ 
         
     </style>
     <script type="text/javascript">
@@ -55,57 +59,95 @@
 <body>
 
     <div class="panel panel-body" style="min-height:256px">
+     
+            <div class="navbar navbar-inverse  navbar-fixed-top" id="RedMenu">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:#000">
+                            <span class="icon-bar" style="background-color:#ffffff"></span>
+                            <span class="icon-bar" style="background-color:#ffffff"></span>
+                            <span class="icon-bar" style="background-color:#ffffff"></span>
+                        </button>
+                        @Html.ActionLink(" LAMB_JI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand glyphicon glyphicon-home" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Voir les Combats à venir!", "Index", "AfficheUser")</li>
+                            <li>@Html.ActionLink(" Nous Contacter", "Index", "Contact", null, new { @class = "glyphicon glyphicon-envelope" })</li>
+
+
+                            @*<li>@Html.ActionLink("Slider", "AddImage", "Slider")</li>*@
+                            @*<li>@Html.ActionLink("Stades", "Index", "Stade")</li>*@
+                            @*<li>@Html.ActionLink("Histo", "Index", "Historique")</li>*@
+                            @*<li>@Html.ActionLink("Actus", "Index", "ActualiteAdmin")</li>*@
+                            @*<li>@Html.ActionLink("Arbitres", "Index", "Arbitre")</li>*@
+
+                            <li>
+                                <div class="btn-group">
+                                    <button type="button" dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
+                                    </button>
+                                    <!-- dropdown menu items-->
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="../Club/Index"><span class="glyphicon glyphicon-pencil"></span> Clubs</a></li>
+                                        <li><a href="../Stade/Index"><span class="glyphicon glyphicon-cog"></span> Stades</a></li>
+                                        <li><a href="../Arbitre/Index"><span class="glyphicon glyphicon-pencil"></span> Arbitres</a></li>
+                                        <li><a href="../Slider/AddImage"><span class="glyphicon glyphicon-cog"></span> Slider</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li>@Html.ActionLink("Histo", "Index", "Historique")</li>
+
+                            <li>
+                                <div class="btn-group">
+                                    <button type="button" dropdown-toggle" data-toggle="dropdown">
+                                        <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
+                                    </button>
+
+                                    <!-- dropdown menu items-->
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="../Lutteur/Index"><span class="glyphicon glyphicon-pencil"></span> Lutteurs</a></li>
+                                        <li><a href="../Affiche/Index"><span class="glyphicon glyphicon-cog"></span> Affiches</a></li>
+                                        <li><a href="../Combat/Index"><span class="glyphicon glyphicon-pencil"></span> Combats</a></li>
+                                        <li><a href="../ActualiteAdmin/Index"><span class="glyphicon glyphicon-cog"></span> Actus</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+
+
+
+
+
+
+
+                        </ul>
+                     
+                            @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
        
-        <div class="navbar navbar-inverse  navbar-fixed-top navbar-expand-lg" id="RedMenu">
-            <div class="container container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:#000">
-                        <span class="icon-bar" style="background-color:#ffffff"></span>
-                        <span class="icon-bar" style="background-color:#ffffff"></span>
-                        <span class="icon-bar" style="background-color:#ffffff"></span>
-                    </button>
-                    @Html.ActionLink(" LAMB_JI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand glyphicon glyphicon-home"  })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Clubs", "Index", "Club")</li>
-                        <li>@Html.ActionLink("Slider", "AddImage", "Slider")</li>
-                        <li>@Html.ActionLink("Stades", "Index", "Stade")</li>
-                        <li>@Html.ActionLink("Histo", "Index", "Historique")</li>
-                        <li>@Html.ActionLink("Actus", "Index", "ActualiteAdmin")</li>
-                        <li>@Html.ActionLink("Arbitres", "Index", "Arbitre")</li>
-                        <li>@Html.ActionLink("Lutteurs", "Index", "Lutteur")</li>
-                        <li>@Html.ActionLink(" Affiches", "Index", "Affiche")</li>
-                        <li>@Html.ActionLink("Combats", "Index", "Combat")</li>
-                        <li>@Html.ActionLink(" Nous Contacter", "Index", "Contact", null, new { @class = "glyphicon glyphicon-envelope" })</li>
+            <div class="col-md-3">
 
-                    
-
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-
-            @{ Html.RenderAction("Menu", "MenuAccueil");}
-
-        </div>
-        <div class="col-md-9">
-
-
-
-            @{ Html.RenderAction("SliderAccueil", "Slider");}
-
-            <div class="container body-content">
-                @RenderBody()
-                @*<hr />*@
+                @{ Html.RenderAction("Menu", "MenuAccueil");}
 
             </div>
-        </div>
+            <div class="col-md-9">
 
-    </div>
+
+
+                @{ Html.RenderAction("SliderAccueil", "Slider");}
+
+                <div class="container body-content">
+                    @RenderBody()
+                    @*<hr />*@
+
+                </div>
+            </div>
+
+        </div>
     <footer>
         @Html.Partial("_footer")
     </footer>
