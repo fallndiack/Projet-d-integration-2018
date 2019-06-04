@@ -12,14 +12,13 @@ namespace Lamb_Ji_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class aspnet_Profile
+    public partial class AspNetUserClaim
     {
-        public System.Guid UserId { get; set; }
-        public string PropertyNames { get; set; }
-        public string PropertyValuesString { get; set; }
-        public byte[] PropertyValuesBinary { get; set; }
-        public System.DateTime LastUpdatedDate { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual aspnet_Users aspnet_Users { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

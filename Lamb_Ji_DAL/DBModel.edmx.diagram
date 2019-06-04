@@ -26,31 +26,19 @@
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Licence_Lutteur" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Licence_TypeLutteur" />
         <AssociationConnector Association="CNGLUTTEDBModel.Arbitre_Combat" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_Applications" Width="1.5" PointX="9.375" PointY="18.875" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_Membership" Width="1.5" PointX="11.625" PointY="17.5" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_Paths" Width="1.5" PointX="11.625" PointY="23.625" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="13.875" PointY="27" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="13.875" PointY="23.625" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_Profile" Width="1.5" PointX="16.125" PointY="19.875" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_Roles" Width="1.5" PointX="11.625" PointY="26.75" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_SchemaVersions" Width="1.5" PointX="9.375" PointY="11.75" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_Users" Width="1.5" PointX="13.875" PointY="19.375" />
-        <EntityTypeShape EntityType="CNGLUTTEDBModel.aspnet_WebEvent_Events" Width="1.5" PointX="11.375" PointY="11.75" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_luttA" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_Lutteur" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Me__Appli__4589517F" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Pa__Appli__7720AD13" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Ro__Appli__640DD89F" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Us__Appli__3552E9B6" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Me__UserI__467D75B8" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Pe__PathI__00AA174D" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Pe__PathI__7CD98669" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Pe__UserI__019E3B86" />
-        <AssociationConnector Association="CNGLUTTEDBModel.FK__aspnet_Pr__UserI__5A846E65" />
-        <AssociationConnector Association="CNGLUTTEDBModel.aspnet_UsersInRoles" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_Affiche_Combat" />
         <EntityTypeShape EntityType="CNGLUTTEDBModel.AvisAffiche" Width="1.5" PointX="3.875" PointY="5.875" />
         <AssociationConnector Association="CNGLUTTEDBModel.FK_AvisAffiche_Affiche" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.C__MigrationHistory" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.AspNetRole" Width="1.5" PointX="13.375" PointY="10.5" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.AspNetUserClaim" Width="1.5" PointX="17.875" PointY="11.625" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.AspNetUserLogin" Width="1.5" PointX="17.875" PointY="9" />
+        <EntityTypeShape EntityType="CNGLUTTEDBModel.AspNetUser" Width="1.5" PointX="15.625" PointY="9.375" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CNGLUTTEDBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="CNGLUTTEDBModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

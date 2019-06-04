@@ -12,12 +12,12 @@ namespace Lamb_Ji_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class aspnet_PersonalizationAllUsers
+    public partial class AspNetUserLogin
     {
-        public System.Guid PathId { get; set; }
-        public byte[] PageSettings { get; set; }
-        public System.DateTime LastUpdatedDate { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual aspnet_Paths aspnet_Paths { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

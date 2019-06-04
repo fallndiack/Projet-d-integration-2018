@@ -12,15 +12,11 @@ namespace Lamb_Ji_DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class aspnet_PersonalizationPerUser
+    public partial class C__MigrationHistory
     {
-        public System.Guid Id { get; set; }
-        public Nullable<System.Guid> PathId { get; set; }
-        public Nullable<System.Guid> UserId { get; set; }
-        public byte[] PageSettings { get; set; }
-        public System.DateTime LastUpdatedDate { get; set; }
-    
-        public virtual aspnet_Paths aspnet_Paths { get; set; }
-        public virtual aspnet_Users aspnet_Users { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
