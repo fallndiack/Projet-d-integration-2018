@@ -251,12 +251,14 @@
             $.ajax({
                 type: "GET",
                 url: url,
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
                 success: function (data) {
-                    var obj = JSON.parse(data);
-                    $("#StaID").val(obj.StadeID);
-                    $("#StaName").val(obj.StadeName);
-                    $("#StaAdresse").val(obj.StadeAdresse);
-                    $("#ImageUpload").val(obj.imageUrl);
+                   
+                    $("#StaID").val(data.StadeID);
+                    $("#StaName").val(data.StadeName);
+                    $("#StaAdresse").val(data.StadeAdresse);
+                    $("#ImageUpload").val(data.imageUrl);
 
 
                 }

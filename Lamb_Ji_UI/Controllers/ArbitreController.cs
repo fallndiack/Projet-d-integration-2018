@@ -95,12 +95,13 @@ namespace Lamb_Ji_UI.Controllers
         public JsonResult GetArbitreById(int ArbitreID)
         {
             Arbitre model = db.Arbitres.Where(x => x.ArbitreID == ArbitreID).FirstOrDefault();
-            string value = string.Empty;
-            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
-            return Json(value, JsonRequestBehavior.AllowGet);
+            ArbitreViewModel Avm = new ArbitreViewModel();
+            Avm.ArbitreName = model.ArbitreName;
+            Avm.ArbitreID = model.ArbitreID;
+            Avm.ArbitreEmail = model.ArbitreEmail;
+            Avm.ArbitreDateNaissance = model.ArbitreDateNaissance;
+            Avm.imageUrl = model.imageUrl;
+            return Json(Avm, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult DeleteArbitreRecord(int ArbitreID)

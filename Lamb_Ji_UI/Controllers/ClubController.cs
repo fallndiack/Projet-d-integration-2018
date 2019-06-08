@@ -98,12 +98,15 @@ namespace Lamb_Ji_UI.Controllers
         public JsonResult GetClubById(int ClubID)
         {
             Club model = db.Clubs.Where(x => x.ClubID == ClubID).FirstOrDefault();
-            string value = string.Empty;
-            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
-            return Json(value, JsonRequestBehavior.AllowGet);
+            ClubViewModel clubvm = new ClubViewModel();
+            clubvm.ClubID = model.ClubID;
+            clubvm.ClubName = model.ClubName;
+            clubvm.ClubAdresse = model.ClubAdresse;
+            clubvm.ClubEmail = model.ClubEmail;
+            clubvm.ClubDateCreation = model.ClubDateCreation;
+            clubvm.imageUrl = model.imageUrl;
+
+            return Json(clubvm, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult DeleteClubRecord(int ClubID)

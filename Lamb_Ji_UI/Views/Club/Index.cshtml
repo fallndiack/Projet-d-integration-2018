@@ -3,7 +3,11 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
 <h2>Gestion des Clubs</h2>
 
 <div class="container" style="margin-top: 3%">
@@ -281,14 +285,16 @@
             $.ajax({
                 type: "GET",
                 url: url,
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
                 success: function (data) {
-                    var obj = JSON.parse(data);
-                    $("#ClubID").val(obj.ClubID);
-                    $("#clubName").val(obj.ClubName);
-                    $("#clubAdresse").val(obj.ClubAdresse);
-                    $('#clubMail').val(obj.ClubEmail);
-                    $('#clubDateCrea').val(obj.ClubDateCreation);
-                    $("#ImageUpload").val(obj.imageUrl);
+                    //var obj = JSON.parse(data);
+                    $("#ClubID").val(data.ClubID);
+                    $("#clubName").val(data.ClubName);
+                    $("#clubAdresse").val(data.ClubAdresse);
+                    $('#clubMail').val(data.ClubEmail);
+                    $('#clubDateCrea').val(data.ClubDateCreation);
+                    $("#ImageUpload").val(data.imageUrl);
 
 
                 }

@@ -11,14 +11,24 @@ namespace Lamb_Ji_DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Actualite
     {
         public int actuID { get; set; }
+        [Required(ErrorMessage = "Le Titre est requis!")]
+        [DisplayName("Titre de l'Actu")]
         public string actuTitre { get; set; }
+        [Required(ErrorMessage = "Le nom est requis!")]
+        [DisplayName("Contenu")]
         public string actuTexte { get; set; }
+        [DisplayName("Image de l'Actu")]
         public string actuImgUrl { get; set; }
+        [Required(ErrorMessage = "Le nom est requis!")]
+        [DisplayName("Nom de l'Actu")]
         public string actuNom { get; set; }
+        [DisplayName("Date de publication")]
         public Nullable<System.DateTime> actuDate { get; set; }
     }
 }

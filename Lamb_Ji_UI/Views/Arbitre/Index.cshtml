@@ -258,13 +258,14 @@
             $.ajax({
                 type: "GET",
                 url: url,
-                success: function (data) {
-                    var obj = JSON.parse(data);
-                    $("#ArbtID").val(obj.ArbitreID);
-                    $("#ArbtName").val(obj.ArbitreName);
-                    $("#ArbtEmail").val(obj.ArbitreEmail);
-                    $("#ArbtDateNaissance").val(obj.ArbitreDateNaissance);
-                    $("#ImageUpload").val(obj.imageUrl);
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (data) {                    
+                    $("#ArbtID").val(data.ArbitreID);
+                    $("#ArbtName").val(data.ArbitreName);
+                    $("#ArbtEmail").val(data.ArbitreEmail);
+                    $("#ArbtDateNaissance").val(data.ArbitreDateNaissance);
+                    $("#ImageUpload").val(data.imageUrl);
 
 
                 }

@@ -93,12 +93,12 @@ namespace Lamb_Ji_UI.Controllers
         public JsonResult GetStadeById(int StadeID)
         {
             Stade model = db.Stades.Where(x => x.StadeID == StadeID).FirstOrDefault();
-            string value = string.Empty;
-            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
-            return Json(value, JsonRequestBehavior.AllowGet);
+            StadeViewModel stadevm = new StadeViewModel();
+            stadevm.StadeID = model.StadeID;
+            stadevm.StadeName = model.StadeName;
+            stadevm.StadeAdresse = model.StadeAdresse;
+            stadevm.imageUrl = model.imageUrl;
+            return Json(stadevm, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult DeleteStadeRecord(int StadeID)

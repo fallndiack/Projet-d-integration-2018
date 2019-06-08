@@ -3,7 +3,11 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
 <h2>Editer une Actualité</h2>
 
 @using (Html.BeginForm("Edit", "ActualiteAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -39,13 +43,13 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.actuImgUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.actuImgUrl, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.actuImgUrl, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>*@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
@@ -58,7 +62,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.actuImgUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <img src="~/Images/Image-Affiche/@Url.Content(Model.actuImgUrl)" style="margin:10px" height="250" width="200" id="imagePreview" />
+                    <img src="~/Images/Image-Actu/@Url.Content(Model.actuImgUrl)" style="margin:10px" height="250" width="200" id="imagePreview" />
                     <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
                 </div>
             </div>
