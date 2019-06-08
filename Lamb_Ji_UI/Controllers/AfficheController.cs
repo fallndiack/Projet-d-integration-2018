@@ -91,6 +91,16 @@ namespace Lamb_Ji_UI.Controllers
             return View(affiche);
         }
 
+        public ActionResult GetLutteurPourCombat(int combatId)
+        {
+            var combat = db.Combats.Where(c => c.CombatID == combatId).SingleOrDefault();
+            var lutts = db.Lutteurs.Where(l => l.LutteurPoids >= combat.Categorie.Categorie_Min &&
+             l.LutteurPoids <= combat.Categorie.Categorie_Max).ToList();
+            
+            return Json(lutts, JsonRequestBehavior.AllowGet);
+        }
+
+
         // GET: Affiche/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -22,6 +22,7 @@ namespace Lamb_Ji_ViewModel
         public int Lutteru_B { get; set; }
         public Nullable<System.DateTime> DateCombat { get; set; }
         public string Vaincqueur { get; set; }
+        [DisplayName("Image")]
         public string imageUrl { get; set; }
         public double Note { get; set; }
 

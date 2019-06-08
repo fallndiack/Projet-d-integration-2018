@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -48,16 +49,46 @@ namespace Lamb_Ji_UI.Controllers
             return Json(LutteursVM, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetLutteurById(int LutteurID)
+        public JsonResult GetLutteurById(int id)
         {
-            Lutteur model = db.Lutteurs.Where(x => x.LutteurID == LutteurID).Include(c => c.Club).FirstOrDefault();
-            string value = string.Empty;
-            value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
-            {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            });
-            return Json(value, JsonRequestBehavior.AllowGet);
+            LutteurViewModel Lvm = new LutteurViewModel();
+            
+            Lutteur lut = db.Lutteurs.Where(x => x.LutteurID == id).Include(c => c.Club).FirstOrDefault();
+           
+            Lvm.LutteurID = lut.LutteurID;
+            Lvm.LutteurClubID = lut.LutteurClubID;
+            Lvm.LutteurName = lut.LutteurName;
+            Lvm.LutteurEmail = lut.LutteurEmail;
+            Lvm.LutteurDescription = lut.LutteurDescription;
+            Lvm.LutteurAddresse = lut.LutteurAddresse;
+            //Lvm.LutteurDateNaissance = lut.LutteurDateNaissance;
+
+           
+            //Lvm.LutteurDateNaissance = (DateTime.Parse(Lvm.LutteurDateNaissance.ToString("dd MMM yyyy",
+            //        CultureInfo.CreateSpecificCulture("fr-FR"))));
+
+            DateTime dt = lut.LutteurDateNaissance;
+            CultureInfo iv = CultureInfo.InvariantCulture;
+            Lvm.LutteurDateNaissance = Convert.ToDateTime(dt.ToString("d", iv));
+
+            Lvm.LutteurPoids = lut.LutteurPoids;
+            Lvm.LutteurTelephone = lut.LutteurTelephone;
+            
+            Lvm.imageUrl = lut.imageUrl;
+            //Lvm.Club = lut.Club;
+            //string value = string.Empty;
+            //value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
+            //{
+            //    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            //});
+            return Json(Lvm, JsonRequestBehavior.AllowGet);
         }
+
+      
+
+
+
+
 
         [HttpPost]
         public ActionResult SaveDataInDatabase(LutteurViewModel model)
@@ -123,25 +154,38 @@ namespace Lamb_Ji_UI.Controllers
         public JsonResult DeleteLutteurRecord(int LutteurID)
         {
             bool result = false;
-            Licence lic = db.Licences.SingleOrDefault(a => a.LutteurID == LutteurID);
+           
             Lutteur Lut = db.Lutteurs.SingleOrDefault(x => x.LutteurID == LutteurID);
-            if (lic == null)
+            List<Licence> listLic = new List<Licence>();
+            listLic = db.Licences.Where(x => x.LutteurID == LutteurID).ToList();
+
+            try
             {
-                if (Lut != null)
+                if (listLic.Count > 0)
                 {
-                    db.Lutteurs.Remove(Lut);
+                    foreach (var lic in listLic)
+                    {
+                        db.Licences.Remove(lic);
+                    }
                     db.SaveChanges();
                     result = true;
                 }
-            }
-            else
-            {
-                db.Licences.Remove(lic);
-                db.Lutteurs.Remove(Lut);
-                db.SaveChanges();
-                result = true;
 
+                else
+                {
+
+                    db.Lutteurs.Remove(Lut);
+                    db.SaveChanges();
+                    result = true;
+
+                }
             }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
        

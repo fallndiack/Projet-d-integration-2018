@@ -8,6 +8,7 @@ using System.Web.Routing;
 using AutoMapper;
 using Lamb_Ji_DAL;
 using Lamb_Ji_ViewModel;
+using Newtonsoft.Json;
 
 namespace Lamb_Ji_UI
 {
@@ -19,6 +20,12 @@ namespace Lamb_Ji_UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            //{
+            //    Formatting = Newtonsoft.Json.Formatting.Indented,
+            //    ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //};
 
         }
     }

@@ -231,6 +231,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AppJs\lutteur.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -667,6 +668,7 @@
     <Content Include="Views\Actualite\SingleActuDetail.cshtml" />
     <Content Include="Views\Historique\Index.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -677,7 +679,6 @@
     <Folder Include="Images\Image-Gallerie\" />
     <Folder Include="Images\Image-Stade\" />
     <Folder Include="Videos\" />
-    <Folder Include="Views\Error\" />
     <Folder Include="Views\MenuAccueil\" />
   </ItemGroup>
   <ItemGroup>
