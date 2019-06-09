@@ -20,7 +20,7 @@ namespace Lamb_Ji_UI.Controllers
         {
             try
             {
-                var affiches = db.Affiches.OrderBy(x => Guid.NewGuid()).Take(4)
+                var affiches = db.Affiches
              .Include(a => a.Lutteur)
              .Include(a => a.Lutteur1)
              .Include(a => a.Combat)
@@ -55,6 +55,7 @@ namespace Lamb_Ji_UI.Controllers
         // GET: AfficheUser/Details/5
         public ActionResult DetailsAfficheAvecAvis(int id)
         {
+          
             try
             {
                 Affiche affiche = db.Affiches
@@ -65,7 +66,7 @@ namespace Lamb_Ji_UI.Controllers
                 List<AvisAffiche> listAvis = db.AvisAffiches.Where(c => c.AfficheID == id).ToList();
                 if (affiche == null)
                 {
-                    return HttpNotFound();
+                    return RedirectToAction("Index");
                 }
 
                 AfficheAvecAvis vm = new AfficheAvecAvis();
@@ -87,7 +88,7 @@ namespace Lamb_Ji_UI.Controllers
             catch (Exception)
             {
 
-                throw;
+                return RedirectToAction("Index", "Error");
             }
 
           

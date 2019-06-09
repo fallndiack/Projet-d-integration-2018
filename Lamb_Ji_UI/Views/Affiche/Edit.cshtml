@@ -81,18 +81,31 @@
                 </div>
             </div>
             <div class="col-md-6">
-                 @if (Model.imageUrl != null)
-                    {
-                     <div class="form-group">
-                   
+                @if (Model.imageUrl != null)
+              {
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <img src="~/Images/Image-Affiche/@Url.Content(Model.imageUrl)" style="margin:10px" height="250" width="200" id="imagePreview" />
+                            <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" 
+                                   onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                        </div>
+                    </div>
+              }
+
+                else 
+                {
+                <div class="form-group">
+
                     @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <img src="~/Images/Image-Affiche/@Url.Content(Model.imageUrl)" style="margin:10px" height="250" width="200" id="imagePreview" />
+                        <img src="~/Images/Image-Lutteur/default.png" style="margin:10px" height="250" width="200" id="imagePreview" />
                         <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
                     </div>
                 </div>
-                    }
-                
+                }
+
             </div>
         </div>
     </div>

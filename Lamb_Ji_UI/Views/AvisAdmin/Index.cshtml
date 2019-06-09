@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.AvisAffiche>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
+<h2>Liste de tous les Commentaires</h2>
+<br /><br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Auteur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateAvis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Affiche.AfficheNom)
+        </th>
+        <th>Suppression</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Auteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateAvis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Affiche.AfficheNom)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.AvisAfficheID }) |*@
+          
+            @Html.ActionLink("Supprimer", "Delete", new { id = item.AvisAfficheID }, new {@class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

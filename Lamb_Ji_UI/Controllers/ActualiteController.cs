@@ -41,7 +41,7 @@ namespace Lamb_Ji_UI.Controllers
             catch (Exception)
             {
 
-                throw;
+                return RedirectToAction("Index", "Error");
             }
 
         }

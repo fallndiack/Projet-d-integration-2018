@@ -53,7 +53,7 @@ namespace Lamb_Ji_ViewModel
 
         [DisplayName("Club")]
         public string ClubName { get; set; }
-        //[NotMapped]
+        [NotMapped]
         [DataType(DataType.Upload)]
         public HttpPostedFileBase ImageUpload { get; set; }
 

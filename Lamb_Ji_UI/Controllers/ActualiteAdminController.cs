@@ -87,7 +87,7 @@ namespace Lamb_Ji_UI.Controllers
             Actualite actualite = db.Actualites.Find(id);
             if (actualite == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(actualite);
         }
@@ -119,7 +119,7 @@ namespace Lamb_Ji_UI.Controllers
                 catch (Exception)
                 {
 
-                    throw;
+                    return RedirectToAction("Index", "Error");
                 }
                
             }
@@ -131,7 +131,7 @@ namespace Lamb_Ji_UI.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Error");
             }
             Actualite actualite = db.Actualites.Find(id);
             if (actualite == null)

@@ -206,6 +206,7 @@
     <Compile Include="Controllers\AfficheController.cs" />
     <Compile Include="Controllers\AfficheUserController.cs" />
     <Compile Include="Controllers\ArbitreController.cs" />
+    <Compile Include="Controllers\AvisAdminController.cs" />
     <Compile Include="Controllers\AvisController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
     <Compile Include="Controllers\CombatController.cs" />
@@ -636,7 +637,6 @@
     <Content Include="Views\TypeLutte\LutteGrecoRomaine.cshtml" />
     <Content Include="Views\Combat\Create.cshtml" />
     <Content Include="Views\Combat\Delete.cshtml" />
-    <Content Include="Views\Combat\Details.cshtml" />
     <Content Include="Views\Combat\Edit.cshtml" />
     <Content Include="Views\Combat\Index.cshtml" />
     <Content Include="Views\Gallerie\Index.cshtml" />
@@ -651,7 +651,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Affiche\Create.cshtml" />
     <Content Include="Views\Affiche\Delete.cshtml" />
-    <Content Include="Views\Affiche\Details.cshtml" />
     <Content Include="Views\Affiche\Edit.cshtml" />
     <Content Include="Views\Affiche\Index.cshtml" />
     <Content Include="Views\AfficheUser\Details.cshtml" />
@@ -662,13 +661,16 @@
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\ActualiteAdmin\Create.cshtml" />
     <Content Include="Views\ActualiteAdmin\Delete.cshtml" />
-    <Content Include="Views\ActualiteAdmin\Details.cshtml" />
     <Content Include="Views\ActualiteAdmin\Edit.cshtml" />
     <Content Include="Views\ActualiteAdmin\Index.cshtml" />
     <Content Include="Views\Actualite\SingleActuDetail.cshtml" />
     <Content Include="Views\Historique\Index.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\AvisAdmin\Create.cshtml" />
+    <Content Include="Views\AvisAdmin\Delete.cshtml" />
+    <Content Include="Views\AvisAdmin\Edit.cshtml" />
+    <Content Include="Views\AvisAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

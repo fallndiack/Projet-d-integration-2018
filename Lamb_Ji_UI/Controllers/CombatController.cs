@@ -101,7 +101,7 @@ namespace Lamb_Ji_UI.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Error");
             }
             Combat combat = db.Combats
                 .Include(i => i.Arbitres)
@@ -110,7 +110,7 @@ namespace Lamb_Ji_UI.Controllers
             PopulateAssignedArbitre(combat);
             if (combat == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.CategorieID = new SelectList(db.Categories, "CategorieID", "Categorie_Libele", combat.CategorieID);
             ViewBag.StadeID = new SelectList(db.Stades, "StadeID", "StadeName", combat.StadeID);
@@ -144,7 +144,7 @@ namespace Lamb_Ji_UI.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Error");
             }
             Combat combatToUpdate = db.Combats
                 .Include(i => i.Arbitres)

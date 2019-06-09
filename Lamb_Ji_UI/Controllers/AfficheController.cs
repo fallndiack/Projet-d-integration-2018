@@ -130,22 +130,33 @@ namespace Lamb_Ji_UI.Controllers
             if (ModelState.IsValid)
             {
 
-                if (ImageUpload != null)
+                try
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
-                    string extension = Path.GetExtension(ImageUpload.FileName);
-                    fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
-                    affiche.imageUrl = fileName;
-                    ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
+                    if (ImageUpload != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
+                        string extension = Path.GetExtension(ImageUpload.FileName);
+                        fileName = fileName + DateTime.Now.ToString("yymmssff") + extension;
+                        affiche.imageUrl = fileName;
+                        ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
+                    }
+                    db.Entry(affiche).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                db.Entry(affiche).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                catch (Exception)
+                {
+
+                    return RedirectToAction("Index", "Error");
+                }
             }
+
+
             ViewBag.AfficheID = new SelectList(db.AvisAffiches, "AvisAfficheID", "Auteur", affiche.AfficheID);
             ViewBag.Lutteur_A = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteur_A);
             ViewBag.Lutteru_B = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteru_B);
             ViewBag.CombatID = new SelectList(db.Combats, "CombatID", "Combat_Description", affiche.CombatID);
+
             return View(affiche);
         }
 

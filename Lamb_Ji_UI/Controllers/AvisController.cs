@@ -41,7 +41,6 @@ namespace Lamb_Ji_UI.Controllers
             {
                 throw new Exception("Impossible de parser la note"+note);
             }
-
             nouvelAvis.note = dnote;
             using (var context = new CNGLUTTEDBEntities())
             {
