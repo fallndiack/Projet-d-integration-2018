@@ -107,6 +107,7 @@ namespace Lamb_Ji_UI.Controllers
         public JsonResult DeleteArbitreRecord(int ArbitreID)
         {
             bool result = false;
+            
             Arbitre Arbt = db.Arbitres.SingleOrDefault(x => x.ArbitreID == ArbitreID);
             if (Arbt != null)
                 {
@@ -114,10 +115,10 @@ namespace Lamb_Ji_UI.Controllers
                     db.SaveChanges();
                     result = true;
                 }
-            
-           
 
-            
+       
+
+
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

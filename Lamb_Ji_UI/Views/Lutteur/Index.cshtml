@@ -354,13 +354,17 @@
                 return false;
             }
 
+           
 
         
 
 
             //Show the popup modal for edit lutteur
             function EditLutteurRecord(ID) {
+
                 
+
+                var date = null;
                 //var url = "/Lutteur/GetLutteurById?id=" + ID;
                 $("#ModalTitle").html("Modifier un Lutteur"); 
                      $('#chargement').hide();
@@ -376,7 +380,10 @@
                         $("#LutName").val(result.LutteurName);
                         $("#LutEmail").val(result.LutteurEmail);
                         $("#LutPoids").val(result.LutteurPoids);
-                        $("#LutDateNaissance").val(result.LutteurDateNaissance);
+
+                        
+                        
+                        $("#LutDateNaissance").val(ToJavaScriptDate(result.LutteurDateNaissance));
                         $("#LutAddresse").val(result.LutteurAddresse);
                         $("#LutDesc").val(result.LutteurDescription);
                         $("#LutTelephone").val(result.LutteurTelephone);
@@ -387,13 +394,19 @@
                        
                     },
 
-            error: function (errormessage) {
-                toastr.error("Une erreur s'est produite, veuillez réessayer");
-            }
+                        error: function (errormessage) {
+                            toastr.error("Une erreur s'est produite, veuillez réessayer");
+                        }
                 });
-
+            
             }
 
+            function ToJavaScriptDate(value) {
+                var pattern = /Date\(([^)]+)\)/;
+                var results = pattern.exec(value);
+                var dt = new Date(parseFloat(results[1]));
+                return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+            }
 
 
             //Show popup modal for DeleteConfirmation
@@ -426,7 +439,7 @@
                 });
             }
 
-
+           
 
     </script>
 

@@ -34,7 +34,10 @@
             padding-left: 0px !important;
             padding-right: 0px !important;
         }
- 
+        .btn-group {
+            float: right; /* last li item */
+            top: 10px;
+        }
         
     </style>
     <script type="text/javascript">
@@ -77,43 +80,41 @@
                             <li>@Html.ActionLink(" Nous Contacter", "Index", "Contact", null, new { @class = "glyphicon glyphicon-envelope" })</li>
 
 
-                           
-
-                            <li>
-                                <div class="btn-group">
-                                    <button type="button" dropdown-toggle" data-toggle="dropdown">
-                                        <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
-                                    </button>
-                                    <!-- dropdown menu items-->
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="../Club/Index"><span class="glyphicon glyphicon-pencil"></span> Clubs</a></li>
-                                        <li><a href="../Stade/Index"><span class="glyphicon glyphicon-cog"></span> Stades</a></li>
-                                        <li><a href="../Arbitre/Index"><span class="glyphicon glyphicon-pencil"></span> Arbitres</a></li>
-                                        <li><a href="../AvisAdmin/Index"><span class="glyphicon glyphicon-pencil"></span> Comments</a></li>
-                                        <li><a href="../Slider/AddImage"><span class="glyphicon glyphicon-cog"></span> Slider</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="btn-group">
-                                    <button type="button" dropdown-toggle" data-toggle="dropdown">
-                                        <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
-                                    </button>
-                                    <!-- dropdown menu items-->
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="../Lutteur/Index"><span class="glyphicon glyphicon-pencil"></span> Lutteurs</a></li>
-                                        <li><a href="../Affiche/Index"><span class="glyphicon glyphicon-cog"></span> Affiches</a></li>
-                                        <li><a href="../Combat/Index"><span class="glyphicon glyphicon-pencil"></span> Combats</a></li>
-                                        <li><a href="../Historique/Index"><span class="glyphicon glyphicon-pencil"></span> Historiques</a></li>
-                                        <li><a href="../ActualiteAdmin/Index"><span class="glyphicon glyphicon-cog"></span> Actus</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-
+                            @if (User.IsInRole("Admin"))
+                             {
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
+                                        </button>
+                                        <!-- dropdown menu items-->
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="../Club/Index"><span class="glyphicon glyphicon-cog"></span> Clubs</a></li>
+                                            <li><a href="../Stade/Index"><span class="glyphicon glyphicon-cog"></span> Stades</a></li>
+                                            <li><a href="../Arbitre/Index"><span class="glyphicon glyphicon-cog"></span> Arbitres</a></li>
+                                            <li><a href="../AvisAdmin/Index"><span class="glyphicon glyphicon-cog"></span> Comments</a></li>
+                                            <li><a href="../Slider/AddImage"><span class="glyphicon glyphicon-cog"></span> Slider</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
+                                        </button>
+                                        <!-- dropdown menu items-->
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="../Lutteur/Index"><span class="glyphicon glyphicon-cog"></span> Lutteurs</a></li>
+                                            <li><a href="../Affiche/Index"><span class="glyphicon glyphicon-cog"></span> Affiches</a></li>
+                                            <li><a href="../Combat/Index"><span class="glyphicon glyphicon-cog"></span> Combats</a></li>
+                                            <li><a href="../Historique/Index"><span class="glyphicon glyphicon-cog"></span> Historiques</a></li>
+                                            <li><a href="../ActualiteAdmin/Index"><span class="glyphicon glyphicon-cog"></span> Actus</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
 
 
-
+                             }
 
 
                         </ul>

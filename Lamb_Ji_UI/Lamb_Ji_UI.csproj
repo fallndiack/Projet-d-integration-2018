@@ -212,7 +212,7 @@
     <Compile Include="Controllers\CombatController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\GallerieController.cs" />
+    <Compile Include="Controllers\GalerieController.cs" />
     <Compile Include="Controllers\HistoriqueController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LutteurController.cs" />
@@ -639,7 +639,7 @@
     <Content Include="Views\Combat\Delete.cshtml" />
     <Content Include="Views\Combat\Edit.cshtml" />
     <Content Include="Views\Combat\Index.cshtml" />
-    <Content Include="Views\Gallerie\Index.cshtml" />
+    <Content Include="Views\Galerie\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />

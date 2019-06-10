@@ -175,6 +175,11 @@
                     {
                         "data": "ClubDateCreation",
                         'sortable': false,
+                        'render': function (jsonDate) {
+                            var date = new Date(parseInt(jsonDate.substr(6)));
+                            var month = date.getMonth() + 1;
+                            return date.getDate() + "/" + month + "/" + date.getFullYear();
+                        }
                     },
                     {
                         "data": "ClubID",
@@ -293,7 +298,7 @@
                     $("#clubName").val(data.ClubName);
                     $("#clubAdresse").val(data.ClubAdresse);
                     $('#clubMail').val(data.ClubEmail);
-                    $('#clubDateCrea').val(data.ClubDateCreation);
+                    $('#clubDateCrea').val(ToJavaScriptDate(data.ClubDateCreation));
                     $("#ImageUpload").val(data.imageUrl);
 
 
@@ -301,6 +306,14 @@
             });
 
         }
+
+        function ToJavaScriptDate(value) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
+
 
         //Show popup modal for DeleteConfirmation
         function DeleteClubRecord(ClubID) {

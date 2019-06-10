@@ -38,4 +38,3 @@ C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\bin\Debug\fr\EntityFra
 C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csproj.CoreCompileInputs.cache
 C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.dll
 C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.pdb
-C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_DAL\obj\Debug\Lamb_Ji_DAL.csprojResolveAssemblyReference.cache

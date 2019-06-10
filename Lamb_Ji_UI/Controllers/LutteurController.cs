@@ -61,26 +61,17 @@ namespace Lamb_Ji_UI.Controllers
             Lvm.LutteurEmail = lut.LutteurEmail;
             Lvm.LutteurDescription = lut.LutteurDescription;
             Lvm.LutteurAddresse = lut.LutteurAddresse;
-            //Lvm.LutteurDateNaissance = lut.LutteurDateNaissance;
-
-           
-            //Lvm.LutteurDateNaissance = (DateTime.Parse(Lvm.LutteurDateNaissance.ToString("dd MMM yyyy",
-            //        CultureInfo.CreateSpecificCulture("fr-FR"))));
-
-            DateTime dt = lut.LutteurDateNaissance;
-            CultureInfo iv = CultureInfo.InvariantCulture;
-            Lvm.LutteurDateNaissance = Convert.ToDateTime(dt.ToString("d", iv));
-
+            Lvm.LutteurDateNaissance = lut.LutteurDateNaissance;
             Lvm.LutteurPoids = lut.LutteurPoids;
             Lvm.LutteurTelephone = lut.LutteurTelephone;
+
             
             Lvm.imageUrl = lut.imageUrl;
-            //Lvm.Club = lut.Club;
-            //string value = string.Empty;
-            //value = JsonConvert.SerializeObject(model, Formatting.Indented, new JsonSerializerSettings
-            //{
-            //    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            //});
+
+            List<Club> LutList = db.Clubs.ToList();
+            ViewBag.ListOfLutteur = new SelectList(LutList, "ClubID", "ClubName");
+
+
             return Json(Lvm, JsonRequestBehavior.AllowGet);
         }
 
@@ -141,10 +132,10 @@ namespace Lamb_Ji_UI.Controllers
                                
                             }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
-                    throw ex;
+                    return RedirectToAction("Index", "Error");
                 }
             }
             return RedirectToAction("Index");

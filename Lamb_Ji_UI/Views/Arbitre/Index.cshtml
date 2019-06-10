@@ -264,7 +264,7 @@
                     $("#ArbtID").val(data.ArbitreID);
                     $("#ArbtName").val(data.ArbitreName);
                     $("#ArbtEmail").val(data.ArbitreEmail);
-                    $("#ArbtDateNaissance").val(data.ArbitreDateNaissance);
+                    $("#ArbtDateNaissance").val(ToJavaScriptDate(data.ArbitreDateNaissance));
                     $("#ImageUpload").val(data.imageUrl);
 
 
@@ -273,7 +273,12 @@
 
         }
 
-
+        function ToJavaScriptDate(value) {
+            var pattern = /Date\(([^)]+)\)/;
+            var results = pattern.exec(value);
+            var dt = new Date(parseFloat(results[1]));
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
 
 
         //Show popup modal for DeleteConfirmation

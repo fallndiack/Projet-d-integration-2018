@@ -20,10 +20,10 @@ namespace Lamb_Ji_UI.Controllers
         {
 
             List<MenuDynamique> list = new List<MenuDynamique>();
-            list.Add(new MenuDynamique { Lien = "/Lutteur/DisplayLuteurForUser", NomLien = "LUTTEURS" });
-            list.Add(new MenuDynamique { Lien = "/Actualite/Index", NomLien = "ACTUALITES" });
-            list.Add(new MenuDynamique { Lien = "/Galerie/Index", NomLien = "Gallerie de Lutte" });
-            list.Add(new MenuDynamique { Lien = "/TypeLutte/Index", NomLien = "Les Types de Lutte" });
+            list.Add(new MenuDynamique { Lien = "/Lutteur/DisplayLuteurForUser", NomLien = "Liste des Lutteurs" });
+            list.Add(new MenuDynamique { Lien = "/Actualite/Index", NomLien = "Voir les Actualités" });
+            list.Add(new MenuDynamique { Lien = "/Galerie/Index", NomLien = "Visiter la Galerie" });
+            list.Add(new MenuDynamique { Lien = "/TypeLutte/Index", NomLien = "La Lutte au Sénégal" });
 
 
 

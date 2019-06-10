@@ -80,7 +80,7 @@ namespace Lamb_Ji_UI.Controllers
                 vm.imageUrl = affiche.imageUrl;
                 if (listAvis.Count != 0)
                 {
-                    vm.Avis = listAvis;
+                    vm.Avis = listAvis.OrderByDescending(o => o.DateAvis).ToList();
                 }
 
                 return View(vm);

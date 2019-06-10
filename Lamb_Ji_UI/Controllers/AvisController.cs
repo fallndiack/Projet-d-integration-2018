@@ -12,6 +12,7 @@ namespace Lamb_Ji_UI.Controllers
     public class AvisController : Controller
     {
         // GET: Avis
+        [Authorize]
         public ActionResult LaisserUnAvis(int afficheID)
         {
 
@@ -29,13 +30,14 @@ namespace Lamb_Ji_UI.Controllers
                 return View(vm);
         }
         [HttpPost]
-        public ActionResult SaveComment(string nom, string commentaire, string note, int afficheID)
+        [Authorize]
+        public ActionResult SaveComment(string commentaire, string note, int afficheID)
         {
             AvisAffiche nouvelAvis = new AvisAffiche();
             
             nouvelAvis.DateAvis = DateTime.Now;
             nouvelAvis.Message = commentaire;
-            nouvelAvis.Auteur = nom;
+            nouvelAvis.Auteur = User.Identity.Name;
             double dnote = 0;
             if (!double.TryParse(note,NumberStyles.Any,CultureInfo.InvariantCulture, out dnote))
             {
