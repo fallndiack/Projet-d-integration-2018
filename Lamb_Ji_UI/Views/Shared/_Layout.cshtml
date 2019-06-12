@@ -72,10 +72,12 @@
                             <span class="icon-bar" style="background-color:#ffffff"></span>
                         </button>
                         @Html.ActionLink(" LAMB_JI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand glyphicon glyphicon-home" })
+                        <img src="~/Images/cgnLogo.ico" />
+
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                            @*<li>@Html.ActionLink("Accueil", "Index", "Home")</li>*@
                             <li>@Html.ActionLink("Voir les Combats à venir!", "Index", "AfficheUser")</li>
                             <li>@Html.ActionLink(" Nous Contacter", "Index", "Contact", null, new { @class = "glyphicon glyphicon-envelope" })</li>
 
