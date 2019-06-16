@@ -30,6 +30,11 @@ namespace Lamb_Ji_UI.Controllers
                 foreach (var aff in affiches)
                 {
                     List<AvisAffiche> listAvis = db.AvisAffiches.Where(c => c.AfficheID == aff.AfficheID).ToList();
+                    if (aff.Combat.Combat_Description.Length > 300)
+                    {
+                        aff.Combat.Combat_Description = aff.Combat.Combat_Description.Substring(0, 150)+"......";
+                    }
+                    
                     aff.AvisAffiches = listAvis;
                     if (aff.AvisAffiches.Count == 0)
                     {

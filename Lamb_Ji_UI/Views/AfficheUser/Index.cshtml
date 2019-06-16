@@ -49,43 +49,44 @@
         </div>
         <div class="col-md-8">
             <div>
-                @Html.DisplayFor(modelItem => item.Combat.Combat_Description)
+                @Html.DisplayFor(modelItem => item.Combat.Combat_Description)<br /><br />
             </div>
             <div>
-                <h4> @Html.DisplayFor(modelItem => item.Lutteur.LutteurName)</h4>
-                <span>VS</span>
-                <h4> @Html.DisplayFor(modelItem => item.Lutteur1.LutteurName)</h4>
+                <h4 style="color:navy"> @Html.DisplayFor(modelItem => item.Lutteur.LutteurName)</h4>
+                <span>--- VS ---</span>
+                <h4 style="color:navy"> @Html.DisplayFor(modelItem => item.Lutteur1.LutteurName)</h4>
             </div>
             <p>
                 le combat aura lieu le :
                 @Html.DisplayFor(modelItem => item.DateCombat) au stade
                 @Html.DisplayFor(modelItem => item.Combat.Stade.StadeName)
             </p>
+            <br />
             <div>
                 <article class="info-block">
-                 <p>
+                    <p>
+                        <span class="glyphicon glyphicon-star blue"></span>
+                        @if (item.Note > 1)
+                {
                     <span class="glyphicon glyphicon-star blue"></span>
-                    @if (item.Note > 1)
-                    {
-                        <span class="glyphicon glyphicon-star blue"></span>
-                    }
-                     @if (item.Note > 2)
-                    {
-                        <span class="glyphicon glyphicon-star blue"></span>
-                    }
-                     @if (item.Note > 3)
-                    {
-                        <span class="glyphicon glyphicon-star blue"></span>
-                    }
-                    @if (item.Note > 4)
-                    {
-                        <span class="glyphicon glyphicon-star blue"></span>
-                    }
+        }
+                        @if (item.Note > 2)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
+                        @if (item.Note > 3)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
+                        @if (item.Note > 4)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
 
-                    @item.Note / 5
-                </p>
+                        @item.Note / 5
+                    </p>
                 </article>
-               
+
             </div>
         </div>
     </div>

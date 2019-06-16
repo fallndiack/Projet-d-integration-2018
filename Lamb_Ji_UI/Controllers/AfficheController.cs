@@ -59,8 +59,21 @@ namespace Lamb_Ji_UI.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.AfficheID = new SelectList(db.AvisAffiches, "AvisAfficheID", "Auteur", affiche.AfficheID);
+                ViewBag.Lutteur_A = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteur_A);
+                ViewBag.Lutteru_B = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteru_B);
+                ViewBag.CombatID = new SelectList(db.Combats, "CombatID", "Combat_Description", affiche.CombatID);
+
+                ViewBag.result = "";
+
+                Affiche verifLut_date = db.Affiches.Where(x => x.DateCombat == affiche.DateCombat 
+                && (((x.Lutteur_A == affiche.Lutteur_A) || (x.Lutteur_A == affiche.Lutteru_B))
+                || ((x.Lutteru_B == affiche.Lutteur_A) || (x.Lutteru_B == affiche.Lutteru_B))
+                )).FirstOrDefault();
+
                 try
                 {
+                   
                     if (ImageUpload != null)
                     {
                         string fileName = Path.GetFileNameWithoutExtension(ImageUpload.FileName);
@@ -69,13 +82,22 @@ namespace Lamb_Ji_UI.Controllers
                         affiche.imageUrl = fileName;
                         ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Images/Image-Affiche"), fileName));
                     }
+                    if (affiche.Lutteur_A == affiche.Lutteru_B)
+                    {
+                        ViewBag.result = "Vous ne pouvez pas choisir le meme lutteur deux fois dans le meme combat";
+                        return View(affiche);
+                    }
+                    if (verifLut_date != null)
+                    {
+                        ViewBag.result = "Un des deux lutteurs que vous avez choisit à déja un combat à cette date ";
+
+                        return View(affiche);
+                    }
+                  
+
                     db.Affiches.Add(affiche);
                     db.SaveChanges();
 
-                    ViewBag.AfficheID = new SelectList(db.AvisAffiches, "AvisAfficheID", "Auteur", affiche.AfficheID);
-                    ViewBag.Lutteur_A = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteur_A);
-                    ViewBag.Lutteru_B = new SelectList(db.Lutteurs, "LutteurID", "LutteurName", affiche.Lutteru_B);
-                    ViewBag.CombatID = new SelectList(db.Combats, "CombatID", "Combat_Description", affiche.CombatID);
 
 
                     return RedirectToAction("Index");
@@ -83,7 +105,7 @@ namespace Lamb_Ji_UI.Controllers
                 catch (Exception)
                 {
 
-                    throw;
+                    return RedirectToAction("Index", "Error");
                 }
                
             }

@@ -13,18 +13,6 @@ namespace Lamb_Ji_UI.Controllers
         {
             return View();
         }
-        public ActionResult LutteTraditionnelleSimple()
-        {
-            return View();
-        }
-
-        public ActionResult LutteTraditionnelleAvecFrappe()
-        {
-            return View();
-        }
-        public ActionResult LutteGrecoRomaine()
-        {
-            return View();
-        }
+       
     }
 }

@@ -9,8 +9,18 @@
     #myCarousel {
         display: none;
     }
+
 </style>
 <h2>Creer une Nouvelle Affiche</h2>
+
+@if (ViewBag.result != "")
+{
+    <div class="alert alert-danger">
+        
+        @ViewBag.result
+    </div>
+
+}
 
 @using (Html.BeginForm("Create", "Affiche", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost2(this);" }))
 {
@@ -62,7 +72,7 @@
                         @Html.ValidationMessageFor(model => model.DateCombat, "", new { @class = "text-danger" })
                     </div>
                 </div>
-             
+
 
 
                 <div class="form-group">
@@ -93,8 +103,6 @@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-
-
 
         function ShowImagePreview(imageUploader, previewImage) {
             if (imageUploader.files && imageUploader.files[0]) {

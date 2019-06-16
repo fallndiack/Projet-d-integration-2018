@@ -30,6 +30,8 @@ namespace Lamb_Ji_DAL
         public int CombatID { get; set; }
         public int Lutteur_A { get; set; }
         public int Lutteru_B { get; set; }
+        [Required(ErrorMessage = "Veuillez choir une svp !")]
+        [DisplayName("Date du Combat")]
         public Nullable<System.DateTime> DateCombat { get; set; }
         public string Vaincqueur { get; set; }
         public string imageUrl { get; set; }
