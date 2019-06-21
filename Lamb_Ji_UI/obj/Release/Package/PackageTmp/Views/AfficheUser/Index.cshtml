@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.Affiche>
+
+@{
+    ViewBag.Title = "Calendrier des combats";
+}
+
+<h2 class="text-center">Liste des Combat à venir</h2>
+
+<style>
+
+    .circle-img {
+        width: 250px;
+        height: 250px;
+        overflow: hidden;
+    }
+
+        .circle-img img {
+            height: 100%;
+            transform: translateX(-50%);
+            margin-left: 50%;
+        }
+
+    hr {
+        display: block;
+        height: 2px;
+        border: 0;
+        border-top: 1px solid #0094ff;
+        margin: 1em 0;
+        padding: 0;
+    }
+    .blue {
+        color: blue;
+    }
+</style>
+
+
+@foreach (var item in Model)
+{
+  
+    <hr />
+    <div class="row">
+
+        <div>
+            <a href="@Url.Action("DetailsAfficheAvecAvis", "AfficheUser", new { id = item.AfficheID })"> <h2> @Html.DisplayFor(modelItem => item.AfficheNom)</h2></a>
+        </div>
+        <div class="col-md-4 how-img circle-img img-circle">
+            <img class="img-responsive img-circle img-fluid" src="~/Images/Image-Affiche/@item.imageUrl" />
+
+        </div>
+        <div class="col-md-8">
+            <div>
+                @Html.DisplayFor(modelItem => item.Combat.Combat_Description)<br /><br />
+            </div>
+            <div>
+                <h4 style="color:navy"> @Html.DisplayFor(modelItem => item.Lutteur.LutteurName)</h4>
+                <span>--- VS ---</span>
+                <h4 style="color:navy"> @Html.DisplayFor(modelItem => item.Lutteur1.LutteurName)</h4>
+            </div>
+            <p>
+                le combat aura lieu le :
+                @Html.DisplayFor(modelItem => item.DateCombat) au stade
+                @Html.DisplayFor(modelItem => item.Combat.Stade.StadeName)
+            </p>
+            <br />
+            <div>
+                <article class="info-block">
+                    <p>
+                        <span class="glyphicon glyphicon-star blue"></span>
+                        @if (item.Note > 1)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
+                        @if (item.Note > 2)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
+                        @if (item.Note > 3)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
+                        @if (item.Note > 4)
+                {
+                    <span class="glyphicon glyphicon-star blue"></span>
+        }
+
+                        @item.Note / 5
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+
+

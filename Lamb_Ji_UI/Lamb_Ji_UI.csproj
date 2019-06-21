@@ -449,7 +449,6 @@
     <Content Include="Images\cgnLogo.ico" />
     <Content Include="Images\Error.jpg" />
     <Content Include="Images\Eumeu_sene-28-33-2018_10_33_30-1.jpg" />
-    <Content Include="Images\Image-Lutteur\def.png" />
     <Content Include="Images\Image-Lutteur\default.png" />
     <Content Include="Images\loading_by_deiby_ybied-d48kirx.gif" />
     <Content Include="Images\logo.ico" />
@@ -555,6 +554,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.12.4-vsdoc.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />

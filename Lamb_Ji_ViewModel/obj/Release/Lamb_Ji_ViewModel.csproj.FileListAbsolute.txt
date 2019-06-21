@@ -1,0 +1,12 @@
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\Lamb_Ji_ViewModel.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\Lamb_Ji_ViewModel.pdb
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\Lamb_Ji_DAL.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\EntityFramework.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\Lamb_Ji_DAL.pdb
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\Lamb_Ji_DAL.dll.config
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\EntityFramework.xml
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\bin\Release\fr\EntityFramework.resources.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\obj\Release\Lamb_Ji_ViewModel.csprojResolveAssemblyReference.cache
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\obj\Release\Lamb_Ji_ViewModel.csproj.CoreCompileInputs.cache
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\obj\Release\Lamb_Ji_ViewModel.dll
+C:\Users\NDIACK\www\Projet-d-integration-2018\Lamb_Ji_ViewModel\obj\Release\Lamb_Ji_ViewModel.pdb

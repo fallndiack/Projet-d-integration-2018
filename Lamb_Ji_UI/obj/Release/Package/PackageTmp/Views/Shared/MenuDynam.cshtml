@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.MenuDynamique>
+
+<style>
+
+    #leftMenu ul li:hover {
+        border-top: 5px solid;
+        background-color: #196276;
+    }
+    #content {
+        display: none;
+    }
+   
+</style>
+
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        <h2>Menu</h2>
+    </div>
+    <div class="panel-body" id="leftMenu">
+        <ul class="list-group">
+            @if (Model != null)
+            {
+
+                foreach (var item in Model)
+                {
+
+                    <li class="list-group-item"><a href="@item.Lien" class="btn btn-primary btn-block">@item.NomLien</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+<div class="thumbnail">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">INFOS</h3>
+        </div>
+    </div>
+    <img src="~/Pictures/3363065-4830807.jpg" />
+    <div class="caption">
+        <h3>Docteur Alioune Sarr</h3>
+        <p>
+            &para; Le CNG de lutte a pour mission de gérer, de développer et de promouvoir les trois formes de lutte que sont :
+            <br /> •	la Lutte Olympique (Gréco-Romaine et Lutte Libre)
+            <br /> •	la Lutte Traditionnelle Sans Frappe
+            <br /> •	la Lutte Traditionnelle Avec frappe
+            . &para;
+        </p>
+
+        <div id="content">
+            Le président du Comité national de lutte, Alioune Sarr continue de tirer la sonnette d'alarme. 
+            Le médecin qu'il est, s'inquiète des cas de dopage 
+            constatés ces derniers temps sur les pratiquants de la lutte avec frappe au Sénégal. 
+            A ce sujet, il a déclaré, en marge de la 15e édition du drapeau du Chef de l'Etat à Thiès, 
+            dans les colonnes du journal Libération: " Le dopage est un problème trés sérieux. Seulement, 
+            mon idée de départ a été très mal interprétée vu que j'ai dit voila ce que nous allons faire, 
+            voila ce qui reste un sujet de reflexion. Mais, le premier contrôle anti dopage est 
+            l'information. Nous avons récemment discuté d'un tel danger avec des lutteurs. Là, 
+            j'ai pris ma casquette de médecin pour leur dire que le corps humain est comme un 
+            véhicule qui craque quand il a un certain poids. Donc quel que soit sont volume, 
+            il a la même quantité de sang qui fait le tour de cette surface, mais dans le même temps. 
+            Ces garçons (les lutteurs) devraient bénéficier de leur gain, et non se soigner avec, 
+            plus tard. Si non, peut-être, tristement, on va assister à des accidents en direct ".
+
+            REWMI.COM/MK
+
+        </div>
+        <button id="toggle" class="btn btn-primary">Plus/Moins...</button>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var toggle = document.getElementById("toggle");
+        var content = document.getElementById("content");
+
+        toggle.addEventListener("click", function () {
+            content.style.display = (content.dataset.toggled ^= 1) ? "block" : "none";
+        });
+    });
+   
+</script>

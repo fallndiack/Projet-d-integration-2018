@@ -1,0 +1,447 @@
+﻿@model Lamb_Ji_ViewModel.LutteurViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+   #myCarousel {
+        display: none;
+    }
+
+    tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+</style>
+
+<h2>Gestion des lutteurs</h2>
+<div class="container" style="margin-top: 3%">
+    <p>
+        <button id="btnCreer" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i>  Nouveau Lutteur</button>
+    </p>
+
+    <table class="table table-striped table-condensed" id="LutteurTable" style="width:100%">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nom</th>
+                <th>Addrese email</th>
+                <th>Adrresse</th>
+                <th>Poids</th>
+                <th>Date de Naissance</th>
+                <th>Telephone</th>
+                <th>Description</th>
+                <th>Club</th>
+                <th>Edit</th>
+                <th>Supp</th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>Nom</th>
+                <th>Addrese email</th>
+                <th>Adrresse</th>
+                <th>Poids</th>
+                <th>Date de Naissance</th>
+
+
+            </tr>
+        </tfoot>
+    </table>
+</div>
+    @*Creation du modal pour ajout et edit d'un lutteur*@
+
+
+    <div id="myModal" class="modal fade in">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title" id="ModalTitle"></h3>
+                </div>
+
+                <div class="modal-body" style=" text-align:center">
+
+                    @using (Html.BeginForm("SaveDataInDatabase", "Lutteur", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);" }))
+               {
+
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(model => model.LutteurID, new { @id = "LutID" })
+                    <div class="row">
+                        <div class="form-horizontal">
+
+                            <div class="col-md-6">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrez le Nom.", @id = "LutName" } })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.LutteurName, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurEmail, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrer l'e-mail.", @id = "LutEmail" } })
+                                    </div>
+                                    @Html.ValidationMessageFor(model => model.LutteurEmail, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurAddresse, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurAddresse, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entez l'addresse.", @id = "LutAddresse" } })
+                                        @Html.ValidationMessageFor(model => model.LutteurAddresse, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurPoids, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurPoids, new { htmlAttributes = new { @class = "form-control", @placeholder = "Entrez le poids.", @id = "LutPoids" } })
+                                        @Html.ValidationMessageFor(model => model.LutteurPoids, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurDateNaissance, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurDateNaissance, new { htmlAttributes = new { @class = "form-control", @id = "LutDateNaissance" } })
+                                        @Html.ValidationMessageFor(model => model.LutteurDateNaissance, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurTelephone, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurTelephone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Numéro de telephone.", @id = "LutTelephone" } })
+                                        @Html.ValidationMessageFor(model => model.LutteurTelephone, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurDescription, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.EditorFor(model => model.LutteurDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Description du lutteur.", @id = "LutDesc" } })
+                                        @Html.ValidationMessageFor(model => model.LutteurDescription, "", new { @class = "text-danger", @style = "margin-left: -145px" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LutteurClubID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.LutteurClubID, ViewBag.ListOfLutteur as SelectList, "--Select Club--", new { @class = "form-control", @id = "Club" })
+                                    </div>
+                                </div>
+
+
+                                <div style="text-align:center" id="chargement">
+                                    <img src="~/Images/tenor.gif" style="height:200px" />
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Retour</button>
+                                    <input type="submit" value="Enregistrer" class="btn btn-primary" data-style="expand-right" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <img src="~/Images/Image-Lutteur/default.png" style="margin:10px" height="250" width="200" id="imagePreview" />
+                                        <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                 }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    @*Create a popup for deleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3>Supprimer un Lutteur</h3>
+                </div>
+                <div class="modal-body">
+                    @Html.HiddenFor(model => model.LutteurID, new { @id = "LutID" })
+
+                    <h3>Êtes-vous sûr de vouloir supprimer ce Lutteur?</h3>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Annuler</a>
+                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirmer</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+            $(document).ready(function () {
+
+           
+                // DataTable
+                var table = $('#LutteurTable').DataTable({
+
+                    ajax: {
+                        "type": "GET",
+                        "url": "/Lutteur/GetLutteurList",
+                        "datatype": "json",
+                        "dataSrc": ""
+
+                    },
+
+                    columns: [
+                        { "data": "LutteurName" },
+                        {
+                            "data": "LutteurEmail",
+                            'sortable': false,
+                        },
+                        { "data": "LutteurAddresse" },
+                        { "data": "LutteurPoids" },
+                        {
+                            "data": "LutteurDateNaissance",
+                            'sortable': false,
+                            'render': function (jsonDate) {
+                                var date = new Date(parseInt(jsonDate.substr(6)));
+                                var month = date.getMonth() + 1;
+                                return date.getDate() + "/" + month + "/" + date.getFullYear();
+                            }
+                        },
+                        {
+                            "data": "LutteurTelephone",
+                            'sortable': false
+                        },
+                        {
+                            "data": "LutteurDescription",
+                            'sortable': false
+                        },
+                        {
+                            "data": "ClubName",
+                            'sortable': false
+                        },
+                        {
+                            "data": "LutteurID",
+                            'sortable': false,
+                            "render": function (data) {
+                                return '<a class="btn btn-primary btn-sm" onclick="EditLutteurRecord(' + data + ')"><i class="fa fa-pencil fa-lg"></i></a>';
+                            }
+                        },
+
+                        {
+                            "data": "LutteurID",
+                            'sortable': false,
+                            "render": function (data) {
+                                return '<a class="btn btn-danger btn-sm" onclick="DeleteLutteurRecord(' + data + ')"><i class="fa fa-trash fa-lg"></i></a >';
+                            }
+                        }
+                    ]
+                });
+
+
+                OpenModal();
+
+
+
+
+
+                // Setup - add a text input to each footer cell
+                //$('#LutteurTable tfoot th').each(function () {
+                //    var title = $(this).text();
+                //    $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+                //});
+
+
+
+                // Apply the search
+                //table.columns().every(function () {
+                //    var that = this;
+
+                //    $('input', this.footer()).on('keyup change', function () {
+                //        if (that.search() !== this.value) {
+                //            that
+                //                .search(this.value)
+                //                .draw();
+                //        }
+                //    });
+                //});
+
+
+            });
+
+
+            function ShowImagePreview(imageUploader, previewImage) {
+                if (imageUploader.files && imageUploader.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $(previewImage).attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(imageUploader.files[0]);
+                }
+            }
+
+            //reset modal
+
+            function OpenModal() {
+                $("#btnCreer").click(function () {
+                    $('#LutName').val("");
+                    $('#LutEmail').val("");
+                    $('#LutAddresse').val("");
+                    $('#LutPoids').val(0);
+                    $('#LutDateNaissance').val(null);
+                    $('#LutTelephone').val("");
+                    $('#LutDesc').val("");
+                    $('#chargement').hide();
+                    //$('#ImageUpload').val(null);
+                    $("#ModalTitle").html("Ajouter un Nouveau Lutteur");
+
+                })
+            }
+
+
+            function jQueryAjaxPost(form) {
+                $.validator.unobtrusive.parse($('#SubmitForm'));
+                if ($('#SubmitForm').valid()) {
+
+                    var ajaxConfig = {
+                        type: 'POST',
+                        url: form.action,
+                        data: new FormData(form),
+                        success: function () {
+                            $('#chargement').show();
+                           
+                            $('#chargement').hide();
+                            $('#myModal').modal('hide');
+                             $('#LutteurTable').DataTable().ajax.reload();
+                            toastr.info("Lutteur ajouté avec succés!!!....");
+                        }
+                    }
+                    if ($(form).attr('enctype') == "multipart/form-data") {
+                        ajaxConfig["contentType"] = false;
+                        ajaxConfig["processData"] = false;
+                    }
+                    $.ajax(ajaxConfig);
+                    
+                }
+                return false;
+            }
+
+           
+
+        
+
+
+            //Show the popup modal for edit lutteur
+            function EditLutteurRecord(ID) {
+
+                
+
+                var date = null;
+                //var url = "/Lutteur/GetLutteurById?id=" + ID;
+                $("#ModalTitle").html("Modifier un Lutteur"); 
+                     $('#chargement').hide();
+                $("#myModal").modal();
+                $.ajax({
+                    type: "GET",
+                    url: "/Lutteur/GetLutteurById?id=" + ID, 
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    success: function (result) {
+                       
+                        $("#LutID").val(result.LutteurID);
+                        $("#LutName").val(result.LutteurName);
+                        $("#LutEmail").val(result.LutteurEmail);
+                        $("#LutPoids").val(result.LutteurPoids);
+
+                        
+                        
+                        $("#LutDateNaissance").val(ToJavaScriptDate(result.LutteurDateNaissance));
+                        $("#LutAddresse").val(result.LutteurAddresse);
+                        $("#LutDesc").val(result.LutteurDescription);
+                        $("#LutTelephone").val(result.LutteurTelephone);
+                        $('#ImageUpload').text(result.imageUrl)
+
+                      
+                        
+                       
+                    },
+
+                        error: function (errormessage) {
+                            toastr.error("Une erreur s'est produite, veuillez réessayer");
+                        }
+                });
+            
+            }
+
+            function ToJavaScriptDate(value) {
+                var pattern = /Date\(([^)]+)\)/;
+                var results = pattern.exec(value);
+                var dt = new Date(parseFloat(results[1]));
+                return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+            }
+
+
+            //Show popup modal for DeleteConfirmation
+            function DeleteLutteurRecord(LutteurID) {
+                $("#LutID").val(LutteurID);
+                $("#DeleteConfirmation").modal("show");
+            }
+            function ConfirmDelete() {
+                var LutId = $("#LutID").val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Lutteur/DeleteLutteurRecord?LutteurID=" + LutId,
+                    success: function (result) {
+                        if (result) {
+                            $('#LutteurTable').DataTable().ajax.reload();
+
+                            toastr.info(" Lutteur Supprimé Avec Succés!.....");
+                            $('#chargement').hide();
+                            $("#DeleteConfirmation").modal("hide");
+
+                        }
+                        else {
+                            toastr.error("Le Lutteur n'est pas Supprimé!.....");
+                            $("#DeleteConfirmation").modal("hide");
+
+
+                        }
+
+                    }
+                });
+            }
+
+           
+
+    </script>
+
+    }
+

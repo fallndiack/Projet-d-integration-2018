@@ -1,0 +1,129 @@
+﻿@model Lamb_Ji_ViewModel.HistoriqueIndexData
+
+@{
+    ViewBag.Title = "Historique des combats";
+}
+<style>
+    #myCarousel {
+        display: none;
+    }
+
+    .custab {
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin: 5% 0;
+        box-shadow: 3px 3px 2px #ccc;
+        transition: 0.5s;
+    }
+
+        .custab:hover {
+            box-shadow: 3px 3px 0px transparent;
+            transition: 0.5s;
+        }
+</style>
+<br /><br />
+<h2 class="text-center">Historique des Combats par lutteur</h2>
+<br /><br />
+<table class="table table-condensed">
+    <tr>
+        <th>Historique </th>
+        <th>Nom du Lutteur</th>
+        <th>Club</th>
+        <th>Date de Naissance</th>
+        <th>Poids</th>
+        <th>Email</th>
+
+    </tr>
+
+    @foreach (var item in Model.lutteurs)
+    {
+        string selectedRow = "";
+        if (item.LutteurID == ViewBag.lutteurID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow" valign="top">
+            <td>
+                @Html.ActionLink("Combat", "Index", new { id = item.LutteurID }) |
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LutteurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Club.ClubName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LutteurDateNaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LutteurPoids)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LutteurEmail)
+            </td>
+        </tr>
+    }
+
+</table>
+<br /><br /><br /><br />
+@if (Model.affiches != null)
+{
+    <h3>Les Combats auxquels ont participés ce Lutteur</h3>
+
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle">
+            <table class="table table-striped custab">
+                <thead>
+                    <tr>
+
+                        <th>Titre du Combat</th>
+                        <th>Date du Combat</th>
+                        <th>Type de Lutte</th>
+                        <th>Lutteur_A</th>
+                        <th>Contre</th>
+                        <th>Lutteur_B</th>
+                        <th>Lieu</th>
+                        <th>Vaiqueur</th>
+
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.affiches)
+                {
+
+                <tr>
+                    <td>
+                        @item.AfficheNom
+                    </td>
+                    <td>
+                        @item.DateCombat
+                    </td>
+                    <td>
+                        @item.Combat.TypeLutte.TypeLutte_Libele
+                    </td>
+                    <td>
+                        @item.Lutteur1.LutteurName
+                    </td>
+                    <td>
+                        --VS--
+                    </td>
+                    <td>
+                        @item.Lutteur.LutteurName
+                    </td>
+                    <td>
+                        @item.Combat.Stade.StadeName
+                    </td>
+                    <td>
+                        @item.Vaincqueur
+                    </td>
+                </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+}
+
+

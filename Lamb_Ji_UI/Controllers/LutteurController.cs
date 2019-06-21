@@ -15,7 +15,7 @@ namespace Lamb_Ji_UI.Controllers
     public class LutteurController : Controller
     {
         CNGLUTTEDBEntities db = new CNGLUTTEDBEntities();
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             List<Club> LutList = db.Clubs.ToList();
@@ -24,7 +24,7 @@ namespace Lamb_Ji_UI.Controllers
             return View();
         }
 
-       
+        [Authorize(Roles = "Admin")]
         public JsonResult GetLutteurList()
         {
             List<Lutteur> LutteursDb = db.Lutteurs.ToList();
@@ -48,7 +48,7 @@ namespace Lamb_Ji_UI.Controllers
 
             return Json(LutteursVM, JsonRequestBehavior.AllowGet);
         }
-
+        [Authorize(Roles = "Admin")]
         public JsonResult GetLutteurById(int id)
         {
             LutteurViewModel Lvm = new LutteurViewModel();
@@ -65,7 +65,6 @@ namespace Lamb_Ji_UI.Controllers
             Lvm.LutteurPoids = lut.LutteurPoids;
             Lvm.LutteurTelephone = lut.LutteurTelephone;
 
-            
             Lvm.imageUrl = lut.imageUrl;
 
             List<Club> LutList = db.Clubs.ToList();

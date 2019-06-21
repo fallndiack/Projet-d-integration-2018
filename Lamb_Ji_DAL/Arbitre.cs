@@ -11,7 +11,9 @@ namespace Lamb_Ji_DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Arbitre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +23,11 @@ namespace Lamb_Ji_DAL
         }
     
         public int ArbitreID { get; set; }
+        [Required(ErrorMessage = "Le nom est requis!")]
+        [DisplayName("Nom de l'Arbitre")]
         public string ArbitreName { get; set; }
+        [Required(ErrorMessage = "L'email est requis!")]
+        [DisplayName("Email")]
         public string ArbitreEmail { get; set; }
         public Nullable<System.DateTime> ArbitreDateNaissance { get; set; }
         public string imageUrl { get; set; }

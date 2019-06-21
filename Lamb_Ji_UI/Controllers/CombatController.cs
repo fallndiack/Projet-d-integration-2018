@@ -12,6 +12,7 @@ using Lamb_Ji_ViewModel;
 
 namespace Lamb_Ji_UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CombatController : Controller
     {
         private CNGLUTTEDBEntities db = new CNGLUTTEDBEntities();
@@ -146,15 +147,29 @@ namespace Lamb_Ji_UI.Controllers
             {
                 return RedirectToAction("Index", "Error");
             }
+
+            ViewBag.message = "";
             Combat combatToUpdate = db.Combats
                 .Include(i => i.Arbitres)
                 .Where(i => i.CombatID == id)
                 .Single();
+            ViewBag.CategorieID = new SelectList(db.Categories, "CategorieID", "Categorie_Libele", combatToUpdate.CategorieID);
+            ViewBag.StadeID = new SelectList(db.Stades, "StadeID", "StadeName", combatToUpdate.StadeID);
+            ViewBag.TypeLutteID = new SelectList(db.TypeLuttes, "TypeLutteID", "TypeLutte_Libele", combatToUpdate.TypeLutteID);
+
+
             if (TryUpdateModel(combatToUpdate, "",
             new string[] { "Combat_Description", "TypeLutteID", "CategorieID", "StadeID", "Combat_Etat" }))
+
             {
                 try
             {
+                    //if (selectedArbitres.Length < 0 || selectedArbitres.Length > 0)
+                    //{
+                    //    ViewBag.message = "Veuillez choisir entre 1 et 3 arbitres !!!";
+                    //    Combat c = db.Combats.Where(x => x.CombatID == id).SingleOrDefault();
+                    //    return View("Edit", new {id = c.CombatID });
+                    //}
                 UpdateCombatArbitres(selectedArbitres, combatToUpdate);
 
                 db.SaveChanges();
@@ -167,9 +182,6 @@ namespace Lamb_Ji_UI.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
 
-            ViewBag.CategorieID = new SelectList(db.Categories, "CategorieID", "Categorie_Libele", combatToUpdate.CategorieID);
-            ViewBag.StadeID = new SelectList(db.Stades, "StadeID", "StadeName", combatToUpdate.StadeID);
-            ViewBag.TypeLutteID = new SelectList(db.TypeLuttes, "TypeLutteID", "TypeLutte_Libele", combatToUpdate.TypeLutteID);
             }
             PopulateAssignedArbitre(combatToUpdate);
             return View(combatToUpdate);

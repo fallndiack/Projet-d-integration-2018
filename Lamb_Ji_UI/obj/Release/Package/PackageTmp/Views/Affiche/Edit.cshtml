@@ -1,0 +1,139 @@
+﻿@model Lamb_Ji_DAL.Affiche
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Affiche", FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="form-horizontal">
+            <h4>Affiche</h4>
+            <hr />
+            <div class="col-md-6">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.AfficheID)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AfficheNom, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AfficheNom, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AfficheNom, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CombatID, "CombatID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("CombatID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CombatID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lutteur_A, "Lutteur_A", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Lutteur_A", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Lutteur_A, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Lutteru_B, "Lutteru_B", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Lutteru_B", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Lutteru_B, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateCombat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DateCombat, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.DateCombat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @if (Model.DateCombat < DateTime.Now)
+                 {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Vaincqueur, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Vaincqueur, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Vaincqueur, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                }
+
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                @if (Model.imageUrl != null)
+              {
+                    <div class="form-group">
+
+                        @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <img src="~/Images/Image-Affiche/@Url.Content(Model.imageUrl)" style="margin:10px" height="250" width="200" id="imagePreview" />
+                            <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" 
+                                   onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                        </div>
+                    </div>
+              }
+
+                else 
+                {
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.imageUrl, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <img src="~/Images/Image-Lutteur/default.png" style="margin:10px" height="250" width="200" id="imagePreview" />
+                        <input id="ImageUpload" name="ImageUpload" class="form-control" type="file" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                    </div>
+                </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retourner à la Liste", "Index", null, new { @class = "btn btn-default btn-lg" })
+</div>
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+
+
+        function ShowImagePreview(imageUploader, previewImage) {
+            if (imageUploader.files && imageUploader.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(previewImage).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(imageUploader.files[0]);
+            }
+        }
+
+    </script>
+
+}
+

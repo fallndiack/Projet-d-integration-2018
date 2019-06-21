@@ -16,16 +16,29 @@ namespace Lamb_Ji_UI.Controllers
         {
             var viewModel = new HistoriqueIndexData();
             viewModel.lutteurs = db.Lutteurs;
-                
+
             if (id != null)
             {
+                List<Affiche> vma = new List<Affiche>();
+                foreach (var item in db.Affiches)
+                {
+                    if ((item.Lutteur_A == id) || item.Lutteru_B == id)
+                    {
+                        vma.Add(item);
+                    }
+                   
+                }
+                    //db.Affiches.Where(i => i.Lutteur_A == id || i.Lutteru_B == id).ToList();
                 ViewBag.lutteurID = id.Value;
-                viewModel.affiches = viewModel.lutteurs.Where(
-                    i => i.LutteurID == id.Value).Single().Affiches1;
-            }
+                viewModel.affiches = vma;
 
+                //viewModel.affiches = viewModel.lutteurs.Where(
+                //    i => i.LutteurID == id.Value).Single().Affiches1.ToList();
+            }
             return View(viewModel);
-            
+
+
+
         }
 
        

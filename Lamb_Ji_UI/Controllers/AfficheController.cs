@@ -11,6 +11,7 @@ using Lamb_Ji_DAL;
 
 namespace Lamb_Ji_UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AfficheController : Controller
     {
         private CNGLUTTEDBEntities db = new CNGLUTTEDBEntities();

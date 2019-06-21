@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LAMB_JI GESTION</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/DataTables")
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    @RenderSection("scripts", required: false)
+
+    <style>
+        #RedMenu {
+            background-color: #2a405a;
+            border-color: #2a405a;
+            
+        }
+
+            #RedMenu ul li {
+                color: #ffffff;
+            }
+
+           #RedMenu ul li:hover {                    
+           border-top: 5px solid #f1dc4f;
+           background-color: #196276;
+           }
+        .custom-nav-container {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+        .btn-group {
+            float: right; /* last li item */
+            top: 10px;
+        }
+        
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options = {
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": 3000,
+                "extendedTimeOut": 1000,
+                "progressBar": true
+            }
+        });
+
+    </script>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="panel panel-body" style="min-height:256px">
+     
+            <div class="navbar navbar-inverse  navbar-fixed-top" id="RedMenu">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background-color:#000">
+                            <span class="icon-bar" style="background-color:#ffffff"></span>
+                            <span class="icon-bar" style="background-color:#ffffff"></span>
+                            <span class="icon-bar" style="background-color:#ffffff"></span>
+                        </button>
+                        @Html.ActionLink(" LAMB_JI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand glyphicon glyphicon-home" })
+                        <img src="~/Images/cgnLogo.ico" />
+
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            @*<li>@Html.ActionLink("Accueil", "Index", "Home")</li>*@
+                            <li>@Html.ActionLink("Voir les Combats à venir!", "Index", "AfficheUser")</li>
+                            <li>@Html.ActionLink(" Nous Contacter", "Index", "Contact", null, new { @class = "glyphicon glyphicon-envelope" })</li>
+
+
+                            @if (User.IsInRole("Admin"))
+                             {
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
+                                        </button>
+                                        <!-- dropdown menu items-->
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="../Club/Index"><span class="glyphicon glyphicon-cog"></span> Clubs</a></li>
+                                            <li><a href="../Stade/Index"><span class="glyphicon glyphicon-cog"></span> Stades</a></li>
+                                            <li><a href="../Arbitre/Index"><span class="glyphicon glyphicon-cog"></span> Arbitres</a></li>
+                                            <li><a href="../AvisAdmin/Index"><span class="glyphicon glyphicon-cog"></span> Comments</a></li>
+                                            <li><a href="../Slider/AddImage"><span class="glyphicon glyphicon-cog"></span> Slider</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group">
+                                        <button type="button" dropdown-toggle" data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-user"></span> Manager <span class="caret"></span>
+                                        </button>
+                                        <!-- dropdown menu items-->
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="../Lutteur/Index"><span class="glyphicon glyphicon-cog"></span> Lutteurs</a></li>
+                                            <li><a href="../Affiche/Index"><span class="glyphicon glyphicon-cog"></span> Affiches</a></li>
+                                            <li><a href="../Combat/Index"><span class="glyphicon glyphicon-cog"></span> Combats</a></li>
+                                            <li><a href="../Historique/Index"><span class="glyphicon glyphicon-cog"></span> Historiques</a></li>
+                                            <li><a href="../ActualiteAdmin/Index"><span class="glyphicon glyphicon-cog"></span> Actus</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+
+                             }
+
+
+                        </ul>
+                     
+                            @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+       
+            <div class="col-md-3">
+
+                @{ Html.RenderAction("Menu", "MenuAccueil");}
+
+            </div>
+            <div class="col-md-9">
+
+
+
+                @{ Html.RenderAction("SliderAccueil", "Slider");}
+
+                <div class="container body-content">
+                    @RenderBody()
+                    @*<hr />*@
+
+                </div>
+            </div>
+
+        </div>
+    <footer>
+        @Html.Partial("_footer")
+    </footer>
+</body>
+</html>

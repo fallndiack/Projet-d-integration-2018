@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.Affiche>
+
+@{
+    ViewBag.Title = "Liste des Affiches";
+}
+<style>
+    #myCarousel {
+        display: none;
+    }
+</style>
+<h2>Liste des Affiches</h2>
+
+<p>
+    @Html.ActionLink("Nouvelle Affiche", "Create", null, new { @class = "btn btn-primary btn-lg" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AfficheNom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Combat.Combat_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lutteur.LutteurName)
+        </th>
+        <th>VS</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lutteur1.LutteurName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCombat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vaincqueur)
+        </th>
+
+
+
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AfficheNom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Combat.Combat_Description).ToString().Substring(0, 10)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lutteur.LutteurName)
+        </td>
+        <td>---</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lutteur1.LutteurName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCombat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vaincqueur)
+        </td>
+
+
+
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.AfficheID }, new { @class = "btn btn-primary" }) |
+            @*@Html.ActionLink("Details", "Details", new { id = item.AfficheID }, new { @class = "btn btn-default" }) |*@
+            @Html.ActionLink("Supp", "Delete", new { id = item.AfficheID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

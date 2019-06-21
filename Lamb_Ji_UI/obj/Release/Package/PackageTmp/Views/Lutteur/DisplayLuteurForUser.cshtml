@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.Lutteur>
+
+@{
+    ViewBag.Title = "DisplayLuteurForUser";
+}
+
+<style>
+   
+</style>
+
+<br /><br />
+
+ <div class="container">
+          <h2 class="text-center">Liste des Lutteurs affiliés</h2><br /><br />
+          @using (Html.BeginForm("DisplayLuteurForUser", "Lutteur", FormMethod.Get))
+           {
+              @Html.TextBox("searching")
+              <input type="submit" value="Search" />
+
+           }
+
+
+          <br />
+          @foreach (var item in Model)
+           {
+              <div class="col-md-3" style="margin-bottom:25px">
+                  <div class="thumbnail">
+                      <div class="image" style="margin-bottom:10px">
+                          <img class="img-responsive" src="~/Images/Image-Lutteur/@item.imageUrl" height="500" width="400" />
+                      </div>
+                      <div class="caption" style="border-top:3px solid #808080">
+                          <h3><a href="#">@item.LutteurName</a></h3>
+                          <h4>@item.LutteurDescription</h4>
+                      </div>
+                  </div>
+              </div>
+           }
+
+</div>

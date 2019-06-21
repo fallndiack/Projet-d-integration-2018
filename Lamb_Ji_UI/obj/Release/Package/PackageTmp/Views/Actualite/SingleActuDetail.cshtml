@@ -1,0 +1,32 @@
+﻿@model Lamb_Ji_ViewModel.SingleActuViewModel
+@{
+    ViewBag.Title = "SingleActuDetail";
+}
+
+<h2>Détails de l'actualité</h2>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 p-5">
+            <h2 class="p-2 text-red">@Model.actuNom</h2>
+            <h4 class="p-2">@Model.actuTitre</h4>
+            <div class="col-md-8 p-2">
+                <img src="~/Images/Image-Actu/@Model.actuImgUrl" class="img-fluid" alt="Responsive image" style="max-width: 1200px; max-height:600px" >
+            </div>
+            <div class="col-md-8 p-2">
+                <p class="text-dark">
+                    <br /><br />@Model.actuTexte
+                </p>
+                <small>@Model.actuDate</small>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+
+<br /><br /><br />
+@Html.ActionLink("Retourner à la Liste des Actus", "Index", null, new { @class = "btn btn-block btn-default" })

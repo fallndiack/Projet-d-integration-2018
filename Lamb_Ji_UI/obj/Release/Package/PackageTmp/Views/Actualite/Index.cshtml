@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Lamb_Ji_DAL.Actualite>
+@{
+    ViewBag.Title = "Index";
+}
+<link href="~/Content/Site.css" rel="stylesheet" />
+<br />
+<h2 class="text-center">Les Actualités de la lutte</h2>
+
+<br />
+<div class="container">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="hovereffect">
+                <img class="img-responsive" src="~/Images/Image-Actu/@item.actuImgUrl" alt="" style="max-width: 300px; max-height:200px; margin-top:30px">
+                <div class="overlay">
+                    <h2>@item.actuTitre</h2>
+                    <a class="info" href="@Url.Action("SingleActuDetail", "Actualite", new { id = item.actuID })">@item.actuNom</a>
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
